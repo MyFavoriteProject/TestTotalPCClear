@@ -32,7 +32,18 @@ namespace TestTotalPCClear
             this.clearViewModel = new ClearViewModel();
 
             this.DataContext = clearViewModel;
-            this.clearViewModel.MySplitView = this.mySplitView;
+            //this.clearViewModel.MySplitView = this.mySplitView;
+
+            Binding myBinding = new Binding();
+            myBinding.Source = this.DataContext;
+            myBinding.Path = new PropertyPath("StateOfScanning");
+            myBinding.Mode = BindingMode.TwoWay;
+            myBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            BindingOperations.SetBinding(mltView, MultiViewControl.selectedItemShowProperty, myBinding);
+
+            CheckBox checkBox = new CheckBox();
+
         }
+
     }
 }

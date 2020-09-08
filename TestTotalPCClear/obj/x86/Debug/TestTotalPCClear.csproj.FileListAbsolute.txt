@@ -218,3 +218,15 @@ C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\quali
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885202160000000.json
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\MultiViewControl.xbf
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\MultiViewControl.g.i.cs
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\MultiViewControl.g.cs
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\MultiViewControl.xaml
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\MultiViewControl.xbf
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Microsoft.Xaml.Interactions.dll
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Microsoft.Xaml.Interactions.pdb
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Microsoft.Xaml.Interactivity.dll
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Microsoft.Xaml.Interactivity.pdb
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Microsoft.Xaml.Interactions.pri.xml
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Microsoft.Xaml.Interactivity.pri.xml
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\TestTotalPCClear.csproj.GenerateResource.Cache

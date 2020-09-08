@@ -123,43 +123,25 @@
   <data name="CacheText" xml:space="preserve">
     <value>Cache</value>
   </data>
-  <data name="ContentButtonOpenFile" xml:space="preserve">
-    <value>Open File</value>
-  </data>
-  <data name="ContentChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
-  </data>
   <data name="DeleteCacheText" xml:space="preserve">
     <value>Delete cache</value>
   </data>
-  <data name="DeleteFile" xml:space="preserve">
-    <value>Delete file</value>
-  </data>
-  <data name="DeleteFileIsFail" xml:space="preserve">
-    <value>Can't delete file(files)</value>
-  </data>
-  <data name="DeleteFileIsSuccessfully" xml:space="preserve">
-    <value>Deleted Successfully</value>
+  <data name="DeselectAllText" xml:space="preserve">
+    <value>Deselect all</value>
   </data>
   <data name="DuplicateText" xml:space="preserve">
     <value>Duplicate</value>
   </data>
-  <data name="FileWasNotDelete" xml:space="preserve">
-    <value>File Was Not Delete</value>
-  </data>
-  <data name="IsNotFoundFile" xml:space="preserve">
-    <value>Files did not Found</value>
-  </data>
-  <data name="IsNotFoundFolder" xml:space="preserve">
-    <value>Folder did not Found</value>
-  </data>
-  <data name="IsNotSelectFolder" xml:space="preserve">
-    <value>Folder did not Select</value>
-  </data>
   <data name="LargeFilesText" xml:space="preserve">
     <value>Large Files</value>
   </data>
+  <data name="PropertyText" xml:space="preserve">
+    <value>Property</value>
+  </data>
   <data name="ScanFilesText" xml:space="preserve">
     <value>Scan files</value>
+  </data>
+  <data name="SelectAllText" xml:space="preserve">
+    <value>Select all</value>
   </data>
 </root>

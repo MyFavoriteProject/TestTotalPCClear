@@ -21,6 +21,7 @@ namespace TestTotalPCClear.ViewModel
         private SplitView mySplitView;
         private List<string> foundFiles;
         private bool canExecute;
+        private int stateOfScanning;
 
         #endregion
 
@@ -33,6 +34,8 @@ namespace TestTotalPCClear.ViewModel
             this.languagesList = new List<string>() { "English", "Русский"};
             ResourceContext.SetGlobalQualifierValue("Language", "en-US");
             this.canExecute = false;
+            this.StateOfScanning = 1;
+            this.StateOfScanning = 0;
 
             this.HamburgerButton = new DelegateCommand(HamburgerButton_Click);
             this.DeleteCacheButtom = new DelegateCommand(DeleteCacheButtom_Click);
@@ -42,6 +45,9 @@ namespace TestTotalPCClear.ViewModel
             this.LargeFilesButton = new DelegateCommand(LargeFilesButton_Click);
             this.DuplicateButton = new DelegateCommand(DuplicateButton_Click);
             this.AutoClearingButton = new DelegateCommand(AutoClearingButton_Click);
+            this.ButtonOne = new DelegateCommand(ButtonOne_Click);
+            this.ButtonTwo = new DelegateCommand(ButtonTwo_Click);
+            this.ButtonTree = new DelegateCommand(ButtonTree_Click);
         }
 
         #endregion
@@ -78,8 +84,36 @@ namespace TestTotalPCClear.ViewModel
             } 
         }
 
-        public string SelectedLanguage
+        
+        public List<string> FoundFiles 
         { 
+            get => this.foundFiles;
+            set
+            {
+                this.foundFiles = value;
+                OnPropertyChanged(nameof(this.FoundFiles));
+            }
+        }
+
+        public bool IsButtonEnabled
+        { 
+            get=>this.canExecute;
+        }
+
+        public int StateOfScanning 
+        { 
+            get=>this.stateOfScanning;
+            set
+            {
+                this.stateOfScanning = value;
+                OnPropertyChanged(nameof(StateOfScanning));
+            } 
+        }
+
+        #region TextBinding
+
+        public string SelectedLanguage
+        {
             get => this.selectedLanhuage;
             set
             {
@@ -100,27 +134,23 @@ namespace TestTotalPCClear.ViewModel
 
                     OnPropertyChanged(nameof(SelectedLanguage));
                 }
-            } 
+            }
         }
 
-        public string ContentButtonOpenFile
-        {
-            get=> this.resourceLoader.GetString("ContentButtonOpenFile");
-        }
 
         public string DeleteCacheText
-        { 
-            get=>this.resourceLoader.GetString("DeleteCacheText");     
+        {
+            get => this.resourceLoader.GetString("DeleteCacheText");
         }
 
         public string CacheText
-        { 
-            get=>this.resourceLoader.GetString("CacheText");
+        {
+            get => this.resourceLoader.GetString("CacheText");
         }
 
-        public string LargeFilesText 
-        { 
-            get=>this.resourceLoader.GetString("LargeFilesText");
+        public string LargeFilesText
+        {
+            get => this.resourceLoader.GetString("LargeFilesText");
         }
 
         public string DuplicateText
@@ -133,31 +163,31 @@ namespace TestTotalPCClear.ViewModel
             get => this.resourceLoader.GetString("AutoClearingText");
         }
 
-        public List<string> FoundFiles 
-        { 
-            get => this.foundFiles;
-            set
-            {
-                this.foundFiles = value;
-                OnPropertyChanged(nameof(this.FoundFiles));
-            }
+        public string PropertyText
+        {
+            get => this.resourceLoader.GetString("PropertyText");
         }
 
-        public bool IsButtonEnabled
-        { 
-            get=>this.canExecute;
-        }
+        public string SelectAllText { get => this.resourceLoader.GetString("SelectAllText"); }
+
+        public string DeselectAllText { get=>this.resourceLoader.GetString("DeselectAllText"); }
+
+        #endregion
+
+        #region Command
 
         public ICommand HamburgerButton { get; set; }
-
         public ICommand DeleteCacheButtom { get; set; }
-
         public ICommand ScanFilesButtom { get; set; }
-
         public ICommand CacheButton { get; set; }
         public ICommand LargeFilesButton { get; set; }
         public ICommand DuplicateButton { get; set; }
         public ICommand AutoClearingButton { get; set; }
+        public ICommand ButtonOne { get; set; }
+        public ICommand ButtonTwo { get; set; }
+        public ICommand ButtonTree { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -182,7 +212,6 @@ namespace TestTotalPCClear.ViewModel
                 ResourceContext.SetGlobalQualifierValue("Language", "ru-RU");
             }
 
-            OnPropertyChanged(nameof(ContentButtonOpenFile));
         }
 
         private void DeleteCacheButtom_Click(object obj)
@@ -212,9 +241,24 @@ namespace TestTotalPCClear.ViewModel
             }
         }
 
-        private void CacheButton_Click(object obj)
+        private async void CacheButton_Click(object obj)
         {
+            this.StateOfScanning = 1;
+        }
 
+        private void ButtonTree_Click(object obj)
+        {
+            this.StateOfScanning = 0;
+        }
+
+        private void ButtonTwo_Click(object obj)
+        {
+            this.StateOfScanning = 3;
+        }
+
+        private void ButtonOne_Click(object obj)
+        {
+            this.StateOfScanning = 2;
         }
 
         private void LargeFilesButton_Click(object obj)

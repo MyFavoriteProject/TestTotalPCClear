@@ -123,43 +123,25 @@
   <data name="CacheText" xml:space="preserve">
     <value>Кэш</value>
   </data>
-  <data name="ContentButtonOpenFile" xml:space="preserve">
-    <value>Открыть Файл</value>
-  </data>
-  <data name="ContentChangeLanguage" xml:space="preserve">
-    <value>Сменить язык</value>
-  </data>
   <data name="DeleteCacheText" xml:space="preserve">
     <value>Удалить кэш</value>
   </data>
-  <data name="DeleteFile" xml:space="preserve">
-    <value>Файл удалён</value>
-  </data>
-  <data name="DeleteFileIsFail" xml:space="preserve">
-    <value>Файл(файлы) не был(и) удалён(ы)</value>
-  </data>
-  <data name="DeleteFileIsSuccessfully" xml:space="preserve">
-    <value>Удаление успешно</value>
+  <data name="DeselectAllText" xml:space="preserve">
+    <value>Убрать выделение со всего</value>
   </data>
   <data name="DuplicateText" xml:space="preserve">
     <value>Дублированный</value>
   </data>
-  <data name="FileWasNotDelete" xml:space="preserve">
-    <value>Файл не был удалён</value>
-  </data>
-  <data name="IsNotFoundFile" xml:space="preserve">
-    <value>Файлы не были найдены</value>
-  </data>
-  <data name="IsNotFoundFolder" xml:space="preserve">
-    <value>Папка не была найдена</value>
-  </data>
-  <data name="IsNotSelectFolder" xml:space="preserve">
-    <value>Папка не была выбрана</value>
-  </data>
   <data name="LargeFilesText" xml:space="preserve">
     <value>Большие файлы</value>
   </data>
+  <data name="PropertyText" xml:space="preserve">
+    <value>Свойства</value>
+  </data>
   <data name="ScanFilesText" xml:space="preserve">
     <value>Сканировать файлы</value>
+  </data>
+  <data name="SelectAllText" xml:space="preserve">
+    <value>Выбрать все</value>
   </data>
 </root>

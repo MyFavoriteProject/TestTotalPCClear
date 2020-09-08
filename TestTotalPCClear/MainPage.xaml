@@ -6,125 +6,276 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+>
 
     <Page.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
-                    <AcrylicBrush x:Key="MyAcrylicBrush"
+                    <AcrylicBrush x:Key="MenuAcrylicBrush"
                         BackgroundSource="HostBackdrop"
-                        TintOpacity="0.8"
-                        TintLuminosityOpacity="0.6"
-                        FallbackColor="#0078d633"/>
+                        TintOpacity="0.6"
+                        TintColor="#0078d633"/>
+                    <AcrylicBrush x:Key="ContextAcrylicBrush"
+                        BackgroundSource="HostBackdrop"
+                        TintOpacity="0.6"
+                        TintColor="#000000"/>
+                    <AcrylicBrush x:Key="CheckBlockLightAcrylicBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0.15"
+                                  TintColor="#ffffff"/>
+                    <Style x:Key="BaseTextBlock" TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="15px"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+                        <Setter Property="FontSize" Value="15px"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Height" Value="19px"/>
+                        <Setter Property="Width" Value="100px"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                    <Style x:Name="SplitViewButton" TargetType="Button">
+                        <Setter Property="Height" Value="50px"/>
+                        <Setter Property="Width" Value="50px"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
                 </ResourceDictionary>
 
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
+  
     </Page.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid >
 
-        <Image
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Source="/Image/Just.jpg" Stretch="UniformToFill"/>
-
-
-        <SplitView 
+        <NavigationView 
             Grid.Row="1" 
-            Name="mySplitView"
-            DisplayMode="CompactOverlay"  
             IsPaneOpen="False" 
-            CompactPaneLength="50" 
-            OpenPaneLength="150"
             RelativePanel.AlignLeftWithPanel="True"
-            Resources="{Binding MySplitView, UpdateSourceTrigger=PropertyChanged}">
-            <SplitView.Pane>
-                <StackPanel Orientation="Vertical" Background="{StaticResource MyAcrylicBrush}">
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE700;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent" 
-                            Command="{Binding HamburgerButton}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button 
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE74D;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"
-                            Command="{Binding DeleteCacheButtom}"/>
-                        <TextBlock 
-                            Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                            FontSize="14" 
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE7C3;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
-                        <TextBlock 
-                            Text="{Binding LargeFilesText, UpdateSourceTrigger=PropertyChanged}" 
-                            FontSize="14" 
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE81E;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
-                        <TextBlock 
-                            Text="{Binding DuplicateText, UpdateSourceTrigger=PropertyChanged}" 
-                            FontSize="14" 
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE8C0;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
-                        <TextBlock 
-                            Text="{Binding AutoClearingText, UpdateSourceTrigger=PropertyChanged}"
-                            FontSize="14" 
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE713;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
-                        <TextBlock 
-                            Text="Property"
-                            FontSize="14" 
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                </StackPanel>
-            </SplitView.Pane>
-            <SplitView.Content>
-                <Frame  />
-            </SplitView.Content>
-        </SplitView>
+            >
+            <NavigationView.MenuItems>
+                <NavigationViewItem 
+                    Icon="Delete" 
+                    Content="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding CacheButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
+                
+                <NavigationViewItem Icon="Page2" Content="{Binding LargeFilesText, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding LargeFilesButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
 
+                <NavigationViewItem Content="{Binding DuplicateText, UpdateSourceTrigger=PropertyChanged}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE81E;"/>
+                    </NavigationViewItem.Icon>
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding DuplicateButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
+
+                <NavigationViewItem Icon="CalendarWeek" Content="{Binding AutoClearingText, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding AutoClearingButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+            <Frame>
+                <Grid Background="{StaticResource ContextAcrylicBrush}">
+                    <local:MultiViewControl x:Name="mltView" >
+                        <local:MultiViewControl.Views>
+                            <StackPanel>
+                                <Image Source="/Image/Just.jpg" />
+                            </StackPanel>
+
+                            <StackPanel>
+                                <Grid 
+                                    VerticalAlignment="Top">
+                                    <TextBlock
+                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
+                                        FontSize="18"
+                                        Height="24px"
+                                        Width="61px"
+                                        HorizontalAlignment="Left"
+                                        Margin="10"
+                                        />
+                                    <StackPanel 
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Vertical">
+                                            <Button
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE712;"
+                                            Style="{StaticResource SplitViewButton}"
+                                            Background="Transparent" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid 
+                                    VerticalAlignment="Center">
+                                    <StackPanel
+                                        Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal"
+                                            BorderBrush="Red"
+                                            Background="{StaticResource CheckBlockLightAcrylicBrush}">
+                                            <TextBlock 
+                                                
+                                                Style="{StaticResource BaseTextBlock}">
+                                            <Run
+                                                FontFamily="Segoe MDL2 Assets" 
+                                                Text="&#xE770;"
+                                                />
+                                            <Run Text="System cache"/>
+                                            <Run Text="MB"/>
+                                            </TextBlock>
+                                            <CheckBox Width="10" Height="10" />
+                                            <TextBox Text="Its good"/>
+                                        </StackPanel>
+
+                                        <Grid
+                                            Background="{StaticResource ContextAcrylicBrush}">
+                                            <TextBlock
+                                                 HorizontalAlignment="Left"
+                                                Style="{StaticResource BaseTextBlock}">
+                                                <Run
+                                                    FontFamily="Segoe MDL2 Assets" 
+                                                    Text="&#xE74C;"/>
+                                                <Run Text="Application cache"/>
+                                                <Run Text="MB"/>
+                                            </TextBlock>
+                                            <CheckBox BorderBrush="White" HorizontalAlignment="Right" />
+                                        </Grid>
+
+                                        <Grid
+                                            Background="{StaticResource CheckBlockLightAcrylicBrush}">
+                                            <TextBlock
+                                                Style="{StaticResource BaseTextBlock}">
+                                                <Run
+                                                    FontFamily="Segoe MDL2 Assets" 
+                                                    Text="&#xE715;"/>
+                                                <Run Text="Mail cache"/>
+                                                <Run Text="MB"/>
+                                            </TextBlock>
+                                            <CheckBox BorderBrush="White" HorizontalAlignment="Right" />
+                                        </Grid>
+
+                                        <Grid
+                                            Background="{StaticResource ContextAcrylicBrush}">
+                                            <TextBlock
+                                                Style="{StaticResource BaseTextBlock}">
+                                                <Run
+                                                    FontFamily="Segoe MDL2 Assets" 
+                                                    Text="&#xF56E;"/>
+                                                <Run Text="Office cache"/>
+                                                <Run Text="MB"/>
+                                            </TextBlock>
+                                            <CheckBox BorderBrush="White" HorizontalAlignment="Right" />
+                                        </Grid>
+
+                                        <Grid
+                                            Background="{StaticResource CheckBlockLightAcrylicBrush}">
+                                            <TextBlock
+                                                Style="{StaticResource BaseTextBlock}">
+                                                <Run
+                                                    FontFamily="Segoe MDL2 Assets" 
+                                                    Text="&#xE774;"/>
+                                                <Run Text="Browser cache"/>
+                                                <Run Text="MB"/>
+                                            </TextBlock>
+                                            <CheckBox BorderBrush="White" HorizontalAlignment="Right" />
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel>
+                                <Grid 
+                                    VerticalAlignment="Top">
+                                    <TextBlock
+                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
+                                        FontSize="18"
+                                        Height="24px"
+                                        Width="61px"
+                                        HorizontalAlignment="Left"
+                                        />
+                                    <StackPanel 
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Vertical">
+                                            <Button
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE8B3;"
+                                            Style="{StaticResource SplitViewButton}"
+                                            Background="Transparent" />
+                                            <TextBlock Text="{Binding SelectAllText, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Button
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE8E6;"
+                                            Style="{StaticResource SplitViewButton}"
+                                            Background="Transparent" />
+                                            <TextBlock Text="{Binding DeselectAllText, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Button
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE712;"
+                                            Style="{StaticResource SplitViewButton}"
+                                            Background="Transparent" />
+
+                                        </StackPanel>
+                                        
+                                    </StackPanel>
+
+                                </Grid>
+                                
+                                <Grid>
+                                    
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                            </StackPanel>
+                            
+                        </local:MultiViewControl.Views>
+                    </local:MultiViewControl>
+
+                </Grid>
+
+            </Frame>
+        </NavigationView>
+
+        
     </Grid>
-
-
 
 </Page>

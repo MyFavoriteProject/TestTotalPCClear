@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VEcP7Z2o7IVS2T7wm6ewam+UuFAMFTtLBukm1OTOyHgSi0snRgCiwH23B9DGio/IkIQiVKEddbR8mdWGRDZtEQ==",
+  "dgSpecHash": "rL39VJEipM1Y90LtBC0dQzVgo4e0wtjkdy7D+Mvs1AA619Ui7dIelv5Xe3QTlBre9zNFteNXLzpvXvNeRSZlRg==",
   "success": true,
   "projectFilePath": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\home\\.nuget\\packages\\microsoft.netframework.analyzers\\3.0.0\\microsoft.netframework.analyzers.3.0.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.visualbasic\\10.0.1\\microsoft.visualbasic.10.0.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",
+    "C:\\Users\\home\\.nuget\\packages\\microsoft.xaml.behaviors.uwp.managed\\2.0.1\\microsoft.xaml.behaviors.uwp.managed.2.0.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.any.system.collections\\4.0.11\\runtime.any.system.collections.4.0.11.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.any.system.diagnostics.tools\\4.0.1\\runtime.any.system.diagnostics.tools.4.0.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.any.system.diagnostics.tracing\\4.1.0\\runtime.any.system.diagnostics.tracing.4.1.0.nupkg.sha512",

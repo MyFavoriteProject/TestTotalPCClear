@@ -48,7 +48,7 @@ namespace TestTotalPCClear.Model
 
         #region public Propertys
 
-        public List<string> FilesInFolderList { get; private set; }
+        public List<int> FileSizeList { get; private set; }
 
         #endregion
 
@@ -64,10 +64,10 @@ namespace TestTotalPCClear.Model
                 return;
             }
                 
-            MessageDialog dialog = null;
-            StringBuilder stringBuilder = null;
-            MessageDialog dialogIsNotDelet = null;
-            StringBuilder stringBuilderIsNotDelet = null;
+            //MessageDialog dialog = null;
+            //StringBuilder stringBuilder = null;
+            //MessageDialog dialogIsNotDelet = null;
+            //StringBuilder stringBuilderIsNotDelet = null;
 
             foreach (StorageFile storageFile in this.storageFiles)
             {
@@ -75,33 +75,33 @@ namespace TestTotalPCClear.Model
                 {
                     storageFile.DeleteAsync();
 
-                    if (stringBuilder == null)
-                        stringBuilder = new StringBuilder();
-                    stringBuilder.Append(this.resourceLoader.GetString("DeleteFile") + ": " + storageFile.Name + "\n");
+                    //if (stringBuilder == null)
+                    //    stringBuilder = new StringBuilder();
+                    //stringBuilder.Append(this.resourceLoader.GetString("DeleteFile") + ": " + storageFile.Name + "\n");
                 }
                 catch (Exception)
                 {
-                    if (stringBuilderIsNotDelet == null)
-                        stringBuilderIsNotDelet = new StringBuilder();
-                    stringBuilderIsNotDelet.Append(this.resourceLoader.GetString("FileWasNotDelete") + ": " + storageFile.Name + "\n");
+                    //if (stringBuilderIsNotDelet == null)
+                    //    stringBuilderIsNotDelet = new StringBuilder();
+                    //stringBuilderIsNotDelet.Append(this.resourceLoader.GetString("FileWasNotDelete") + ": " + storageFile.Name + "\n");
                     
                 }
             }
-            if (stringBuilderIsNotDelet != null)
-            {
-                dialogIsNotDelet = new MessageDialog(stringBuilderIsNotDelet.ToString());
-                await dialogIsNotDelet.ShowAsync();
-            }
-            if (stringBuilder != null)
-            {
-                dialog = new MessageDialog(stringBuilder.ToString());
-                await dialog.ShowAsync();
-            }
+            //if (stringBuilderIsNotDelet != null)
+            //{
+            //    dialogIsNotDelet = new MessageDialog(stringBuilderIsNotDelet.ToString());
+            //    await dialogIsNotDelet.ShowAsync();
+            //}
+            //if (stringBuilder != null)
+            //{
+            //    dialog = new MessageDialog(stringBuilder.ToString());
+            //    await dialog.ShowAsync();
+            //}
             this.storageFiles.Clear();
-            this.FilesInFolderList.Clear();
+            this.FileSizeList.Clear();
         }
 
-        public async Task<List<string>> SearchCacheFilesAsync()
+        public async Task<int> ScaningSystemCacheAsync()
         {
             SearchPathes();
 
@@ -110,33 +110,37 @@ namespace TestTotalPCClear.Model
 
             StorageFile storageFile = null;
             this.storageFiles = new List<StorageFile>();
-            this.FilesInFolderList = new List<string>();
+            this.FileSizeList = new List<int>();
 
-            foreach(string filePath in this.filesPath)
+            int fileSize = 0;
+
+            foreach (string filePath in this.filesPath)
             {
                 try
                 {
                     storageFile = await StorageFile.GetFileFromPathAsync(filePath);
                     BasicProperties basicProperties = await storageFile.GetBasicPropertiesAsync();
                     this.storageFiles.Add(storageFile);
-                    this.FilesInFolderList.Add(storageFile.Path+" "+ (double)basicProperties.Size/1000 +"kBytes" + "\n");
+                    fileSize += (int)basicProperties.Size;
+                    
                 }
                 catch
                 {
-                    if (stringBuilder == null)
-                        stringBuilder = new StringBuilder();
+                    //if (stringBuilder == null)
+                    //    stringBuilder = new StringBuilder();
 
-                    stringBuilder.Append(this.resourceLoader.GetString("IsNotFoundFile") + ": " + filePath + "\n");
+                    //stringBuilder.Append(this.resourceLoader.GetString("IsNotFoundFile") + ": " + filePath + "\n");
                 }
             }
 
+
             if (stringBuilder != null)
             {
-                dialog = new MessageDialog(stringBuilder.ToString());
-                dialog.ShowAsync();
+                //dialog = new MessageDialog(stringBuilder.ToString());
+                //dialog.ShowAsync();
             }
 
-            return this.FilesInFolderList;
+            return fileSize;
         }
 
 

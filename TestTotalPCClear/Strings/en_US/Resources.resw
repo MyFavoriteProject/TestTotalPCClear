@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationCacheText" xml:space="preserve">
+    <value>Application cache</value>
+  </data>
   <data name="AutoClearingText" xml:space="preserve">
     <value>Auto Clearing</value>
   </data>
+  <data name="BrowserCacheText" xml:space="preserve">
+    <value>Browser cache</value>
+  </data>
   <data name="CacheText" xml:space="preserve">
     <value>Cache</value>
+  </data>
+  <data name="CleanText" xml:space="preserve">
+    <value>Clean</value>
   </data>
   <data name="DeleteCacheText" xml:space="preserve">
     <value>Delete cache</value>
@@ -135,13 +144,25 @@
   <data name="LargeFilesText" xml:space="preserve">
     <value>Large Files</value>
   </data>
+  <data name="MailCacheText" xml:space="preserve">
+    <value>Mail cache</value>
+  </data>
+  <data name="OfficeCacheText" xml:space="preserve">
+    <value>Office cache</value>
+  </data>
   <data name="PropertyText" xml:space="preserve">
     <value>Property</value>
   </data>
   <data name="ScanFilesText" xml:space="preserve">
     <value>Scan files</value>
   </data>
+  <data name="ScannText" xml:space="preserve">
+    <value>Scann</value>
+  </data>
   <data name="SelectAllText" xml:space="preserve">
     <value>Select all</value>
+  </data>
+  <data name="SystemCacheText" xml:space="preserve">
+    <value>System cache</value>
   </data>
 </root>

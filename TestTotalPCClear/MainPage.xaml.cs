@@ -40,9 +40,6 @@ namespace TestTotalPCClear
             myBinding.Mode = BindingMode.TwoWay;
             myBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             BindingOperations.SetBinding(mltView, MultiViewControl.selectedItemShowProperty, myBinding);
-
-            CheckBox checkBox = new CheckBox();
-
         }
 
     }

@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Resources.Core;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using System;
+using Windows.Storage;
 
 namespace TestTotalPCClear.ViewModel
 {
@@ -19,9 +20,15 @@ namespace TestTotalPCClear.ViewModel
         private List<string> languagesList;
         private string selectedLanhuage;
         private SplitView mySplitView;
-        private List<string> foundFiles;
-        private bool canExecute;
+        private List<int> fileSizeList;
         private int stateOfScanning;
+        private bool isSystemCacheSelect = false,
+            isApplicationCacheSelect = false,
+            isMailCacheSelect = false,
+            isOfficeCacheSelect = false,
+            isBrowserCacheSelect = false;
+        private int systemCacheCount = 0;
+        private int sizeSystemCache;
 
         #endregion
 
@@ -33,82 +40,94 @@ namespace TestTotalPCClear.ViewModel
             this.resourceLoader = ResourceLoader.GetForCurrentView("Resources");
             this.languagesList = new List<string>() { "English", "Русский"};
             ResourceContext.SetGlobalQualifierValue("Language", "en-US");
-            this.canExecute = false;
             this.StateOfScanning = 1;
             this.StateOfScanning = 0;
 
-            this.HamburgerButton = new DelegateCommand(HamburgerButton_Click);
-            this.DeleteCacheButtom = new DelegateCommand(DeleteCacheButtom_Click);
-            this.ScanFilesButtom = new DelegateCommand(ScanFilesButtom_Click);
+            //this.HamburgerButton = new DelegateCommand(HamburgerButton_Click);
+            //this.DeleteCacheButtom = new DelegateCommand(DeleteCacheButtom_Click);
+            //this.ScanFilesButtom = new DelegateCommand(ScanFilesButtom_Click);
+
+            #region Event Subscription
 
             this.CacheButton = new DelegateCommand(CacheButton_Click);
             this.LargeFilesButton = new DelegateCommand(LargeFilesButton_Click);
             this.DuplicateButton = new DelegateCommand(DuplicateButton_Click);
             this.AutoClearingButton = new DelegateCommand(AutoClearingButton_Click);
-            this.ButtonOne = new DelegateCommand(ButtonOne_Click);
-            this.ButtonTwo = new DelegateCommand(ButtonTwo_Click);
-            this.ButtonTree = new DelegateCommand(ButtonTree_Click);
+            this.ScannButton = new DelegateCommand(ScannButton_Click);
+            this.CleanButton = new DelegateCommand(CleanButton_Click);
+            this.DeselectAllButton = new DelegateCommand(DeselectAllButton_Click);
+            this.SelectAllTextButton = new DelegateCommand(SelectAllTextButton_Click);
+
+            #endregion
         }
 
         #endregion
 
         #region public Propertys
 
-        public SplitView MySplitView 
-        { 
-            get=>this.mySplitView;
+        #region Not Group Propertys
+
+        public SplitView MySplitView
+        {
+            get => this.mySplitView;
             set
             {
                 this.mySplitView = value;
                 OnPropertyChanged(nameof(this.MySplitView));
-            } 
+            }
         }
 
-        public ClearModel ClearModel 
-        { 
-            get=>this.clearModel;
+        public ClearModel ClearModel
+        {
+            get => this.clearModel;
             set
             {
                 this.clearModel = value;
                 OnPropertyChanged(nameof(this.ClearModel));
-            } 
+            }
         }
 
-        public List<string> LanguagesList 
-        { 
-            get=>this.languagesList;
+        public List<string> LanguagesList
+        {
+            get => this.languagesList;
             set
             {
                 this.languagesList = value;
                 OnPropertyChanged(nameof(this.LanguagesList));
-            } 
-        }
-
-        
-        public List<string> FoundFiles 
-        { 
-            get => this.foundFiles;
-            set
-            {
-                this.foundFiles = value;
-                OnPropertyChanged(nameof(this.FoundFiles));
             }
         }
 
-        public bool IsButtonEnabled
+        public int SizeSystemCache 
         { 
-            get=>this.canExecute;
+            get=> this.sizeSystemCache;
+            set
+            {
+                this.sizeSystemCache = value;
+                OnPropertyChanged(nameof(SizeSystemCache));
+            } 
         }
 
-        public int StateOfScanning 
-        { 
-            get=>this.stateOfScanning;
+        public int StateOfScanning
+        {
+            get => this.stateOfScanning;
             set
             {
                 this.stateOfScanning = value;
                 OnPropertyChanged(nameof(StateOfScanning));
+            }
+        }
+
+        public int SystemCacheCount 
+        { 
+            get=>this.systemCacheCount;
+            set
+            {
+                this.systemCacheCount = value;
+                OnPropertyChanged(nameof(SystemCacheCount));
             } 
         }
+
+        #endregion
 
         #region TextBinding
 
@@ -172,20 +191,80 @@ namespace TestTotalPCClear.ViewModel
 
         public string DeselectAllText { get=>this.resourceLoader.GetString("DeselectAllText"); }
 
+        public string SystemCacheText { get=>this.resourceLoader.GetString("SystemCacheText"); }
+        public string ApplicationCacheText { get=>this.resourceLoader.GetString("ApplicationCacheText"); }
+        public string MailCacheText { get=>this.resourceLoader.GetString("MailCacheText"); }
+        public string OfficeCacheText { get => this.resourceLoader.GetString("OfficeCacheText"); }
+        public string BrowserCacheText { get=>this.resourceLoader.GetString("BrowserCacheText"); }
+        public string ScannText { get=>this.resourceLoader.GetString("ScannText"); }
+        public string CleanText { get=>this.resourceLoader.GetString("CleanText"); }
+
         #endregion
 
         #region Command
 
-        public ICommand HamburgerButton { get; set; }
-        public ICommand DeleteCacheButtom { get; set; }
-        public ICommand ScanFilesButtom { get; set; }
+        //public ICommand HamburgerButton { get; set; }
+        //public ICommand DeleteCacheButtom { get; set; }
+        //public ICommand ScanFilesButtom { get; set; }
         public ICommand CacheButton { get; set; }
         public ICommand LargeFilesButton { get; set; }
         public ICommand DuplicateButton { get; set; }
         public ICommand AutoClearingButton { get; set; }
-        public ICommand ButtonOne { get; set; }
-        public ICommand ButtonTwo { get; set; }
-        public ICommand ButtonTree { get; set; }
+        public ICommand ScannButton { get; set; }
+        public ICommand CleanButton { get; set; }
+        public ICommand DeselectAllButton { get; set; }
+        public ICommand SelectAllTextButton { get; set; }
+
+        #endregion
+
+        #region ChechBoxes
+
+        public bool IsSystemCacheSelect 
+        { 
+            get=>this.isSystemCacheSelect;
+            set
+            {
+                this.isSystemCacheSelect = value;
+                OnPropertyChanged(nameof(IsSystemCacheSelect));
+            }
+        }
+
+        public bool IsApplicationCacheSelect 
+        { 
+            get=>this.isApplicationCacheSelect;
+            set
+            {
+                this.isApplicationCacheSelect = value;
+                OnPropertyChanged(nameof(IsApplicationCacheSelect));
+            } 
+        }
+        public bool IsMailCacheSelect 
+        {
+            get => this.isMailCacheSelect;
+            set
+            {
+                this.isMailCacheSelect = value;
+                OnPropertyChanged(nameof(IsMailCacheSelect));
+            }
+        }
+        public bool IsOfficeCacheSelect 
+        {
+            get => this.isOfficeCacheSelect;
+            set
+            {
+                this.isOfficeCacheSelect = value;
+                OnPropertyChanged(nameof(IsOfficeCacheSelect));
+            }
+        }
+        public bool IsBrowserCacheSelect 
+        {
+            get => this.isBrowserCacheSelect;
+            set
+            {
+                this.isBrowserCacheSelect = value;
+                OnPropertyChanged(nameof(IsBrowserCacheSelect));
+            }
+        }
 
         #endregion
 
@@ -214,51 +293,9 @@ namespace TestTotalPCClear.ViewModel
 
         }
 
-        private void DeleteCacheButtom_Click(object obj)
-        {
-            this.clearModel.DeleteFileAsync();
-
-            this.canExecute = false;
-            OnPropertyChanged(nameof(IsButtonEnabled));
-        }
-
-        private void HamburgerButton_Click(object obj)
-        {
-            this.mySplitView.IsPaneOpen = !this.mySplitView.IsPaneOpen;
-            OnPropertyChanged(nameof(this.MySplitView));
-        }
-
-        private async void ScanFilesButtom_Click(object obj)
-        {
-            this.foundFiles = await this.clearModel.SearchCacheFilesAsync();
-            
-            OnPropertyChanged(nameof(this.FoundFiles));
-
-            if (this.foundFiles.Count > 0)
-            {
-                this.canExecute = true;
-                OnPropertyChanged(nameof(IsButtonEnabled));
-            }
-        }
-
         private async void CacheButton_Click(object obj)
         {
             this.StateOfScanning = 1;
-        }
-
-        private void ButtonTree_Click(object obj)
-        {
-            this.StateOfScanning = 0;
-        }
-
-        private void ButtonTwo_Click(object obj)
-        {
-            this.StateOfScanning = 3;
-        }
-
-        private void ButtonOne_Click(object obj)
-        {
-            this.StateOfScanning = 2;
         }
 
         private void LargeFilesButton_Click(object obj)
@@ -274,6 +311,56 @@ namespace TestTotalPCClear.ViewModel
         private void AutoClearingButton_Click(object obj)
         {
 
+        }
+
+        private async void ScannButton_Click(object obj)
+        {
+            this.StateOfScanning = 2;
+
+            this.sizeSystemCache = await this.clearModel.ScaningSystemCacheAsync();
+
+            OnPropertyChanged(nameof(this.SizeSystemCache));
+
+            this.StateOfScanning = 3;
+        }
+
+        private void CleanButton_Click(object obj)
+        {
+            this.StateOfScanning = 4;
+
+            this.clearModel.DeleteFileAsync();
+
+            this.StateOfScanning = 5;
+        }
+
+        private void SelectAllTextButton_Click(object obj)
+        {
+            this.IsSystemCacheSelect = true;
+            this.IsApplicationCacheSelect = true;
+            this.IsMailCacheSelect = true;
+            this.IsOfficeCacheSelect = true;
+            this.IsBrowserCacheSelect = true;
+
+            OnPropertyChanged(nameof(IsSystemCacheSelect));
+            OnPropertyChanged(nameof(IsApplicationCacheSelect));
+            OnPropertyChanged(nameof(IsMailCacheSelect));
+            OnPropertyChanged(nameof(IsOfficeCacheSelect));
+            OnPropertyChanged(nameof(IsBrowserCacheSelect));
+        }
+
+        private void DeselectAllButton_Click(object obj)
+        {
+            this.IsSystemCacheSelect = false;
+            this.IsApplicationCacheSelect = false;
+            this.IsMailCacheSelect = false;
+            this.IsOfficeCacheSelect = false;
+            this.IsBrowserCacheSelect = false;
+
+            OnPropertyChanged(nameof(IsSystemCacheSelect));
+            OnPropertyChanged(nameof(IsApplicationCacheSelect));
+            OnPropertyChanged(nameof(IsMailCacheSelect));
+            OnPropertyChanged(nameof(IsOfficeCacheSelect));
+            OnPropertyChanged(nameof(IsBrowserCacheSelect));
         }
 
         #endregion

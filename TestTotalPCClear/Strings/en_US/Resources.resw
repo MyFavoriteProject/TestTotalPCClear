@@ -132,6 +132,9 @@
   <data name="CleanText" xml:space="preserve">
     <value>Clean</value>
   </data>
+  <data name="ComeToUsMoreOftenText" xml:space="preserve">
+    <value>Come to us more often ! See you !</value>
+  </data>
   <data name="DeleteCacheText" xml:space="preserve">
     <value>Delete cache</value>
   </data>
@@ -153,6 +156,9 @@
   <data name="PropertyText" xml:space="preserve">
     <value>Property</value>
   </data>
+  <data name="PurityText" xml:space="preserve">
+    <value>Purity</value>
+  </data>
   <data name="ScanFilesText" xml:space="preserve">
     <value>Scan files</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="SelectAllText" xml:space="preserve">
     <value>Select all</value>
+  </data>
+  <data name="SuccessfulCleanText" xml:space="preserve">
+    <value>Cleaning Was Successfully !</value>
   </data>
   <data name="SystemCacheText" xml:space="preserve">
     <value>System cache</value>

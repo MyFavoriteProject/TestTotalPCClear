@@ -41,6 +41,5 @@ namespace TestTotalPCClear
             myBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             BindingOperations.SetBinding(mltView, MultiViewControl.selectedItemShowProperty, myBinding);
         }
-
     }
 }

@@ -34,6 +34,10 @@
                                   BackgroundSource="HostBackdrop"
                                   TintOpacity="0.05"
                                   TintColor="#3e3e3e"/>
+                    <AcrylicBrush x:Key="IsCheckBlockDarkAcrylicBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0.45"
+                                  TintColor="#0078d6"/>
 
                     <Style TargetType="NavigationViewItem">
                         <Setter Property="FontSize" Value="15px"/>
@@ -78,7 +82,6 @@
                     <Style x:Key="AppBarButtonBase" TargetType="AppBarButton">
                         <Setter Property="Foreground" Value="White"/>
                     </Style>
-
 
                 </ResourceDictionary>
 
@@ -176,7 +179,7 @@
                                         HorizontalAlignment="Left"
                                         Margin="10"
                                         />
-                                        
+
                                         <CommandBar 
                                             Grid.Column="1" 
                                             IsOpen="False"
@@ -204,7 +207,7 @@
 
                                         </CommandBar>
 
-                                                
+
 
                                     </Grid>
 
@@ -216,7 +219,7 @@
                                             Template="{StaticResource CheckBoxTemplate}" 
                                             IsThreeState="True"
                                             Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            IsChecked="{Binding ClearModel.IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
                                                 HorizontalAlignment="Stretch">
                                                     <Grid.ColumnDefinitions>
@@ -240,7 +243,7 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="3" 
-                                                    Text="000"/>
+                                                    Text="{Binding ClearModel.SystemCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="4" 
@@ -253,7 +256,7 @@
                                             Template="{StaticResource CheckBoxTemplate}" 
                                             IsThreeState="True"
                                             Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            IsChecked="{Binding ClearModel.IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
                                                 HorizontalAlignment="Stretch">
                                                     <Grid.ColumnDefinitions>
@@ -277,7 +280,7 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="3" 
-                                                    Text="000"/>
+                                                    Text="{Binding ClearModel.ApplicationCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="4" 
@@ -290,7 +293,7 @@
                                             Template="{StaticResource CheckBoxTemplate}" 
                                             IsThreeState="True"
                                             Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            IsChecked="{Binding ClearModel.IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
                                                 HorizontalAlignment="Stretch">
                                                     <Grid.ColumnDefinitions>
@@ -314,7 +317,7 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="3" 
-                                                    Text="000"/>
+                                                    Text="{Binding ClearModel.MailCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="4" 
@@ -327,7 +330,7 @@
                                             Template="{StaticResource CheckBoxTemplate}" 
                                             IsThreeState="True"
                                             Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            IsChecked="{Binding ClearModel.IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
                                                 HorizontalAlignment="Stretch">
                                                     <Grid.ColumnDefinitions>
@@ -351,7 +354,7 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="3" 
-                                                    Text="000"/>
+                                                    Text="{Binding ClearModel.OfficeCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="4" 
@@ -364,7 +367,7 @@
                                             Template="{StaticResource CheckBoxTemplate}" 
                                             IsThreeState="True"
                                             Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            IsChecked="{Binding ClearModel.IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
                                                 HorizontalAlignment="Stretch">
                                                     <Grid.ColumnDefinitions>
@@ -388,7 +391,7 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="3" 
-                                                    Text="000"/>
+                                                    Text="{Binding ClearModel.BrowserCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
                                                     Grid.Column="4" 
@@ -407,892 +410,58 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    
-                                    <Button 
+
+                                    <muxc:ProgressRing 
                                         Grid.Column="1"
-                                        VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="{Binding ScannText, UpdateSourceTrigger=PropertyChanged}"
-                                        Command="{Binding ScannButton}"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel Grid.Row="0">
-                                    <Grid>
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock
-                                            Grid.Column="0"
-                                            
-                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                                        FontSize="18"
-                                        Height="24px"
-                                        Width="61px"
-                                        HorizontalAlignment="Left"
-                                        Margin="10"
+                                        VerticalAlignment="Center" 
+                                        Width="138" 
+                                        Height="138"  
+                                        IsActive="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
                                         />
-
-                                        <CommandBar 
-                                            Grid.Column="1" 
-                                            IsOpen="False"
-                                            Background="{StaticResource ContextAcrylicBrush}">
-
-                                            <AppBarButton 
-                                                Content="{Binding DeselectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding DeselectAllButton}">
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8E6;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-                                            <AppBarButton 
-                                                Content="{Binding SelectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding SelectAllTextButton}"
-                                                >
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8B3;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-
-                                        </CommandBar>
-
-
-
-                                    </Grid>
-
-                                    <Grid>
-                                        <StackPanel
-                                        Orientation="Vertical">
-                                            <CheckBox
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE770;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding SystemCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE74C;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding ApplicationCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE715;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding MailCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xF56E;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding OfficeCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE774;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding BrowserCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-                                        </StackPanel>
-                                    </Grid>
-
-                                </StackPanel>
-
-                                <Grid 
-                                    Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
                                     <TextBlock
                                         Grid.Column="1"
                                         VerticalAlignment="Center" 
                                         HorizontalAlignment="Center"  
                                         Width="Auto"
+                                        Visibility="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
                                         Text="000"/>
 
-                                    <muxc:ProgressRing 
-                                        Grid.Column="1"
-                                        IsActive="True" 
-                                        VerticalAlignment="Center" 
-                                        Width="138" 
-                                        Height="138"  
-                                        />
-                                    <!--<Button 
+                                    <Button 
                                         Grid.Column="1"
                                         VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
                                         Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="Scann"
-                                        Command="{Binding ScannButton}"/>-->
+                                        Content="{Binding ScannOrCleanText, UpdateSourceTrigger=PropertyChanged}"
+                                        Command="{Binding ScannAndCleanButton}"
+                                        Visibility="{Binding IsShowScannOrClean, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </Grid>
 
-                            <!--<StackPanel>
-                                <Grid 
-                                    VerticalAlignment="Top">
-                                    <TextBlock
-                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                                        FontSize="18"
-                                        Height="24px"
-                                        Width="61px"
-                                        HorizontalAlignment="Left"
-                                        />
+                            <Grid>
+                                <StackPanel 
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center">
                                     <StackPanel 
-                                        Orientation="Horizontal"
-                                        HorizontalAlignment="Right">
-                                        <StackPanel Orientation="Vertical">
-                                            <Button
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Content="&#xE8B3;"
-                                            Style="{StaticResource SplitViewButton}"
-                                            Background="Transparent" />
-                                            <TextBlock Text="{Binding SelectAllText, UpdateSourceTrigger=PropertyChanged}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <Button
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Content="&#xE8E6;"
-                                            Style="{StaticResource SplitViewButton}"
-                                            Background="Transparent" />
-                                            <TextBlock Text="{Binding DeselectAllText, UpdateSourceTrigger=PropertyChanged}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <Button
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Content="&#xE712;"
-                                            Style="{StaticResource SplitViewButton}"
-                                            Background="Transparent" />
-
-                                        </StackPanel>
-                                        
-                                    </StackPanel>
-
-                                </Grid>
-                                
-                                <Grid>
-                                    
-                                </Grid>
-                            </StackPanel>-->
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel Grid.Row="0">
-                                    <Grid>
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock
-                                            Grid.Column="0"
-                                            
-                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                                        FontSize="18"
-                                        Height="24px"
-                                        Width="61px"
-                                        HorizontalAlignment="Left"
-                                        Margin="10"
-                                        />
-
-                                        <CommandBar 
-                                            Grid.Column="1" 
-                                            IsOpen="False"
-                                            Background="{StaticResource ContextAcrylicBrush}">
-
-                                            <AppBarButton 
-                                                Content="{Binding DeselectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding DeselectAllButton}">
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8E6;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-                                            <AppBarButton 
-                                                Content="{Binding SelectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding SelectAllTextButton}"
-                                                >
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8B3;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-
-                                        </CommandBar>
-
-
-
-                                    </Grid>
-
-                                    <Grid>
-                                        <StackPanel
-                                        Orientation="Vertical">
-                                            <CheckBox
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE770;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding SystemCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE74C;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding ApplicationCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE715;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding MailCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xF56E;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding OfficeCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE774;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding BrowserCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-                                        </StackPanel>
-                                    </Grid>
-
-                                </StackPanel>
-
-                                <Grid 
-                                    Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Button 
-                                        Grid.Column="1"
-                                        VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="{Binding CleanText, UpdateSourceTrigger=PropertyChanged}"
-                                        Command="{Binding CleanButton}"/>
-                                </Grid>
-                            </Grid>
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel Grid.Row="0">
-                                    <Grid>
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-
+                                        Orientation="Horizontal">
                                         <TextBlock
-                                            Grid.Column="0"
-                                            
-                                        Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                                        FontSize="18"
-                                        Height="24px"
-                                        Width="61px"
-                                        HorizontalAlignment="Left"
-                                        Margin="10"
-                                        />
-
-                                        <CommandBar 
-                                            Grid.Column="1" 
-                                            IsOpen="False"
-                                            Background="{StaticResource ContextAcrylicBrush}">
-
-                                            <AppBarButton 
-                                                Content="{Binding DeselectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding DeselectAllButton}">
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8E6;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-                                            <AppBarButton 
-                                                Content="{Binding SelectAllText, UpdateSourceTrigger=PropertyChanged}" 
-                                                Style="{StaticResource AppBarButtonBase}"
-                                                Command="{Binding SelectAllTextButton}"
-                                                >
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE8B3;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
-
-                                        </CommandBar>
-
-
-
-                                    </Grid>
-
-                                    <Grid>
-                                        <StackPanel
-                                        Orientation="Vertical">
-                                            <CheckBox
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE770;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding SystemCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE74C;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding ApplicationCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE715;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding MailCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockDarkAcrylicBrush}"
-                                            IsChecked="{Binding IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xF56E;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding OfficeCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-
-                                            <CheckBox 
-                                            HorizontalAlignment="Stretch"
-                                            Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
-                                            Background="{StaticResource CheckBlockLightAcrylicBrush}"
-                                            IsChecked="{Binding IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                <Grid 
-                                                HorizontalAlignment="Stretch">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30px"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="&#xE774;"
-                                                    />
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding BrowserCacheText, UpdateSourceTrigger=PropertyChanged}"
-                                                        Padding="25,3,0,0"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="000"/>
-                                                    <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                                </Grid>
-                                            </CheckBox>
-                                        </StackPanel>
-                                    </Grid>
-
-                                </StackPanel>
-
-                                <Grid 
-                                    Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center"  
                                         Width="Auto"
-                                        Text="000"/>
-
-                                    <muxc:ProgressRing 
-                                        Grid.Column="1"
-                                        IsActive="True" 
-                                        VerticalAlignment="Center" 
-                                        Width="138" 
-                                        Height="138"  
-                                        />
-                                    <!--<Button 
-                                        Grid.Column="1"
-                                        VerticalAlignment="Bottom"
+                                            Margin="5"
+                                        Text="{Binding PurityText, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <TextBlock
+                                            Margin="5"
+                                            Width="Auto"
+                                            Text="{Binding ClearModel.DeleteCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                    <TextBlock
                                         HorizontalAlignment="Center"
-                                        Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="Scann"
-                                        Command="{Binding ScannButton}"/>-->
-                                </Grid>
-                            </Grid>
-
-                            <Grid>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Done"/>
+                                        Width="Auto"
+                                        Text="{Binding SuccessfulCleanText, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock 
+                                        HorizontalAlignment="Center"
+                                        Width="Auto"
+                                        Text="{Binding ComeToUsMoreOftenText, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
                             </Grid>
 
 

@@ -7,16 +7,21 @@
     <Application.Resources>
 
         <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
+            
             <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             Height="40px">
+                
+                
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CheckStates">
                         <VisualState x:Name="Checked">
                             <VisualState.Setters>
                                 <Setter Target="CheckGlyph.Opacity" Value="1"/>
                             </VisualState.Setters>
+                            
+                            
                             <!-- This Storyboard is equivalent to the Setter. -->
                             <!--<Storyboard>
                         <DoubleAnimation Duration="0" To="1"
@@ -24,16 +29,11 @@
                     </Storyboard>-->
                         </VisualState>
                         <VisualState x:Name="Unchecked"/>
-                        <VisualState x:Name="Indeterminate">
-                            <VisualState.Setters>
-                                <Setter Target="IndeterminateGlyph.Opacity" Value="1"/>
-                            </VisualState.Setters>
-                            <!-- This Storyboard is equivalent to the Setter. -->
+                        <!-- This Storyboard is equivalent to the Setter. -->
                             <!--<Storyboard>
                         <DoubleAnimation Duration="0" To="1"
                          Storyboard.TargetName="IndeterminateGlyph" Storyboard.TargetProperty="Opacity"/>
                     </Storyboard>-->
-                        </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Grid>
@@ -60,11 +60,9 @@
                                     Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
                                     FlowDirection="LeftToRight"
                                     Height="10" Width="12" Opacity="0" Stretch="Fill"/>
-                    <Ellipse Grid.Column="1" x:Name="IndeterminateGlyph"
-                                    Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
-                                    Height="5" Width="5" Opacity="0" UseLayoutRounding="False" />
                 </Grid>
             </Border>
+            
         </ControlTemplate>
 
         <Style x:Key="ButtonRoundedCorners" TargetType="Button">

@@ -17,18 +17,18 @@ namespace TestTotalPCClear.ViewModel
 
         private ClearModel clearModel;
         private ResourceLoader resourceLoader;
-        private List<string> languagesList;
-        private string selectedLanhuage;
         private SplitView mySplitView;
-        private List<int> fileSizeList;
+        private List<string> languagesList;
+
+        private string selectedLanhuage;
+        private string scannOrCleanText;
+
         private int stateOfScanning;
-        private bool isSystemCacheSelect = false,
-            isApplicationCacheSelect = false,
-            isMailCacheSelect = false,
-            isOfficeCacheSelect = false,
-            isBrowserCacheSelect = false;
         private int systemCacheCount = 0;
         private int sizeSystemCache;
+
+        private bool isScann = true;
+        private bool isShowScannOrClean = true;
 
         #endregion
 
@@ -42,11 +42,7 @@ namespace TestTotalPCClear.ViewModel
             ResourceContext.SetGlobalQualifierValue("Language", "en-US");
             this.StateOfScanning = 1;
             this.StateOfScanning = 0;
-
-            //this.HamburgerButton = new DelegateCommand(HamburgerButton_Click);
-            //this.DeleteCacheButtom = new DelegateCommand(DeleteCacheButtom_Click);
-            //this.ScanFilesButtom = new DelegateCommand(ScanFilesButtom_Click);
-
+            this.ScannOrCleanText = ScannText;
             #region Event Subscription
 
             this.CacheButton = new DelegateCommand(CacheButton_Click);
@@ -57,6 +53,7 @@ namespace TestTotalPCClear.ViewModel
             this.CleanButton = new DelegateCommand(CleanButton_Click);
             this.DeselectAllButton = new DelegateCommand(DeselectAllButton_Click);
             this.SelectAllTextButton = new DelegateCommand(SelectAllTextButton_Click);
+            this.ScannAndCleanButton = new DelegateCommand(ScannAndCleanButton_Click);
 
             #endregion
         }
@@ -198,14 +195,23 @@ namespace TestTotalPCClear.ViewModel
         public string BrowserCacheText { get=>this.resourceLoader.GetString("BrowserCacheText"); }
         public string ScannText { get=>this.resourceLoader.GetString("ScannText"); }
         public string CleanText { get=>this.resourceLoader.GetString("CleanText"); }
+        public string ScannOrCleanText 
+        { 
+            get=>this.scannOrCleanText;
+            set 
+            {
+                this.scannOrCleanText = value;
+                OnPropertyChanged(nameof(ScannOrCleanText));
+            }
+        }
+        public string PurityText { get=>this.resourceLoader.GetString("PurityText"); }
+        public string SuccessfulCleanText { get=>this.resourceLoader.GetString("SuccessfulCleanText"); }
+        public string ComeToUsMoreOftenText { get=>this.resourceLoader.GetString("ComeToUsMoreOftenText"); }
 
         #endregion
 
         #region Command
 
-        //public ICommand HamburgerButton { get; set; }
-        //public ICommand DeleteCacheButtom { get; set; }
-        //public ICommand ScanFilesButtom { get; set; }
         public ICommand CacheButton { get; set; }
         public ICommand LargeFilesButton { get; set; }
         public ICommand DuplicateButton { get; set; }
@@ -214,56 +220,20 @@ namespace TestTotalPCClear.ViewModel
         public ICommand CleanButton { get; set; }
         public ICommand DeselectAllButton { get; set; }
         public ICommand SelectAllTextButton { get; set; }
+        public ICommand ScannAndCleanButton { get; set; }
 
         #endregion
 
-        #region ChechBoxes
+        #region bool Propertys
 
-        public bool IsSystemCacheSelect 
+        public bool IsShowScannOrClean 
         { 
-            get=>this.isSystemCacheSelect;
+            get=>this.isShowScannOrClean;
             set
             {
-                this.isSystemCacheSelect = value;
-                OnPropertyChanged(nameof(IsSystemCacheSelect));
-            }
-        }
-
-        public bool IsApplicationCacheSelect 
-        { 
-            get=>this.isApplicationCacheSelect;
-            set
-            {
-                this.isApplicationCacheSelect = value;
-                OnPropertyChanged(nameof(IsApplicationCacheSelect));
+                this.isShowScannOrClean = value;
+                OnPropertyChanged(nameof(IsShowScannOrClean));
             } 
-        }
-        public bool IsMailCacheSelect 
-        {
-            get => this.isMailCacheSelect;
-            set
-            {
-                this.isMailCacheSelect = value;
-                OnPropertyChanged(nameof(IsMailCacheSelect));
-            }
-        }
-        public bool IsOfficeCacheSelect 
-        {
-            get => this.isOfficeCacheSelect;
-            set
-            {
-                this.isOfficeCacheSelect = value;
-                OnPropertyChanged(nameof(IsOfficeCacheSelect));
-            }
-        }
-        public bool IsBrowserCacheSelect 
-        {
-            get => this.isBrowserCacheSelect;
-            set
-            {
-                this.isBrowserCacheSelect = value;
-                OnPropertyChanged(nameof(IsBrowserCacheSelect));
-            }
         }
 
         #endregion
@@ -295,7 +265,16 @@ namespace TestTotalPCClear.ViewModel
 
         private async void CacheButton_Click(object obj)
         {
-            this.StateOfScanning = 1;
+            if (this.StateOfScanning != 1)
+                this.StateOfScanning = 1;
+
+            if(this.isScann == false)
+            {
+                this.isScann = true;
+                this.ScannOrCleanText = ScannText;
+            }
+            if (this.IsShowScannOrClean == false)
+                this.IsShowScannOrClean = true;
         }
 
         private void LargeFilesButton_Click(object obj)
@@ -315,13 +294,13 @@ namespace TestTotalPCClear.ViewModel
 
         private async void ScannButton_Click(object obj)
         {
-            this.StateOfScanning = 2;
+            //this.StateOfScanning = 2;
 
-            this.sizeSystemCache = await this.clearModel.ScaningSystemCacheAsync();
+            this.clearModel.IsActiveScannOrClean = true;
 
-            OnPropertyChanged(nameof(this.SizeSystemCache));
+            this.clearModel.ScaningSystemCacheAsync();
 
-            this.StateOfScanning = 3;
+            //this.StateOfScanning = 3;
         }
 
         private void CleanButton_Click(object obj)
@@ -335,32 +314,55 @@ namespace TestTotalPCClear.ViewModel
 
         private void SelectAllTextButton_Click(object obj)
         {
-            this.IsSystemCacheSelect = true;
-            this.IsApplicationCacheSelect = true;
-            this.IsMailCacheSelect = true;
-            this.IsOfficeCacheSelect = true;
-            this.IsBrowserCacheSelect = true;
-
-            OnPropertyChanged(nameof(IsSystemCacheSelect));
-            OnPropertyChanged(nameof(IsApplicationCacheSelect));
-            OnPropertyChanged(nameof(IsMailCacheSelect));
-            OnPropertyChanged(nameof(IsOfficeCacheSelect));
-            OnPropertyChanged(nameof(IsBrowserCacheSelect));
+            clearModel.IsSystemCacheSelect = true;
+            clearModel.IsApplicationCacheSelect = true;
+            clearModel.IsMailCacheSelect = true;
+            clearModel.IsOfficeCacheSelect = true;
+            clearModel.IsBrowserCacheSelect = true;
         }
 
         private void DeselectAllButton_Click(object obj)
         {
-            this.IsSystemCacheSelect = false;
-            this.IsApplicationCacheSelect = false;
-            this.IsMailCacheSelect = false;
-            this.IsOfficeCacheSelect = false;
-            this.IsBrowserCacheSelect = false;
+            clearModel.IsSystemCacheSelect = false;
+            clearModel.IsApplicationCacheSelect = false;
+            clearModel.IsMailCacheSelect = false;
+            clearModel.IsOfficeCacheSelect = false;
+            clearModel.IsBrowserCacheSelect = false;
+        }
 
-            OnPropertyChanged(nameof(IsSystemCacheSelect));
-            OnPropertyChanged(nameof(IsApplicationCacheSelect));
-            OnPropertyChanged(nameof(IsMailCacheSelect));
-            OnPropertyChanged(nameof(IsOfficeCacheSelect));
-            OnPropertyChanged(nameof(IsBrowserCacheSelect));
+        private async void ScannAndCleanButton_Click(object obj)
+        {
+            bool isAnd = false; // For test
+
+            
+
+            if (this.isScann == true)
+            {
+                this.IsShowScannOrClean = false;
+
+                this.isScann = false;
+
+                this.clearModel.IsActiveScannOrClean = true;
+
+                isAnd = await this.clearModel.ScaningSystemCacheAsync();
+
+                this.ScannOrCleanText = CleanText;
+            }
+            else
+            {
+                this.isScann = true;
+
+                isAnd = await this.clearModel.DeleteFileAsync();
+
+                this.StateOfScanning = 2;
+
+                this.ScannOrCleanText = ScannText;
+            }
+
+            if (isAnd)
+            {
+                this.IsShowScannOrClean = true;
+            }
         }
 
         #endregion

@@ -8,17 +8,92 @@ using System.Threading.Tasks;
 using Windows.Storage.FileProperties;
 using System.Linq;
 using System.IO;
+using System.ComponentModel;
 
 namespace TestTotalPCClear.Model
 {
-    class ClearModel
+    public class BaseModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    class ClearModel: BaseModel
     {
         #region Fields
 
         private ResourceLoader resourceLoader;
-        private List<StorageFile> storageFiles;
-        private string[] universalPaths;
-        private List<string> filesPath;
+        bool isActiveScannOrClean = false;
+
+        private bool isSystemCacheSelect = false,
+            isApplicationCacheSelect = false,
+            isMailCacheSelect = false,
+            isOfficeCacheSelect = false,
+            isBrowserCacheSelect = false;
+
+        private int systemCacheSize = 0;
+        private int applicationCacheSize=0;
+        private int mailCacheSize=0;
+        private int officeCacheSize=0;
+        private int browserCacheSize=0;
+
+        private int deleteCacheSize = 0;
+
+        private string[] cacheName = new string[]
+        { 
+            "System Cache", 
+            "Application Cache", 
+            "Mail Cache", 
+            "Office Cache", 
+            "Browser Cache" 
+        }; //Type Cache
+
+        Dictionary<string, List<string>> typeCacheAndPathes; // Pathes For Cache
+
+        Dictionary<string, int> typeCacheAndSize; // Size For Cache
+
+        Dictionary<string, List<string>> typeCacheAndUniversalPaths; // Size For Cache
+
+        Dictionary<string, List<StorageFile>> typeCacheAndStorageFiles;
+
+        #region Universal Paths
+
+        private List<string> systemCacheUniversalPaths = new List<string>
+        {
+            @"Users\home\AppData\Local\dbgengsqmdata00.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata01.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata02.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata03.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata04.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata05.sqm",
+            @"Users\home\AppData\Local\dbgengsqmdata06.sqm"
+        };
+
+        private List<string> applicationCacheUniversalPath = new List<string>
+        {
+            @"Windows\Logs\MoSetup\BlueBox.log"
+        };
+
+        private List<string> mailCacheUniversalPath = new List<string>
+        {
+            @"Windows\Logs\DISM\dism.log"
+        };
+
+        private List<string> officeCacheUniversalPath = new List<string>
+        {
+            @"Windows\Logs\CBS\FilterList.log"
+        };
+
+        private List<string> browserCacheUniversalPath = new List<string>
+        {
+            @"Windows\Logs\CBS\FilterList.log"
+        };
+        
+        #endregion
 
         #endregion
 
@@ -26,121 +101,281 @@ namespace TestTotalPCClear.Model
 
         public ClearModel()
         {
+            this.typeCacheAndPathes = new Dictionary<string, List<string>>();
+
+            this.typeCacheAndSize = new Dictionary<string, int>();
+
             this.resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
-            this.universalPaths = new string[] 
-            {
-                @"Users\home\AppData\Local\dbgengsqmdata00.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata01.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata02.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata03.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata04.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata05.sqm",
-                @"Users\home\AppData\Local\dbgengsqmdata06.sqm",
-                @"Windows\Logs\MoSetup\BlueBox.log",
-                @"Windows\Logs\DISM\dism.log",
-                @"Windows\Logs\CBS\FilterList.log",
-                @"Windows\Logs\DPX\setuperr.log"
-            };
+            this.typeCacheAndUniversalPaths = new Dictionary<string, List<string>>();
+            
+            this.typeCacheAndUniversalPaths.Add(cacheName[0], this.systemCacheUniversalPaths);
+            this.typeCacheAndUniversalPaths.Add(cacheName[1], this.applicationCacheUniversalPath);
+            this.typeCacheAndUniversalPaths.Add(cacheName[2], this.mailCacheUniversalPath);
+            this.typeCacheAndUniversalPaths.Add(cacheName[3], this.officeCacheUniversalPath);
+            this.typeCacheAndUniversalPaths.Add(cacheName[4], this.browserCacheUniversalPath);
+            
+            
         }
 
         #endregion
 
         #region public Propertys
 
-        public List<int> FileSizeList { get; private set; }
+        public int SystemCacheSize 
+        { 
+            get=>this.systemCacheSize;
+            set
+            {
+                this.systemCacheSize = value;
+                OnPropertyChanged(nameof(SystemCacheSize));
+            }
+        }
+        public int ApplicationCacheSize
+        {
+            get => this.applicationCacheSize;
+            set
+            {
+                this.applicationCacheSize = value;
+                OnPropertyChanged(nameof(ApplicationCacheSize));
+            }
+        }
+        public int MailCacheSize
+        {
+            get => this.mailCacheSize;
+            set
+            {
+                this.mailCacheSize = value;
+                OnPropertyChanged(nameof(MailCacheSize));
+            }
+        }
+        public int OfficeCacheSize
+        {
+            get => this.officeCacheSize;
+            set
+            {
+                this.officeCacheSize = value;
+                OnPropertyChanged(nameof(OfficeCacheSize));
+            }
+        }
+        public int BrowserCacheSize
+        {
+            get => this.browserCacheSize;
+            set
+            {
+                this.browserCacheSize = value;
+                OnPropertyChanged(nameof(BrowserCacheSize));
+            }
+        }
+
+        public int DeleteCacheSize 
+        { 
+            get=>this.deleteCacheSize;
+            set
+            {
+                this.deleteCacheSize = value;
+                OnPropertyChanged(nameof(DeleteCacheSize));
+            } 
+        }
+
+        #region ChechBoxes
+
+        public bool IsSystemCacheSelect
+        {
+            get => this.isSystemCacheSelect;
+            set
+            {
+                this.isSystemCacheSelect = value;
+                OnPropertyChanged(nameof(IsSystemCacheSelect));
+            }
+        }
+        public bool IsApplicationCacheSelect
+        {
+            get => this.isApplicationCacheSelect;
+            set
+            {
+                this.isApplicationCacheSelect = value;
+                OnPropertyChanged(nameof(IsApplicationCacheSelect));
+            }
+        }
+        public bool IsMailCacheSelect
+        {
+            get => this.isMailCacheSelect;
+            set
+            {
+                this.isMailCacheSelect = value;
+                OnPropertyChanged(nameof(IsMailCacheSelect));
+            }
+        }
+        public bool IsOfficeCacheSelect
+        {
+            get => this.isOfficeCacheSelect;
+            set
+            {
+                this.isOfficeCacheSelect = value;
+                OnPropertyChanged(nameof(IsOfficeCacheSelect));
+            }
+        }
+        public bool IsBrowserCacheSelect
+        {
+            get => this.isBrowserCacheSelect;
+            set
+            {
+                this.isBrowserCacheSelect = value;
+                OnPropertyChanged(nameof(IsBrowserCacheSelect));
+            }
+        }
+
+        #endregion
+
+        public bool IsActiveScannOrClean 
+        { 
+            get=>this.isActiveScannOrClean;
+            set
+            {
+                this.isActiveScannOrClean = value;
+                OnPropertyChanged(nameof(IsActiveScannOrClean));
+            } 
+        }
 
         #endregion
 
         #region public Methods
 
-        public async void DeleteFileAsync()
+        private void Default()
         {
-            if (this.storageFiles == null)
-            {
-                MessageDialog dialogError = new MessageDialog(this.resourceLoader.GetString("IsNotFoundFile"));
-                await dialogError.ShowAsync();
+            SystemCacheSize = 0;
+            ApplicationCacheSize = 0;
+            MailCacheSize = 0;
+            OfficeCacheSize = 0;
+            DeleteCacheSize = 0;
 
-                return;
-            }
-                
-            //MessageDialog dialog = null;
-            //StringBuilder stringBuilder = null;
-            //MessageDialog dialogIsNotDelet = null;
-            //StringBuilder stringBuilderIsNotDelet = null;
+            IsSystemCacheSelect = false;
+            IsApplicationCacheSelect = false;
+            IsMailCacheSelect = false;
+            IsOfficeCacheSelect = false;
+            IsBrowserCacheSelect = false;
 
-            foreach (StorageFile storageFile in this.storageFiles)
-            {
-                try
-                {
-                    storageFile.DeleteAsync();
-
-                    //if (stringBuilder == null)
-                    //    stringBuilder = new StringBuilder();
-                    //stringBuilder.Append(this.resourceLoader.GetString("DeleteFile") + ": " + storageFile.Name + "\n");
-                }
-                catch (Exception)
-                {
-                    //if (stringBuilderIsNotDelet == null)
-                    //    stringBuilderIsNotDelet = new StringBuilder();
-                    //stringBuilderIsNotDelet.Append(this.resourceLoader.GetString("FileWasNotDelete") + ": " + storageFile.Name + "\n");
-                    
-                }
-            }
-            //if (stringBuilderIsNotDelet != null)
-            //{
-            //    dialogIsNotDelet = new MessageDialog(stringBuilderIsNotDelet.ToString());
-            //    await dialogIsNotDelet.ShowAsync();
-            //}
-            //if (stringBuilder != null)
-            //{
-            //    dialog = new MessageDialog(stringBuilder.ToString());
-            //    await dialog.ShowAsync();
-            //}
-            this.storageFiles.Clear();
-            this.FileSizeList.Clear();
+            typeCacheAndSize = new Dictionary<string, int>();
+            //typeCacheAndUniversalPaths = new Dictionary<string, List<string>>();
+            typeCacheAndStorageFiles = new Dictionary<string, List<StorageFile>>();
         }
 
-        public async Task<int> ScaningSystemCacheAsync()
+        public async Task<bool> DeleteFileAsync()
         {
+            DeleteCacheSize = 0;
+
+            this.IsActiveScannOrClean = true;
+
+            if (IsSystemCacheSelect == false)
+                typeCacheAndStorageFiles.Remove(cacheName[0]);
+
+            if (IsApplicationCacheSelect == false)
+                typeCacheAndStorageFiles.Remove(cacheName[1]);
+
+            if (IsMailCacheSelect == false)
+                typeCacheAndStorageFiles.Remove(cacheName[2]);
+
+            if (IsOfficeCacheSelect == false)
+                typeCacheAndStorageFiles.Remove(cacheName[3]);
+
+            if (IsBrowserCacheSelect == false)
+                typeCacheAndStorageFiles.Remove(cacheName[4]);
+
+            foreach (string key in this.typeCacheAndStorageFiles.Keys)
+            {
+                if (typeCacheAndStorageFiles[key].Any())
+                {
+                    foreach(StorageFile storageFile in this.typeCacheAndStorageFiles[key])
+                    {
+                        try
+                        {
+                            storageFile.DeleteAsync();
+                        }
+                        catch (Exception)
+                        {
+                            throw new Exception("Can't delete"+storageFile.DisplayName);
+                        }
+                    }
+
+                    DeleteCacheSize += typeCacheAndSize[key];
+                }
+            }
+
+            this.typeCacheAndStorageFiles.Clear();
+            this.typeCacheAndSize.Clear();
+
+            this.IsActiveScannOrClean = false;
+
+            this.Default();
+
+            return true;
+        }
+
+        public async Task<bool> ScaningSystemCacheAsync()
+        {
+            //this.IsActiveScannOrClean = true;
             SearchPathes();
 
-            StringBuilder stringBuilder =null;
-            MessageDialog dialog=null;
+            bool isExeption = false;
 
+            typeCacheAndStorageFiles = new Dictionary<string, List<StorageFile>>();
             StorageFile storageFile = null;
-            this.storageFiles = new List<StorageFile>();
-            this.FileSizeList = new List<int>();
+            BasicProperties basicProperties = null;
+            List<StorageFile> storageFiles = new List<StorageFile>();
+            int fileSize;
 
-            int fileSize = 0;
-
-            foreach (string filePath in this.filesPath)
+            foreach (string key in this.typeCacheAndPathes.Keys)
             {
-                try
+                fileSize = 0;
+                foreach (string filePath in this.typeCacheAndPathes[key])
                 {
-                    storageFile = await StorageFile.GetFileFromPathAsync(filePath);
-                    BasicProperties basicProperties = await storageFile.GetBasicPropertiesAsync();
-                    this.storageFiles.Add(storageFile);
-                    fileSize += (int)basicProperties.Size;
-                    
-                }
-                catch
-                {
-                    //if (stringBuilder == null)
-                    //    stringBuilder = new StringBuilder();
+                    try
+                    {
+                        storageFile = await StorageFile.GetFileFromPathAsync(filePath);
+                        basicProperties = await storageFile.GetBasicPropertiesAsync();
+                    }
+                    catch (Exception) 
+                    {
+                        isExeption = true;
+                    }
 
-                    //stringBuilder.Append(this.resourceLoader.GetString("IsNotFoundFile") + ": " + filePath + "\n");
+                    if(isExeption == false)
+                    {
+                        storageFiles.Add(storageFile);
+                        fileSize += (int)basicProperties.Size;
+
+                        if (this.cacheName[0].Equals(key))
+                        {
+                            SystemCacheSize = fileSize;
+                        }
+                        if (this.cacheName[1].Equals(key))
+                        {
+                            ApplicationCacheSize = fileSize;
+                        }
+                        if (this.cacheName[2].Equals(key))
+                        {
+                            MailCacheSize = fileSize;
+                        }
+                        if (this.cacheName[3].Equals(key))
+                        {
+                            OfficeCacheSize = fileSize;
+                        }
+                        if (this.cacheName[4].Equals(key))
+                        {
+                            BrowserCacheSize = fileSize;
+                        }
+                    }
+
                 }
+
+                this.typeCacheAndSize.Add(key,fileSize);
+                this.typeCacheAndStorageFiles.Add(key, storageFiles);
             }
 
+            this.IsActiveScannOrClean = false;
 
-            if (stringBuilder != null)
-            {
-                //dialog = new MessageDialog(stringBuilder.ToString());
-                //dialog.ShowAsync();
-            }
-
-            return fileSize;
+            return true;
         }
 
 
@@ -151,8 +386,11 @@ namespace TestTotalPCClear.Model
 
         private void SearchPathes()
         {
-            this.filesPath = new List<string>();
+            this.Default();
+
             List<string> pathes = new List<string>();
+            this.typeCacheAndPathes = new Dictionary<string, List<string>>();
+            this.typeCacheAndSize = new Dictionary<string, int>();
 
             string driveLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             int driveLettersLen = driveLetters.Length;
@@ -193,14 +431,26 @@ namespace TestTotalPCClear.Model
 
             if (drives.Any() == true)
             {
-                for (int i = 0; i < drives.Count; i++)
+
+                foreach(string key in typeCacheAndUniversalPaths.Keys)
                 {
-                    for (int j = 0; j < this.universalPaths.Length; j++)
+                    pathes = new List<string>();
+                    for (int i = 0; i < drives.Count; i++)
                     {
-                        pathes.Add(drives[i].Name + this.universalPaths[j]);
+                        foreach(string universalPath in typeCacheAndUniversalPaths[key])
+                        {
+                            pathes.Add(drives[i].Name + universalPath);
+                        }
+
+                        //for (int j = 0; j < this.universalPaths.Length; j++)
+                        //{
+                        //    pathes.Add(drives[i].Name + this.universalPaths[j]);
+                        //}
                     }
+
+                    SetPathesAsync(key, pathes);
                 }
-                SetPathesAsync(pathes);
+                
             }
             else
             {
@@ -209,13 +459,17 @@ namespace TestTotalPCClear.Model
             }
         }
 
-        private void SetPathesAsync(List<string> pathes)
+        private void SetPathesAsync(string key,List<string> pathes)
         {
+            List<string> realPathes = new List<string>();
+
             foreach(string path in pathes)
             {
                 if (File.Exists(path)==true)
-                    this.filesPath.Add(path);
+                    realPathes.Add(path);
             }
+
+            this.typeCacheAndPathes.Add(key, realPathes);
         }
 
         #endregion

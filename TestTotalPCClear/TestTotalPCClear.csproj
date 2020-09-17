@@ -128,6 +128,13 @@
       <DependentUpon>MultiViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Themes\Dark.xaml.cs">
+      <DependentUpon>Dark.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Light.xaml.cs">
+      <DependentUpon>Light.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\ThemeManager.cs" />
     <Compile Include="ViewModel\ClearViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +163,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MultiViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

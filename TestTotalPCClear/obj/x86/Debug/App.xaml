@@ -2,78 +2,15 @@
     x:Class="TestTotalPCClear.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TestTotalPCClear">
+    xmlns:local="using:TestTotalPCClear" xmlns:theme="using:TestTotalPCClear.Themes">
 
     <Application.Resources>
 
-        <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
-            
-            <Border BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}"
-                            Height="40px">
-                
-                
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CheckStates">
-                        <VisualState x:Name="Checked">
-                            <VisualState.Setters>
-                                <Setter Target="CheckGlyph.Opacity" Value="1"/>
-                            </VisualState.Setters>
-                            
-                            
-                            <!-- This Storyboard is equivalent to the Setter. -->
-                            <!--<Storyboard>
-                        <DoubleAnimation Duration="0" To="1"
-                         Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>-->
-                        </VisualState>
-                        <VisualState x:Name="Unchecked"/>
-                        <!-- This Storyboard is equivalent to the Setter. -->
-                            <!--<Storyboard>
-                        <DoubleAnimation Duration="0" To="1"
-                         Storyboard.TargetName="IndeterminateGlyph" Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>-->
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <ContentPresenter 
-                                    x:Name="ContentPresenter"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    Content="{TemplateBinding Content}"   
-                                    Margin="{TemplateBinding Padding}" 
-                                    Grid.Column="0"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        <ResourceDictionary>
 
-                    <Rectangle Grid.Column="1" x:Name="NormalRectangle" Fill="Transparent" Height="17" Width="16"
-                               Margin="11,11,13,12"
-                                    Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
-                                    StrokeThickness="{ThemeResource CheckBoxBorderThemeThickness}"
-                                    UseLayoutRounding="False"/>
-                    <Path Grid.Column="1" x:Name="CheckGlyph"
-                                    Data="M103,240 L111,240 119,248 127,240 135,240 123,252 135,264 127,264 119,257 111,264 103,264 114,252 z"
-                                    Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
-                                    FlowDirection="LeftToRight"
-                                    Height="10" Width="12" Opacity="0" Stretch="Fill"/>
-                </Grid>
-            </Border>
-            
-        </ControlTemplate>
+            <theme:ThemeManager x:Key="ThemeManager" />
 
-        <Style x:Key="ButtonRoundedCorners" TargetType="Button">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="0,0,0,71"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Width" Value="201px"/>
-            <Setter Property="Height" Value="49px"/>
-            <Setter Property="Background" Value="#0078d7"/>
-            <Setter Property="CornerRadius" Value="24"/>
-        </Style>
+        </ResourceDictionary>
 
     </Application.Resources>
 

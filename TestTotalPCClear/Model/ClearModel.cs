@@ -248,6 +248,7 @@ namespace TestTotalPCClear.Model
             ApplicationCacheSize = 0;
             MailCacheSize = 0;
             OfficeCacheSize = 0;
+            BrowserCacheSize = 0;
             DeleteCacheSize = 0;
 
             IsSystemCacheSelect = false;
@@ -263,7 +264,8 @@ namespace TestTotalPCClear.Model
 
         public async Task<bool> DeleteFileAsync()
         {
-            DeleteCacheSize = 0;
+            if(DeleteCacheSize != 0)
+                DeleteCacheSize = 0;
 
             this.IsActiveScannOrClean = true;
 
@@ -307,14 +309,14 @@ namespace TestTotalPCClear.Model
 
             this.IsActiveScannOrClean = false;
 
-            this.Default();
+            //this.Default();
 
             return true;
         }
 
         public async Task<bool> ScaningSystemCacheAsync()
         {
-            //this.IsActiveScannOrClean = true;
+            this.IsActiveScannOrClean = true;
             SearchPathes();
 
             bool isExeption = false;
@@ -378,13 +380,11 @@ namespace TestTotalPCClear.Model
             return true;
         }
 
-
-
         #endregion
 
         #region private Methods
 
-        private void SearchPathes()
+        private async void SearchPathes()
         {
             this.Default();
 

@@ -6,8 +6,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.ApplicationModel.Resources.Core;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using System;
-using Windows.Storage;
+using TestTotalPCClear.Themes;
 
 namespace TestTotalPCClear.ViewModel
 {
@@ -19,6 +18,7 @@ namespace TestTotalPCClear.ViewModel
         private ResourceLoader resourceLoader;
         private SplitView mySplitView;
         private List<string> languagesList;
+        private ThemeManager themeManager;
 
         private string selectedLanhuage;
         private string scannOrCleanText;
@@ -29,6 +29,7 @@ namespace TestTotalPCClear.ViewModel
 
         private bool isScann = true;
         private bool isShowScannOrClean = true;
+        private bool isShowSelectOrDeselectButton = false;
 
         #endregion
 
@@ -43,17 +44,21 @@ namespace TestTotalPCClear.ViewModel
             this.StateOfScanning = 1;
             this.StateOfScanning = 0;
             this.ScannOrCleanText = ScannText;
+            this.themeManager = new ThemeManager();
+
             #region Event Subscription
 
             this.CacheButton = new DelegateCommand(CacheButton_Click);
             this.LargeFilesButton = new DelegateCommand(LargeFilesButton_Click);
             this.DuplicateButton = new DelegateCommand(DuplicateButton_Click);
             this.AutoClearingButton = new DelegateCommand(AutoClearingButton_Click);
-            this.ScannButton = new DelegateCommand(ScannButton_Click);
-            this.CleanButton = new DelegateCommand(CleanButton_Click);
             this.DeselectAllButton = new DelegateCommand(DeselectAllButton_Click);
-            this.SelectAllTextButton = new DelegateCommand(SelectAllTextButton_Click);
+            this.SelectAllButton = new DelegateCommand(SelectAllButton_Click);
             this.ScannAndCleanButton = new DelegateCommand(ScannAndCleanButton_Click);
+            this.SettingButton = new DelegateCommand(SettingButton_Click);
+            this.MoreButton = new DelegateCommand(MoreButton_Click);
+            this.ThemeDarkRadioButton = new DelegateCommand(ThemeDarkRadioButton_Click);
+            this.ThemeLightRadioButton = new DelegateCommand(ThemeLightRadioButton_Click);
 
             #endregion
         }
@@ -216,11 +221,13 @@ namespace TestTotalPCClear.ViewModel
         public ICommand LargeFilesButton { get; set; }
         public ICommand DuplicateButton { get; set; }
         public ICommand AutoClearingButton { get; set; }
-        public ICommand ScannButton { get; set; }
-        public ICommand CleanButton { get; set; }
         public ICommand DeselectAllButton { get; set; }
-        public ICommand SelectAllTextButton { get; set; }
+        public ICommand SelectAllButton { get; set; }
         public ICommand ScannAndCleanButton { get; set; }
+        public ICommand SettingButton { get; set; }
+        public ICommand MoreButton { get; set; }
+        public ICommand ThemeDarkRadioButton { get; set; }
+        public ICommand ThemeLightRadioButton { get; set; }
 
         #endregion
 
@@ -234,6 +241,16 @@ namespace TestTotalPCClear.ViewModel
                 this.isShowScannOrClean = value;
                 OnPropertyChanged(nameof(IsShowScannOrClean));
             } 
+        }
+
+        public bool IsShowSelectOrDeselectButton 
+        { 
+            get=>this.isShowSelectOrDeselectButton;
+            set
+            {
+                this.isShowSelectOrDeselectButton = value;
+                OnPropertyChanged(nameof(IsShowSelectOrDeselectButton));
+            }
         }
 
         #endregion
@@ -261,6 +278,7 @@ namespace TestTotalPCClear.ViewModel
                 ResourceContext.SetGlobalQualifierValue("Language", "ru-RU");
             }
 
+            OnPropertyChanged(nameof(ComeToUsMoreOftenText));
         }
 
         private async void CacheButton_Click(object obj)
@@ -292,27 +310,7 @@ namespace TestTotalPCClear.ViewModel
 
         }
 
-        private async void ScannButton_Click(object obj)
-        {
-            //this.StateOfScanning = 2;
-
-            this.clearModel.IsActiveScannOrClean = true;
-
-            this.clearModel.ScaningSystemCacheAsync();
-
-            //this.StateOfScanning = 3;
-        }
-
-        private void CleanButton_Click(object obj)
-        {
-            this.StateOfScanning = 4;
-
-            this.clearModel.DeleteFileAsync();
-
-            this.StateOfScanning = 5;
-        }
-
-        private void SelectAllTextButton_Click(object obj)
+        private void SelectAllButton_Click(object obj)
         {
             clearModel.IsSystemCacheSelect = true;
             clearModel.IsApplicationCacheSelect = true;
@@ -334,15 +332,13 @@ namespace TestTotalPCClear.ViewModel
         {
             bool isAnd = false; // For test
 
-            
-
             if (this.isScann == true)
             {
                 this.IsShowScannOrClean = false;
 
                 this.isScann = false;
 
-                this.clearModel.IsActiveScannOrClean = true;
+                //this.clearModel.IsActiveScannOrClean = true;
 
                 isAnd = await this.clearModel.ScaningSystemCacheAsync();
 
@@ -363,6 +359,29 @@ namespace TestTotalPCClear.ViewModel
             {
                 this.IsShowScannOrClean = true;
             }
+        }
+
+        private void SettingButton_Click(object obj)
+        {
+            this.StateOfScanning = 3;
+        }
+
+        private void MoreButton_Click(object obj)
+        {
+            if (IsShowSelectOrDeselectButton == false)
+                IsShowSelectOrDeselectButton = true;
+            else
+                IsShowSelectOrDeselectButton = false;
+        }
+
+        private void ThemeLightRadioButton_Click(object obj)
+        {
+            App.ThemeManager.LoadTheme(ThemeManager.LightThemePath);
+        }
+
+        private void ThemeDarkRadioButton_Click(object obj)
+        {
+            App.ThemeManager.LoadTheme(ThemeManager.DarkThemePath);
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TestTotalPCClear.Themes;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -26,6 +27,8 @@ namespace TestTotalPCClear
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        public static ThemeManager ThemeManager => (ThemeManager)App.Current.Resources["ThemeManager"];
+
         public App()
         {
             this.InitializeComponent();

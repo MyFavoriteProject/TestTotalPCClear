@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="ForegroundBrush" />
+    <RootPropertyPathName Name="SettingButton" />
     <RootPropertyPathName Name="AutoClearingText" />
     <RootPropertyPathName Name="AutoClearingButton" />
     <RootPropertyPathName Name="DuplicateText" />
@@ -9,6 +11,9 @@
     <RootPropertyPathName Name="LargeFilesButton" />
     <RootPropertyPathName Name="CacheText" />
     <RootPropertyPathName Name="CacheButton" />
+    <RootPropertyPathName Name="ContextAcrylicBrush" />
+    <RootPropertyPathName Name="ThemeDarkRadioButton" />
+    <RootPropertyPathName Name="ThemeLightRadioButton" />
     <RootPropertyPathName Name="ComeToUsMoreOftenText" />
     <RootPropertyPathName Name="SuccessfulCleanText" />
     <RootPropertyPathName Name="ClearModel" />
@@ -18,9 +23,11 @@
     <RootPropertyPathName Name="ScannAndCleanButton" />
     <RootPropertyPathName Name="IsShowScannOrClean" />
     <RootPropertyPathName Name="IsActiveScannOrClean" />
+    <RootPropertyPathName Name="CheckBlockLightAcrylicBrush" />
     <RootPropertyPathName Name="IsBrowserCacheSelect" />
     <RootPropertyPathName Name="BrowserCacheSize" />
     <RootPropertyPathName Name="BrowserCacheText" />
+    <RootPropertyPathName Name="CheckBlockDarkAcrylicBrush" />
     <RootPropertyPathName Name="IsOfficeCacheSelect" />
     <RootPropertyPathName Name="OfficeCacheSize" />
     <RootPropertyPathName Name="OfficeCacheText" />
@@ -33,14 +40,20 @@
     <RootPropertyPathName Name="IsSystemCacheSelect" />
     <RootPropertyPathName Name="SystemCacheSize" />
     <RootPropertyPathName Name="SystemCacheText" />
-    <RootPropertyPathName Name="SelectAllText" />
-    <RootPropertyPathName Name="SelectAllTextButton" />
-    <RootPropertyPathName Name="DeselectAllText" />
+    <RootPropertyPathName Name="MoreButton" />
+    <RootPropertyPathName Name="IsShowSelectOrDeselectButton" />
     <RootPropertyPathName Name="DeselectAllButton" />
+    <RootPropertyPathName Name="SelectAllButton" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
       <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary" />
+    <RootType FullName="TestTotalPCClear.Themes.ThemeManager" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="Resources" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
@@ -53,6 +66,9 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="FontFamily" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="Foreground" />
@@ -66,10 +82,33 @@
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.NavigationViewItem">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="FontFamily" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
       <RootProperty Name="Target" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Source" />
+      <RootProperty Name="UpdateSourceTrigger" />
+      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="BorderBrush" />
@@ -93,6 +132,7 @@
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
       <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
@@ -128,43 +168,6 @@
       <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Page">
-      <RootProperty Name="Resources" />
-      <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="ThemeDictionaries" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
-      <RootProperty Name="BackgroundSource" />
-      <RootProperty Name="TintOpacity" />
-      <RootProperty Name="TintColor" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.NavigationViewItem">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="Height" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Content" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="Icon" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationView">
       <RootProperty Name="IsPaneOpen" />
       <RootProperty Name="MenuItems" />
@@ -177,10 +180,6 @@
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
       <RootMethod Name="SetBehaviors" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="UpdateSourceTrigger" />
-      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
       <RootProperty Name="EventName" />
@@ -200,12 +199,33 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Orientation" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Orientation" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Header" />
+      <RootProperty Name="OffContent" />
+      <RootProperty Name="OnContent" />
+      <RootProperty Name="IsOn" />
+      <RootProperty Name="Foreground" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="FontSize" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
@@ -221,17 +241,20 @@
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="IsOpen" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="TestTotalPCClear.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
+      <RootProperty Name="BackgroundSource" />
+      <RootProperty Name="TintColor" />
+      <RootProperty Name="TintOpacity" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
     </RootType>
   </Roots.RootTypes>
 </Roots>

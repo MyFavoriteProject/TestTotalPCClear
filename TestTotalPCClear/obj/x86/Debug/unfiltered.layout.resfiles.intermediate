@@ -10,5 +10,7 @@ App.xbf
 MainPage.xbf
 MultiViewControl.xbf
 TestTotalPCClear.xr.xml
+Themes\Dark.xbf
+Themes\Light.xbf
 Image\Just.jpg
 Properties\Default.rd.xml

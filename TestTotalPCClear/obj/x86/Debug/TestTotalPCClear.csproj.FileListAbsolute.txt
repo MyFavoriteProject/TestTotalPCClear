@@ -230,3 +230,9 @@ C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Micro
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Microsoft.Xaml.Interactions.pri.xml
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Microsoft.Xaml.Interactivity.pri.xml
 C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\TestTotalPCClear.csproj.GenerateResource.Cache
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Themes\Dark.xaml
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Themes\Light.xaml
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Themes\Dark.xbf
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\obj\x86\Debug\Themes\Light.xbf
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Dark.xbf
+C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Light.xbf

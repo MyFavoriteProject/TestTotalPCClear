@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-15T19:19:48.202</Modified>
+      <Modified>2020-09-17T16:36:30.201</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\TestTotalPCClear.exe">
       <PackagePath>entrypoint\TestTotalPCClear.exe</PackagePath>
-      <Modified>2020-09-15T19:19:46.820</Modified>
+      <Modified>2020-09-17T16:36:27.404</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -550,19 +550,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\TestTotalPCClear.xr.xml">
       <PackagePath>TestTotalPCClear.xr.xml</PackagePath>
-      <Modified>2020-09-15T18:39:27.490</Modified>
+      <Modified>2020-09-17T16:36:20.580</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-15T19:19:44.928</Modified>
+      <Modified>2020-09-17T12:44:01.348</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-15T19:19:44.927</Modified>
+      <Modified>2020-09-17T16:36:20.746</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\MultiViewControl.xbf">
       <PackagePath>MultiViewControl.xbf</PackagePath>
-      <Modified>2020-09-15T19:19:44.929</Modified>
+      <Modified>2020-09-17T12:44:01.349</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Dark.xbf">
+      <PackagePath>Themes\Dark.xbf</PackagePath>
+      <Modified>2020-09-17T16:36:20.747</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Light.xbf">
+      <PackagePath>Themes\Light.xbf</PackagePath>
+      <Modified>2020-09-17T16:36:20.747</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -570,11 +578,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-15T14:30:14.291</Modified>
+      <Modified>2020-09-17T08:56:14.855</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Core\TestTotalPCClear.exe">
       <PackagePath>TestTotalPCClear.exe</PackagePath>
-      <Modified>2020-09-15T19:19:48.162</Modified>
+      <Modified>2020-09-17T16:36:30.132</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

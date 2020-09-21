@@ -648,6 +648,170 @@
                                 </Grid>
                             </Grid>
 
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="Large file" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"
+                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                <Grid Grid.Row="1">
+                                    <Button 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Content="Open file" 
+                                        Command="{Binding LargeFileOpenFolder}"
+                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                </Grid>
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="Large file" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"
+                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                <Grid Grid.Row="1" Grid.RowSpan="2">
+                                    <ListBox 
+                                        ItemsSource="{Binding ClearModel.LargeFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        HorizontalContentAlignment="Stretch">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    HorizontalAlignment="Stretch"
+                                                    Template="{StaticResource CheckBoxTemplate}" 
+                                                    IsThreeState="True"
+                                                    Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+
+                                                    <Grid 
+                                                        HorizontalAlignment="Stretch">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30px"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                                            Grid.Column="0"
+                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                                            FontFamily="Segoe MDL2 Assets" 
+                                                            Text="&#xE838;"
+                                                            />
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                                            Grid.Column="1" 
+                                                            Text="{Binding Path=Item.Path}"
+                                                            Padding="25,3,0,0"/>
+                                                    </Grid>
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                    </ListBox>
+                                </Grid>
+                                <Button 
+                                        Grid.Row="2"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource ButtonRoundedCorners}"
+                                        Content="Clean"
+                                        Command="{Binding CleanLargeButton}"/>
+                            </Grid>
+                            
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="Duplicate file" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"
+                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                <Grid Grid.Row="1">
+                                    <Button 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Content="Open file" 
+                                        Command="{Binding DuplicateFileOpenFolderButton}"
+                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                </Grid>
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="Duplicate file" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"
+                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                <Grid Grid.Row="1" Grid.RowSpan="2">
+                                    <ListBox 
+                                        ItemsSource="{Binding ClearModel.DuplicateFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        HorizontalContentAlignment="Stretch">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    HorizontalAlignment="Stretch"
+                                                    Template="{StaticResource CheckBoxTemplate}" 
+                                                    IsThreeState="True"
+                                                    Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+
+                                                    <Grid 
+                                                        HorizontalAlignment="Stretch">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30px"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                                            Grid.Column="0"
+                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                                            FontFamily="Segoe MDL2 Assets" 
+                                                            Text="&#xE838;"
+                                                            />
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                                            Grid.Column="1" 
+                                                            Text="{Binding Path=Item.Path}"
+                                                            Padding="25,3,0,0"/>
+                                                    </Grid>
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                    </ListBox>
+                                </Grid>
+                                <Button 
+                                        Grid.Row="2"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource ButtonRoundedCorners}"
+                                        Content="Clean"
+                                        Command="{Binding CleanDuplicateFileButton}"/>
+                            </Grid>
+
 
                         </local:MultiViewControl.Views>
                     </local:MultiViewControl>

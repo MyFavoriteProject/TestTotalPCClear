@@ -9,6 +9,9 @@ using Windows.Storage.FileProperties;
 using System.Linq;
 using System.IO;
 using System.ComponentModel;
+using Windows.Storage.Pickers;
+using System.Collections.ObjectModel;
+using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace TestTotalPCClear.Model
 {
@@ -22,12 +25,16 @@ namespace TestTotalPCClear.Model
         }
     }
 
-    class ClearModel: BaseModel
+    public class ClearModel: BaseModel
     {
         #region Fields
 
         private ResourceLoader resourceLoader;
-        bool isActiveScannOrClean = false;
+        private bool isActiveScannOrClean = false;
+
+        private string driveLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        ObservableCollection<CheckedListItem<StorageFile>> largeFileCollection;
+        ObservableCollection<CheckedListItem<StorageFile>> duplicateFileCollection;
 
         private bool isSystemCacheSelect = false,
             isApplicationCacheSelect = false,
@@ -114,8 +121,6 @@ namespace TestTotalPCClear.Model
             this.typeCacheAndUniversalPaths.Add(cacheName[2], this.mailCacheUniversalPath);
             this.typeCacheAndUniversalPaths.Add(cacheName[3], this.officeCacheUniversalPath);
             this.typeCacheAndUniversalPaths.Add(cacheName[4], this.browserCacheUniversalPath);
-            
-            
         }
 
         #endregion
@@ -127,8 +132,11 @@ namespace TestTotalPCClear.Model
             get=>this.systemCacheSize;
             set
             {
-                this.systemCacheSize = value;
-                OnPropertyChanged(nameof(SystemCacheSize));
+                if (!this.systemCacheSize.Equals(value))
+                {
+                    this.systemCacheSize = value;
+                    OnPropertyChanged(nameof(SystemCacheSize));
+                }
             }
         }
         public int ApplicationCacheSize
@@ -136,8 +144,11 @@ namespace TestTotalPCClear.Model
             get => this.applicationCacheSize;
             set
             {
-                this.applicationCacheSize = value;
-                OnPropertyChanged(nameof(ApplicationCacheSize));
+                if (!this.applicationCacheSize.Equals(value))
+                {
+                    this.applicationCacheSize = value;
+                    OnPropertyChanged(nameof(ApplicationCacheSize));
+                }
             }
         }
         public int MailCacheSize
@@ -145,8 +156,11 @@ namespace TestTotalPCClear.Model
             get => this.mailCacheSize;
             set
             {
-                this.mailCacheSize = value;
-                OnPropertyChanged(nameof(MailCacheSize));
+                if (!this.mailCacheSize.Equals(value))
+                {
+                    this.mailCacheSize = value;
+                    OnPropertyChanged(nameof(MailCacheSize));
+                }
             }
         }
         public int OfficeCacheSize
@@ -154,8 +168,11 @@ namespace TestTotalPCClear.Model
             get => this.officeCacheSize;
             set
             {
-                this.officeCacheSize = value;
-                OnPropertyChanged(nameof(OfficeCacheSize));
+                if (!this.officeCacheSize.Equals(value))
+                {
+                    this.officeCacheSize = value;
+                    OnPropertyChanged(nameof(OfficeCacheSize));
+                }
             }
         }
         public int BrowserCacheSize
@@ -163,19 +180,47 @@ namespace TestTotalPCClear.Model
             get => this.browserCacheSize;
             set
             {
-                this.browserCacheSize = value;
-                OnPropertyChanged(nameof(BrowserCacheSize));
+                if (!this.browserCacheSize.Equals(value))
+                {
+                    this.browserCacheSize = value;
+                    OnPropertyChanged(nameof(BrowserCacheSize));
+                }
             }
         }
-
         public int DeleteCacheSize 
         { 
             get=>this.deleteCacheSize;
             set
             {
+                if(!this.deleteCacheSize.Equals(value))
                 this.deleteCacheSize = value;
                 OnPropertyChanged(nameof(DeleteCacheSize));
             } 
+        }
+        public ObservableCollection<CheckedListItem<StorageFile>> LargeFileCollection
+        {
+            get => this.largeFileCollection;
+            set
+            {
+                if (this.largeFileCollection == null || !this.largeFileCollection.Equals(value))
+                {
+                    this.largeFileCollection = value;
+                    OnPropertyChanged(nameof(LargeFileCollection));
+                }
+            }
+        }
+
+        public ObservableCollection<CheckedListItem<StorageFile>> DuplicateFileCollection 
+        { 
+            get=>this.duplicateFileCollection; 
+            set
+            {
+                if (this.duplicateFileCollection == null || !this.duplicateFileCollection.Equals(value))
+                {
+                    this.duplicateFileCollection = value;
+                    OnPropertyChanged(nameof(DuplicateFileCollection));
+                }
+            }
         }
 
         #region ChechBoxes
@@ -185,8 +230,11 @@ namespace TestTotalPCClear.Model
             get => this.isSystemCacheSelect;
             set
             {
-                this.isSystemCacheSelect = value;
-                OnPropertyChanged(nameof(IsSystemCacheSelect));
+                if (!this.isActiveScannOrClean.Equals(value))
+                {
+                    this.isSystemCacheSelect = value;
+                    OnPropertyChanged(nameof(IsSystemCacheSelect));
+                }
             }
         }
         public bool IsApplicationCacheSelect
@@ -194,8 +242,11 @@ namespace TestTotalPCClear.Model
             get => this.isApplicationCacheSelect;
             set
             {
-                this.isApplicationCacheSelect = value;
-                OnPropertyChanged(nameof(IsApplicationCacheSelect));
+                if (!this.isApplicationCacheSelect.Equals(value))
+                {
+                    this.isApplicationCacheSelect = value;
+                    OnPropertyChanged(nameof(IsApplicationCacheSelect));
+                }
             }
         }
         public bool IsMailCacheSelect
@@ -203,8 +254,11 @@ namespace TestTotalPCClear.Model
             get => this.isMailCacheSelect;
             set
             {
-                this.isMailCacheSelect = value;
-                OnPropertyChanged(nameof(IsMailCacheSelect));
+                if (!this.isMailCacheSelect.Equals(value))
+                {
+                    this.isMailCacheSelect = value;
+                    OnPropertyChanged(nameof(IsMailCacheSelect));
+                }
             }
         }
         public bool IsOfficeCacheSelect
@@ -212,8 +266,11 @@ namespace TestTotalPCClear.Model
             get => this.isOfficeCacheSelect;
             set
             {
-                this.isOfficeCacheSelect = value;
-                OnPropertyChanged(nameof(IsOfficeCacheSelect));
+                if (!this.isOfficeCacheSelect.Equals(value))
+                {
+                    this.isOfficeCacheSelect = value;
+                    OnPropertyChanged(nameof(IsOfficeCacheSelect));
+                }
             }
         }
         public bool IsBrowserCacheSelect
@@ -221,8 +278,11 @@ namespace TestTotalPCClear.Model
             get => this.isBrowserCacheSelect;
             set
             {
-                this.isBrowserCacheSelect = value;
-                OnPropertyChanged(nameof(IsBrowserCacheSelect));
+                if (!this.isBrowserCacheSelect.Equals(value))
+                {
+                    this.isBrowserCacheSelect = value;
+                    OnPropertyChanged(nameof(IsBrowserCacheSelect));
+                }
             }
         }
 
@@ -233,8 +293,11 @@ namespace TestTotalPCClear.Model
             get=>this.isActiveScannOrClean;
             set
             {
-                this.isActiveScannOrClean = value;
-                OnPropertyChanged(nameof(IsActiveScannOrClean));
+                if (!this.isActiveScannOrClean.Equals(value))
+                {
+                    this.isActiveScannOrClean = value;
+                    OnPropertyChanged(nameof(IsActiveScannOrClean));
+                }
             } 
         }
 
@@ -262,7 +325,7 @@ namespace TestTotalPCClear.Model
             typeCacheAndStorageFiles = new Dictionary<string, List<StorageFile>>();
         }
 
-        public async Task<bool> DeleteFileAsync()
+        public async Task DeleteFileAsync()
         {
             if(DeleteCacheSize != 0)
                 DeleteCacheSize = 0;
@@ -310,14 +373,13 @@ namespace TestTotalPCClear.Model
             this.IsActiveScannOrClean = false;
 
             //this.Default();
-
-            return true;
         }
 
-        public async Task<bool> ScaningSystemCacheAsync()
+        public async Task ScaningSystemCacheAsync()
         {
             this.IsActiveScannOrClean = true;
-            SearchPathes();
+
+            SearchPathes().ConfigureAwait(true);
 
             bool isExeption = false;
 
@@ -376,15 +438,92 @@ namespace TestTotalPCClear.Model
             }
 
             this.IsActiveScannOrClean = false;
+        }
 
-            return true;
+        public async Task OpenLargeFolder()
+        {
+            ObservableCollection<CheckedListItem<StorageFile>> largeFileCollection = new ObservableCollection<CheckedListItem<StorageFile>>();
+
+            FolderPicker folderPicker = new FolderPicker();
+            folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder storageFolder = await folderPicker.PickSingleFolderAsync();
+
+            if (storageFolder != null)
+            {
+                IReadOnlyList<StorageFile> fileList = await PullFilesFromFolder(storageFolder).ConfigureAwait(true);
+                foreach(StorageFile storageFile in fileList)
+                {
+                    largeFileCollection.Add(new CheckedListItem<StorageFile>(storageFile));
+                }
+            }
+
+            this.LargeFileCollection = largeFileCollection;
+        }
+
+        public async Task CleanLargeFiles()
+        {
+            List<StorageFile> largeFileList = this.LargeFileCollection.Where(c => c.IsChecked == true).Select(c=>c.Item).ToList();
+
+            LargeFileCollection.Clear();
+        }
+
+        public async Task ScannDuplicateFiles()
+        {
+            ObservableCollection<CheckedListItem<StorageFile>> fileCollection = new ObservableCollection<CheckedListItem<StorageFile>>();
+
+            FolderPicker folderPicker = new FolderPicker();
+            folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder storageFolder = await folderPicker.PickSingleFolderAsync();
+
+            if (storageFolder != null)
+            {
+                List<StorageFile> fileList = await PullFilesFromFolder(storageFolder).ConfigureAwait(true);
+
+                for(int i = 0; i< fileList.Count; i++)
+                {
+                    var a = fileList[i].GetHashCode();
+
+                    for (int j = 1; j < fileList.Count; j++)
+                    {
+                        if(fileList[i].FileType == fileList[j].FileType && i!=j)
+                        {
+                            BasicProperties basicIFile = await fileList[i].GetBasicPropertiesAsync();
+                            BasicProperties basicJFile = await fileList[j].GetBasicPropertiesAsync();
+
+                            if (basicIFile.Size == basicJFile.Size)
+                            {
+                                var byteI = await StorageFileHelper.ReadBytesAsync(fileList[i]).ConfigureAwait(true);
+                                var byteJ = await StorageFileHelper.ReadBytesAsync(fileList[j]).ConfigureAwait(true);
+
+                                if (byteI.SequenceEqual(byteJ))
+                                {
+                                    fileCollection.Add(new CheckedListItem<StorageFile>(fileList[j]));
+                                }
+                            }
+                        }
+                    }
+                }
+
+                this.DuplicateFileCollection = fileCollection;
+            }
+        }
+
+        public async Task CleanDuplicateFiles()
+        {
+            List<StorageFile> duplicateFileList = this.DuplicateFileCollection.Where(c => c.IsChecked == true).Select(c => c.Item).ToList();
+
+            DuplicateFileCollection.Clear();
         }
 
         #endregion
 
         #region private Methods
 
-        private async void SearchPathes()
+        private async Task SearchPathes()
         {
             this.Default();
 
@@ -392,20 +531,16 @@ namespace TestTotalPCClear.Model
             this.typeCacheAndPathes = new Dictionary<string, List<string>>();
             this.typeCacheAndSize = new Dictionary<string, int>();
 
-            string driveLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             int driveLettersLen = driveLetters.Length;
             string removableDriveLetters = "";
             string driveLetter;
 
             List<StorageFolder> drives = new List<StorageFolder>();
             StorageFolder removableDevices = KnownFolders.RemovableDevices;
-            IReadOnlyList<StorageFolder> folders = Task.Run<IReadOnlyList<StorageFolder>>(async () => await removableDevices.GetFoldersAsync()).Result;
+            IReadOnlyList<StorageFolder> folders = Task.Run(async () => await removableDevices.GetFoldersAsync()).Result;
 
             foreach (StorageFolder removableDevice in folders)
             {
-                if (string.IsNullOrEmpty(removableDevice.Path))
-                    continue;
-
                 driveLetter = removableDevice.Path.Substring(0, 1).ToUpper();
 
                 if (driveLetters.IndexOf(driveLetter) > -1)
@@ -416,22 +551,17 @@ namespace TestTotalPCClear.Model
             {
                 driveLetter = driveLetters.Substring(curDrive, 1);
 
-                if (removableDriveLetters.IndexOf(driveLetter) > -1)
-                    continue;
-
                 try
                 {
-                    StorageFolder drive = Task.Run<StorageFolder>(
-                        async () => await StorageFolder.GetFolderFromPathAsync(driveLetter + ":")).Result;
+                    StorageFolder drive = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(driveLetter + ":")).Result;
                     drives.Add(drive);
                 }
-                catch (System.AggregateException) { }
+                catch (AggregateException) { }
 
             }
 
-            if (drives.Any() == true)
+            if (drives.Any())
             {
-
                 foreach(string key in typeCacheAndUniversalPaths.Keys)
                 {
                     pathes = new List<string>();
@@ -441,21 +571,15 @@ namespace TestTotalPCClear.Model
                         {
                             pathes.Add(drives[i].Name + universalPath);
                         }
-
-                        //for (int j = 0; j < this.universalPaths.Length; j++)
-                        //{
-                        //    pathes.Add(drives[i].Name + this.universalPaths[j]);
-                        //}
                     }
 
                     SetPathesAsync(key, pathes);
                 }
-                
             }
             else
             {
-                MessageDialog dialog = new MessageDialog("");
-                dialog.ShowAsync();
+                //MessageDialog dialog = new MessageDialog("");
+                //dialog.ShowAsync();
             }
         }
 
@@ -470,6 +594,62 @@ namespace TestTotalPCClear.Model
             }
 
             this.typeCacheAndPathes.Add(key, realPathes);
+        }
+
+        private async Task<IReadOnlyList<StorageFolder>> PullFoldersFromFolder(StorageFolder storageFolder)
+        {
+            bool isHaveFolder = true;
+
+            List<StorageFolder> storageFoldersList = new List<StorageFolder>();
+            List<IReadOnlyList<StorageFolder>> storageNewFoldersList = new List<IReadOnlyList<StorageFolder>>();
+
+            storageFoldersList.Add(storageFolder);
+
+            IReadOnlyList<StorageFolder> folderList = await storageFolder.GetFoldersAsync();
+
+            storageNewFoldersList.Add(folderList);
+
+            for (int i = 0; i < storageNewFoldersList.Count; i++)
+            {
+                foreach (StorageFolder folder in storageNewFoldersList[i])
+                {
+                    IReadOnlyList<StorageFolder> storageFolders = await folder.GetFoldersAsync();
+
+                    if (storageFolders.Count>0)
+                    {
+                        storageNewFoldersList.Add(storageFolders);
+                    }
+                }
+            }
+
+            foreach (IReadOnlyList<StorageFolder> folders in storageNewFoldersList)
+            {
+                foreach(StorageFolder folder in folders)
+                {
+                    storageFoldersList.Add(folder);
+                }
+            }
+
+            return storageFoldersList;
+        }
+
+        private async Task<List<StorageFile>> PullFilesFromFolder(StorageFolder storageFolder)
+        {
+            List<StorageFile> storageFileList = new List<StorageFile>();
+
+            IReadOnlyList<StorageFolder> folderList = await PullFoldersFromFolder(storageFolder).ConfigureAwait(true);
+
+            foreach (StorageFolder folder in folderList)
+            {
+                IReadOnlyList<StorageFile> fileList = await folder.GetFilesAsync();
+
+                foreach(StorageFile storageFile in fileList)
+                {
+                    storageFileList.Add(storageFile);
+                }
+            }
+
+            return storageFileList;
         }
 
         #endregion

@@ -7,6 +7,9 @@ using Windows.ApplicationModel.Resources.Core;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using TestTotalPCClear.Themes;
+using System;
+using System.Threading.Tasks;
+using Windows.Media.Capture;
 
 namespace TestTotalPCClear.ViewModel
 {
@@ -16,9 +19,7 @@ namespace TestTotalPCClear.ViewModel
 
         private ClearModel clearModel;
         private ResourceLoader resourceLoader;
-        private SplitView mySplitView;
         private List<string> languagesList;
-        private ThemeManager themeManager;
 
         private string selectedLanhuage;
         private string scannOrCleanText;
@@ -41,10 +42,7 @@ namespace TestTotalPCClear.ViewModel
             this.resourceLoader = ResourceLoader.GetForCurrentView("Resources");
             this.languagesList = new List<string>() { "English", "Русский"};
             ResourceContext.SetGlobalQualifierValue("Language", "en-US");
-            this.StateOfScanning = 1;
-            this.StateOfScanning = 0;
             this.ScannOrCleanText = ScannText;
-            this.themeManager = new ThemeManager();
 
             #region Event Subscription
 
@@ -59,6 +57,10 @@ namespace TestTotalPCClear.ViewModel
             this.MoreButton = new DelegateCommand(MoreButton_Click);
             this.ThemeDarkRadioButton = new DelegateCommand(ThemeDarkRadioButton_Click);
             this.ThemeLightRadioButton = new DelegateCommand(ThemeLightRadioButton_Click);
+            this.LargeFileOpenFolder = new DelegateCommand(LargeFileOpenFolder_Click);
+            this.CleanLargeButton = new DelegateCommand(CleanLargeButton_Click);
+            this.DuplicateFileOpenFolderButton = new DelegateCommand(DuplicateFileOpenFolderButton_Click);
+            this.CleanDuplicateFileButton = new DelegateCommand(CleanDuplicateFileButton_Click);
 
             #endregion
         }
@@ -69,23 +71,16 @@ namespace TestTotalPCClear.ViewModel
 
         #region Not Group Propertys
 
-        public SplitView MySplitView
-        {
-            get => this.mySplitView;
-            set
-            {
-                this.mySplitView = value;
-                OnPropertyChanged(nameof(this.MySplitView));
-            }
-        }
-
         public ClearModel ClearModel
         {
             get => this.clearModel;
             set
             {
-                this.clearModel = value;
-                OnPropertyChanged(nameof(this.ClearModel));
+                if(this.clearModel == null || !this.clearModel.Equals(value))
+                {
+                    this.clearModel = value;
+                    OnPropertyChanged(nameof(this.ClearModel));
+                }
             }
         }
 
@@ -94,19 +89,12 @@ namespace TestTotalPCClear.ViewModel
             get => this.languagesList;
             set
             {
-                this.languagesList = value;
-                OnPropertyChanged(nameof(this.LanguagesList));
+                if (this.languagesList == null || !this.languagesList.Equals(value))
+                {
+                    this.languagesList = value;
+                    OnPropertyChanged(nameof(this.LanguagesList));
+                }
             }
-        }
-
-        public int SizeSystemCache 
-        { 
-            get=> this.sizeSystemCache;
-            set
-            {
-                this.sizeSystemCache = value;
-                OnPropertyChanged(nameof(SizeSystemCache));
-            } 
         }
 
         public int StateOfScanning
@@ -114,19 +102,12 @@ namespace TestTotalPCClear.ViewModel
             get => this.stateOfScanning;
             set
             {
-                this.stateOfScanning = value;
-                OnPropertyChanged(nameof(StateOfScanning));
+                if (this.stateOfScanning != value)
+                {
+                    this.stateOfScanning = value;
+                    OnPropertyChanged(nameof(StateOfScanning));
+                }
             }
-        }
-
-        public int SystemCacheCount 
-        { 
-            get=>this.systemCacheCount;
-            set
-            {
-                this.systemCacheCount = value;
-                OnPropertyChanged(nameof(SystemCacheCount));
-            } 
         }
 
         #endregion
@@ -157,7 +138,6 @@ namespace TestTotalPCClear.ViewModel
                 }
             }
         }
-
 
         public string DeleteCacheText
         {
@@ -205,8 +185,11 @@ namespace TestTotalPCClear.ViewModel
             get=>this.scannOrCleanText;
             set 
             {
-                this.scannOrCleanText = value;
-                OnPropertyChanged(nameof(ScannOrCleanText));
+                if (this.scannOrCleanText == null || !this.scannOrCleanText.Equals(value))
+                {
+                    this.scannOrCleanText = value;
+                    OnPropertyChanged(nameof(ScannOrCleanText));
+                }
             }
         }
         public string PurityText { get=>this.resourceLoader.GetString("PurityText"); }
@@ -228,6 +211,10 @@ namespace TestTotalPCClear.ViewModel
         public ICommand MoreButton { get; set; }
         public ICommand ThemeDarkRadioButton { get; set; }
         public ICommand ThemeLightRadioButton { get; set; }
+        public ICommand LargeFileOpenFolder { get; set; }
+        public ICommand CleanLargeButton { get; set; }
+        public ICommand DuplicateFileOpenFolderButton { get; set; }
+        public ICommand CleanDuplicateFileButton { get; set; }
 
         #endregion
 
@@ -238,8 +225,11 @@ namespace TestTotalPCClear.ViewModel
             get=>this.isShowScannOrClean;
             set
             {
-                this.isShowScannOrClean = value;
-                OnPropertyChanged(nameof(IsShowScannOrClean));
+                if (this.isShowScannOrClean != value)
+                {
+                    this.isShowScannOrClean = value;
+                    OnPropertyChanged(nameof(IsShowScannOrClean));
+                }
             } 
         }
 
@@ -248,8 +238,11 @@ namespace TestTotalPCClear.ViewModel
             get=>this.isShowSelectOrDeselectButton;
             set
             {
-                this.isShowSelectOrDeselectButton = value;
-                OnPropertyChanged(nameof(IsShowSelectOrDeselectButton));
+                if (this.isShowSelectOrDeselectButton != value)
+                {
+                    this.isShowSelectOrDeselectButton = value;
+                    OnPropertyChanged(nameof(IsShowSelectOrDeselectButton));
+                }
             }
         }
 
@@ -258,6 +251,47 @@ namespace TestTotalPCClear.ViewModel
         #endregion
 
         #region public Methods
+
+        public async static Task<bool> RequestMicrophonePermission()
+        {
+            bool returnValue = true;
+
+            try
+            {
+                MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
+                {
+                    StreamingCaptureMode = StreamingCaptureMode.Audio,
+                    MediaCategory = MediaCategory.Speech
+                };
+
+                using (MediaCapture capture = new MediaCapture())
+                {
+                    await capture.InitializeAsync(settings);
+                }
+            }
+            catch (TypeLoadException)
+            {
+                returnValue = false;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                returnValue = false;
+            }
+            catch (Exception exception)
+            {
+                int NoCaptureDevicesHResult = -1072845856;
+
+                if (exception.HResult == NoCaptureDevicesHResult)
+                {
+                    returnValue = false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return true;
+        }
 
         #endregion
 
@@ -297,12 +331,12 @@ namespace TestTotalPCClear.ViewModel
 
         private void LargeFilesButton_Click(object obj)
         {
-
+            this.StateOfScanning = 4;
         }
 
         private void DuplicateButton_Click(object obj)
         {
-
+            this.StateOfScanning = 6;
         }
 
         private void AutoClearingButton_Click(object obj)
@@ -340,7 +374,7 @@ namespace TestTotalPCClear.ViewModel
 
                 //this.clearModel.IsActiveScannOrClean = true;
 
-                isAnd = await this.clearModel.ScaningSystemCacheAsync();
+                this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
 
                 this.ScannOrCleanText = CleanText;
             }
@@ -348,17 +382,14 @@ namespace TestTotalPCClear.ViewModel
             {
                 this.isScann = true;
 
-                isAnd = await this.clearModel.DeleteFileAsync();
+                this.clearModel.DeleteFileAsync().ConfigureAwait(true);
 
                 this.StateOfScanning = 2;
 
                 this.ScannOrCleanText = ScannText;
             }
 
-            if (isAnd)
-            {
-                this.IsShowScannOrClean = true;
-            }
+            this.IsShowScannOrClean = true;
         }
 
         private void SettingButton_Click(object obj)
@@ -382,6 +413,30 @@ namespace TestTotalPCClear.ViewModel
         private void ThemeDarkRadioButton_Click(object obj)
         {
             App.ThemeManager.LoadTheme(ThemeManager.DarkThemePath);
+        }
+
+        private void LargeFileOpenFolder_Click(object obj)
+        {
+            this.clearModel.OpenLargeFolder().ConfigureAwait(true);
+
+            this.StateOfScanning = 5;
+        }
+
+        private void CleanLargeButton_Click(object obj)
+        {
+            this.clearModel.CleanLargeFiles().ConfigureAwait(true);
+        }
+
+        private void DuplicateFileOpenFolderButton_Click(object obj)
+        {
+            this.clearModel.ScannDuplicateFiles();
+
+            this.StateOfScanning = 7;
+        }
+
+        private void CleanDuplicateFileButton_Click(object obj)
+        {
+            this.clearModel.CleanDuplicateFiles().ConfigureAwait(true);
         }
 
         #endregion

@@ -32,7 +32,6 @@ namespace TestTotalPCClear
             this.clearViewModel = new ClearViewModel();
 
             this.DataContext = clearViewModel;
-            //this.clearViewModel.MySplitView = this.mySplitView;
 
             Binding myBinding = new Binding();
             myBinding.Source = this.DataContext;

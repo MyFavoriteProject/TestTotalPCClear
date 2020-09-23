@@ -379,7 +379,15 @@ namespace TestTotalPCClear.Model
         {
             this.IsActiveScannOrClean = true;
 
-            SearchPathes().ConfigureAwait(true);
+            try
+            {
+                await SearchPathes().ConfigureAwait(true);
+            }
+            catch(Exception e)
+            {
+                throw new Exception();
+            }
+
 
             bool isExeption = false;
 
@@ -536,7 +544,6 @@ namespace TestTotalPCClear.Model
             List<StorageFolder> drives = new List<StorageFolder>();
 
             StorageFolder removableDevices = KnownFolders.RemovableDevices;
-
 
             IReadOnlyList<StorageFolder> folders = Task.Run(async () => await removableDevices.GetFoldersAsync()).Result;
 

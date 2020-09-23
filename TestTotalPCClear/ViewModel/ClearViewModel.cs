@@ -387,33 +387,33 @@ namespace TestTotalPCClear.ViewModel
 
             if (this.isScann == true)
             {
-                this.IsShowScannOrClean = false;
-
-                //this.clearModel.IsActiveScannOrClean = true;
 
                 try
                 {
-                    this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
+                    await this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
+                    this.IsShowScannOrClean = false;
                     this.ScannOrCleanText = CleanText;
                     this.isScann = false;
                 }
-                catch 
+                catch (Exception e)
                 {
-                    AccessFileSystem().ConfigureAwait(true);
+                    this.clearModel.IsActiveScannOrClean = false;
+                    await AccessFileSystem().ConfigureAwait(true);
                 }
             }
             else
             {
                 try
                 {
-                    this.clearModel.DeleteFileAsync().ConfigureAwait(true);
+                    await this.clearModel.DeleteFileAsync().ConfigureAwait(true);
                     this.ScannOrCleanText = ScannText;
                     this.StateOfScanning = 2;
                     this.isScann = true;
                 }
                 catch
                 {
-                    AccessFileSystem().ConfigureAwait(true);
+                    this.clearModel.IsActiveScannOrClean = false;
+                    await AccessFileSystem().ConfigureAwait(true);
                 }
             }
 

@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>147454606899F012C71AB61931C30EB589124BE53C359EB0CB13D40E3D7F442E</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>71AF81710B61FF0D483E205CE87985EADFB951A67468B0800580101AB21B0076</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>fa9fa8e0-974f-480d-b2b4-980dec24a7f8_1.0.0.0_x86__pyde9gwt8sqkr</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>fa9fa8e0-974f-480d-b2b4-980dec24a7f8_pyde9gwt8sqkr!App</RegisteredUserModeAppID>
     <RegisteredPackageID>fa9fa8e0-974f-480d-b2b4-980dec24a7f8</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-21T19:02:22.023</Modified>
+      <Modified>2020-09-23T16:23:00.781</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\TestTotalPCClear.exe">
       <PackagePath>entrypoint\TestTotalPCClear.exe</PackagePath>
-      <Modified>2020-09-21T19:02:19.497</Modified>
+      <Modified>2020-09-23T16:22:58.773</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll">
       <PackagePath>Microsoft.Toolkit.dll</PackagePath>
@@ -114,27 +114,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\TestTotalPCClear.xr.xml">
       <PackagePath>TestTotalPCClear.xr.xml</PackagePath>
-      <Modified>2020-09-21T19:02:10.538</Modified>
+      <Modified>2020-09-23T16:07:13.272</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-21T19:02:10.675</Modified>
+      <Modified>2020-09-23T16:22:56.315</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-21T19:02:10.673</Modified>
+      <Modified>2020-09-23T16:22:56.313</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\MultiViewControl.xbf">
       <PackagePath>MultiViewControl.xbf</PackagePath>
-      <Modified>2020-09-21T19:02:10.676</Modified>
+      <Modified>2020-09-23T16:22:56.315</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Dark.xbf">
       <PackagePath>Themes\Dark.xbf</PackagePath>
-      <Modified>2020-09-21T19:02:10.675</Modified>
+      <Modified>2020-09-23T16:22:56.314</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Themes\Light.xbf">
       <PackagePath>Themes\Light.xbf</PackagePath>
-      <Modified>2020-09-21T19:02:10.675</Modified>
+      <Modified>2020-09-23T16:22:56.315</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -142,11 +142,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-21T18:47:07.463</Modified>
+      <Modified>2020-09-22T11:57:37.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\home\source\repos\TestTotalPCClear\TestTotalPCClear\bin\x86\Debug\Core\TestTotalPCClear.exe">
       <PackagePath>TestTotalPCClear.exe</PackagePath>
-      <Modified>2020-09-21T19:02:21.959</Modified>
+      <Modified>2020-09-23T16:23:00.769</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

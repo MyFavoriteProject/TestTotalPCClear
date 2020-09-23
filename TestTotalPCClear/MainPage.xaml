@@ -8,17 +8,17 @@
     mc:Ignorable="d"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core" 
-    xmlns:muxc="using:Windows.UI.Xaml.Controls">
+    xmlns:muxc="using:Windows.UI.Xaml.Controls"
+    xmlns:binding="using:TestTotalPCClear.Themes.BindingHelpers">
 
     <Page.Resources>
 
         <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
-
+            
             <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             Height="40px">
-
 
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CheckStates">
@@ -26,15 +26,20 @@
                             <VisualState.Setters>
                                 <Setter Target="CheckGlyph.Opacity" Value="1"/>
                             </VisualState.Setters>
-
-
-                            <!-- This Storyboard is equivalent to the Setter. -->
-                            <!--<Storyboard>
-                        <DoubleAnimation Duration="0" To="1"
-                         Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>-->
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridCheckBox"
+                                           Storyboard.TargetProperty="Background">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IsCheckBlockAcrylicBrush}" />
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
                         </VisualState>
                         <VisualState x:Name="Unchecked"/>
+
+                        <VisualState x:Name="Indeterminate">
+                            <VisualState.Setters>
+                                <Setter Target="IndeterminateGlyph.Opacity" Value="1"/>
+                            </VisualState.Setters>
+                        </VisualState>
                         <!-- This Storyboard is equivalent to the Setter. -->
                         <!--<Storyboard>
                         <DoubleAnimation Duration="0" To="1"
@@ -42,32 +47,50 @@
                     </Storyboard>-->
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Grid>
+                <Grid x:Name="GridCheckBox">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter 
-                                    x:Name="ContentPresenter"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    Content="{TemplateBinding Content}"   
-                                    Margin="{TemplateBinding Padding}" 
-                                    Grid.Column="0"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        x:Name="ContentPresenter"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Content="{TemplateBinding Content}"   
+                        Margin="{TemplateBinding Padding}" 
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
-                    <Rectangle Grid.Column="1" x:Name="NormalRectangle" Fill="Transparent" Height="17" Width="16"
-                               Margin="11,11,13,12"
-                                    Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
-                                    StrokeThickness="{ThemeResource CheckBoxBorderThemeThickness}"
-                                    UseLayoutRounding="False"/>
-                    <Path Grid.Column="1" x:Name="CheckGlyph"
-                                    Data="M103,240 L111,240 119,248 127,240 135,240 123,252 135,264 127,264 119,257 111,264 103,264 114,252 z"
-                                    Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
-                                    FlowDirection="LeftToRight"
-                                    Height="10" Width="12" Opacity="0" Stretch="Fill"/>
+                    <Rectangle 
+                        Grid.Column="1" 
+                        x:Name="NormalRectangle" 
+                        Fill="Transparent" Height="17" Width="16"
+                        Margin="11,11,13,12"
+                        Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
+                        StrokeThickness="{ThemeResource CheckBoxBorderThemeThickness}"
+                        UseLayoutRounding="False"/>
+                    <!--<Path 
+                        Grid.Column="1" 
+                        x:Name="CheckGlyph"
+                        Data="M103,240 L111,240 119,248 127,240 135,240 123,252 135,264 127,264 119,257 111,264 103,264 114,252 z"
+                        Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
+                        FlowDirection="LeftToRight"
+                        Height="10" Width="12" Opacity="0" Stretch="Fill"/>-->
+                    <Path 
+                        Grid.Column="1" x:Name="CheckGlyph" Data="M0,4 5,9 9,0 4,5" 
+                        Fill="{ThemeResource CheckBoxForegroundThemeBrush}" 
+                        FlowDirection="LeftToRight" 
+                        Height="14" Width="16" Opacity="0" Stretch="Fill"/>
+                    
+                    <Ellipse
+                        Grid.Column="1"
+                        x:Name="IndeterminateGlyph"
+                        Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
+                        Height="8" Width="8" Opacity="0" UseLayoutRounding="False" />
                 </Grid>
             </Border>
+            
+            
 
         </ControlTemplate>
 
@@ -80,8 +103,13 @@
                       TintColor="#0078d633"
                       TintOpacity="0.6"/>-->
 
+        <AcrylicBrush x:Key="IsCheckBlockAcrylicBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0.45"
+                                  TintColor="#0078d6"/>
+
         <Style x:Key="ButtonRoundedCorners" TargetType="Button">
-            <Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="0,0,0,71"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Width" Value="201px"/>
@@ -90,17 +118,18 @@
             <Setter Property="CornerRadius" Value="24"/>
         </Style>
 
-        <Style x:Key="NavigationViewItemStyle" TargetType="NavigationViewItem">
+        <Style x:Name="NavigationViewItemStyle" TargetType="NavigationViewItem">
             <Setter Property="FontSize" Value="15px"/>
             <Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
         </Style>
 
-        <Style x:Key="BaseTextBlock" TargetType="TextBlock">
+        <Style x:Name="BaseTextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15px"/>
             <Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+            <Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>
         </Style>
 
-        <Style x:Key="StandartTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Style x:Name="StandartTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
             <Setter Property="FontSize" Value="15px"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Height" Value="19px"/>
@@ -108,34 +137,50 @@
             <Setter Property="Padding" Value="0"/>
         </Style>
 
-        <Style x:Key="TextBlockInCheckBox" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Style x:Name="TextBlockInCheckBox" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+
             <Setter Property="Height" Value="40px"/>
         </Style>
 
-        <Style x:Key="TextBlockInCheckBoxForSegoeMDL2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+        <Style x:Name="TextBlockInCheckBoxForSegoeMDL2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
             <Setter Property="FontSize" Value="22px"/>
             <Setter Property="Padding" Value="4,2,0,3"/>
         </Style>
-        <Style x:Key="TextBlockInCheckBoxForText" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+        <Style x:Name="TextBlockInCheckBoxForText" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
             <Setter Property="Padding" Value="25,3,0,3"/>
         </Style>
-        <Style x:Key="TextBlockInCheckBoxForCount" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+        <Style x:Name="TextBlockInCheckBoxForCount" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Padding" Value="0,3,0,3"/>
         </Style>
-        <Style x:Key="ContextHeaderTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Style x:Name="ContextHeaderTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
             <Setter Property="FontSize" Value="26"/>
             <Setter Property="Margin" Value="43,34,0,56"/>
             <Setter Property="Height" Value="Auto"/>
             <Setter Property="Width" Value="Auto"/>
         </Style>
-        <Style x:Key="HeaderButtonBase" TargetType="Button">
+        <Style x:Name="HeaderButtonBase" TargetType="Button">
             <Setter Property="FontSize" Value="19"/>
             <Setter Property="Margin" Value="0"/>
+            <Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>
+            <Setter Property="binding:BackgroundBindingHelper.Background" Value="ContextAcrylicBrush" />
         </Style>
 
+        <Style x:Name="RadioButtonBase" TargetType="RadioButton">
+            <Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>
+        </Style>
 
-
+        <Style x:Name="RoundButton" TargetType="Button">
+            <Setter Property="Height" Value="112px"/>
+            <Setter Property="Width" Value="112px"/>
+            <Setter Property="Background" Value="#0078d7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CornerRadius" Value="56"/>
+            <Setter Property="FontSize" Value="57"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="Content" Value="&#xE948;"/>
+            <Setter Property="Padding" Value="25"/>
+        </Style>
     </Page.Resources>
 
     <Grid >
@@ -209,6 +254,7 @@
                 <Grid Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}">
                     <local:MultiViewControl x:Name="mltView" >
                         <local:MultiViewControl.Views>
+
                             <StackPanel>
                                 <Image Source="/Image/Just.jpg" />
                             </StackPanel>
@@ -221,8 +267,8 @@
 
                                 <StackPanel Grid.Row="0">
                                     <Grid Height="118px">
-                                        
-                                        
+
+
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
@@ -237,7 +283,6 @@
                                             
                                             Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
                                             Style="{StaticResource ContextHeaderTextBlock}"
-                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                             HorizontalAlignment="Left"
                                         />
 
@@ -245,29 +290,23 @@
                                             Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
                                             Grid.Column="2"
                                                 Style="{StaticResource HeaderButtonBase}"
-                                            Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                                Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                 FontFamily="Segoe MDL2 Assets" 
                                                 Command="{Binding SelectAllButton}"
                                                 Content="&#xE8B3;"/>
                                         <Button 
                                             Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
                                             Grid.Column="3"
-                                                    Style="{StaticResource HeaderButtonBase}"
-                                            Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
-                                                    Command="{Binding DeselectAllButton}"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Content="&#xE8E6;"/>
+                                            Style="{StaticResource HeaderButtonBase}"
+                                            Command="{Binding DeselectAllButton}"
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE8E6;"/>
                                         <Button 
                                             Grid.Column="4"
-                                                Style="{StaticResource HeaderButtonBase}"
-                                            Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                            Style="{StaticResource HeaderButtonBase}"
                                             Command="{Binding MoreButton}"
-                                                FontFamily="Segoe MDL2 Assets" 
-                                                Content="&#xE712;"
-                                                />
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Content="&#xE712;"
+                                            />
                                     </Grid>
 
                                     <Grid>
@@ -276,7 +315,6 @@
                                             <CheckBox
                                             HorizontalAlignment="Stretch"
                                             Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
                                             Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                             IsChecked="{Binding ClearModel.IsSystemCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
@@ -291,24 +329,20 @@
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
                                                     Grid.Column="0"
-                                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     FontFamily="Segoe MDL2 Assets" 
                                                     Text="&#xE770;"
                                                     />
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="1" 
                                                     Text="{Binding SystemCacheText, UpdateSourceTrigger=PropertyChanged}"
                                                         Padding="25,3,0,0"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="3" 
                                                     Text="{Binding ClearModel.SystemCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="4" 
                                                     Text="B"/>
                                                 </Grid>
@@ -317,7 +351,6 @@
                                             <CheckBox 
                                             HorizontalAlignment="Stretch"
                                             Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
                                             Background="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
                                             IsChecked="{Binding ClearModel.IsApplicationCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
@@ -331,25 +364,21 @@
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="0"
                                                     FontFamily="Segoe MDL2 Assets" 
                                                     Text="&#xE74C;"
                                                     />
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="1" 
                                                     Text="{Binding ApplicationCacheText, UpdateSourceTrigger=PropertyChanged}"
                                                         Padding="25,3,0,0"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="3" 
                                                     Text="{Binding ClearModel.ApplicationCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="4" 
                                                     Text="B"/>
                                                 </Grid>
@@ -358,7 +387,6 @@
                                             <CheckBox 
                                             HorizontalAlignment="Stretch"
                                             Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
                                             Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                             IsChecked="{Binding ClearModel.IsMailCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
@@ -372,25 +400,21 @@
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="0"
                                                     FontFamily="Segoe MDL2 Assets" 
                                                     Text="&#xE715;"
                                                     />
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="1" 
                                                     Text="{Binding MailCacheText, UpdateSourceTrigger=PropertyChanged}"
                                                         Padding="25,3,0,0"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="3" 
                                                     Text="{Binding ClearModel.MailCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="4" 
                                                     Text="B"/>
                                                 </Grid>
@@ -399,7 +423,6 @@
                                             <CheckBox 
                                             HorizontalAlignment="Stretch"
                                             Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
                                             Background="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
                                             IsChecked="{Binding ClearModel.IsOfficeCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
@@ -413,25 +436,21 @@
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="0"
                                                     FontFamily="Segoe MDL2 Assets" 
                                                     Text="&#xF56E;"
                                                     />
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="1" 
                                                     Text="{Binding OfficeCacheText, UpdateSourceTrigger=PropertyChanged}"
                                                         Padding="25,3,0,0"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="3" 
                                                     Text="{Binding ClearModel.OfficeCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="4" 
                                                     Text="B"/>
                                                 </Grid>
@@ -440,7 +459,6 @@
                                             <CheckBox 
                                             HorizontalAlignment="Stretch"
                                             Template="{StaticResource CheckBoxTemplate}" 
-                                            IsThreeState="True"
                                             Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                             IsChecked="{Binding ClearModel.IsBrowserCacheSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <Grid 
@@ -454,25 +472,21 @@
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="0"
                                                     FontFamily="Segoe MDL2 Assets" 
                                                     Text="&#xE774;"
                                                     />
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="1" 
                                                     Text="{Binding BrowserCacheText, UpdateSourceTrigger=PropertyChanged}"
                                                         Padding="25,3,0,0"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="3" 
                                                     Text="{Binding ClearModel.BrowserCacheSize, UpdateSourceTrigger=PropertyChanged}"/>
                                                     <TextBlock 
                                                     Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                        Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                     Grid.Column="4" 
                                                     Text="B"/>
                                                 </Grid>
@@ -490,7 +504,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <muxc:ProgressRing 
+                                    <ProgressRing 
                                         Grid.Column="1"
                                         VerticalAlignment="Center" 
                                         Width="138" 
@@ -555,9 +569,8 @@
 
                                 <TextBlock
                                     Grid.Row="0"
-                                    Text="Setting"
+                                    Text="{Binding SettingText, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource ContextHeaderTextBlock}"
-                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                     Margin="43,34,0,0"
                                     HorizontalAlignment="Left"/>
                                 <Grid Grid.Row="1">
@@ -574,7 +587,7 @@
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        
+
                                         <Grid Grid.Row="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -583,8 +596,8 @@
                                             <TextBlock Grid.Row="0"
                                                        FontSize="15"
                                                        Margin="0,0,0,10"
-                                                       Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
-                                                       Text="Lenguage"/>
+                                                       Style="{StaticResource BaseTextBlock}"
+                                                       Text="{Binding LenguageText, UpdateSourceTrigger=PropertyChanged}"/>
                                             <ComboBox
                                                 Margin="0,10,0,10"
                                                 Height="32px"
@@ -595,54 +608,55 @@
                                             FontSize="15"
                                             Margin="0,10,0,0"
                                             Grid.Row="1"
-                                            Header="Auto cleaning at device startup" 
-                                            OffContent="Off" 
-                                            OnContent="On" 
+                                            Header="{Binding AutoCleaningAtDeviceStartupText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OffContent="{Binding OffText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OnContent="{Binding OnText, UpdateSourceTrigger=PropertyChanged}" 
                                             IsOn="False" 
                                             Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
                                         <ToggleSwitch
                                             FontSize="15"
                                             Margin="0,10,0,0"
                                             Grid.Row="2"
-                                            Header="Autostart" 
-                                            OffContent="Off" 
-                                            OnContent="On" 
+                                            Header="{Binding AutoStart, UpdateSourceTrigger=PropertyChanged}" 
+                                            OffContent="{Binding OffText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OnContent="{Binding OnText, UpdateSourceTrigger=PropertyChanged}" 
                                             IsOn="True" 
                                             Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
 
                                         <StackPanel Grid.Row="3" Margin="0,15,0,0">
-                                            <TextBlock Text="Design them" FontSize="15" />
+                                            <TextBlock Text="{Binding DesignThemeText, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Style="{StaticResource BaseTextBlock}" />
+
                                             <RadioButton 
                                                 Command="{Binding ThemeLightRadioButton}" 
-                                                Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" 
-                                                Content="Light" 
+                                                Style="{StaticResource RadioButtonBase}"
+                                                Content="{Binding LightText, UpdateSourceTrigger=PropertyChanged}" 
                                                 FontSize="15"
                                                 Padding="8,6,0,0"
                                                 Margin="5"
                                                 />
                                             <RadioButton 
                                                 Command="{Binding ThemeDarkRadioButton}" 
-                                                Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" 
-                                                Content="Dark"
+                                                Style="{StaticResource RadioButtonBase}"
+                                                Content="{Binding DarkText, UpdateSourceTrigger=PropertyChanged}"
                                                 FontSize="15"
                                                 Padding="8,6,0,0"
                                                 Margin="5"
                                                 />
                                             <RadioButton 
-                                                Content="User system setting" 
-                                                Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                                                Content="{Binding UserSystemSettingText, UpdateSourceTrigger=PropertyChanged}" 
+                                                Style="{StaticResource RadioButtonBase}"
                                                 FontSize="15"
                                                 Padding="8,6,0,0"
                                                 Margin="5"
                                                 />
                                         </StackPanel>
-                                        <TextBlock  Grid.Row="4" Text="Acent Color" Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" FontSize="15"/>
+                                        <TextBlock  Grid.Row="4" Text="{Binding AcentColorText, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" FontSize="15"/>
                                         <StackPanel Grid.Row="5" Orientation="Horizontal">
                                             <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="First color"/>
                                             <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="Second color"/>
                                             <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="Thert color"/>
                                         </StackPanel>
-                                        
+
                                     </Grid>
 
                                 </Grid>
@@ -655,16 +669,51 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock 
                                     Grid.Row="0"
-                                    Text="Large file" 
-                                    Style="{StaticResource ContextHeaderTextBlock}"
-                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                    Text="{Binding LargeFileText, UpdateSourceTrigger=PropertyChanged}" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1">
-                                    <Button 
-                                        VerticalAlignment="Center"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid
+                                        VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
-                                        Content="Open file" 
+                                        Grid.Row="0"
+                                        Width="Auto" 
+                                        Height="Auto">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock 
+                                            Grid.Row="0" 
+                                            HorizontalAlignment="Center"
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="{Binding HelloText, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        <TextBlock 
+                                            Grid.Row="1" 
+                                            HorizontalAlignment="Center"
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="{Binding LetsPutThingsInOrderText, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </Grid>
+
+                                    <Button 
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource RoundButton}"
                                         Command="{Binding LargeFileOpenFolder}"
                                         Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+
+                                    <TextBlock 
+                                        Grid.Row="2" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Style="{StaticResource BaseTextBlock}"
+                                        Text="{Binding AddFoldersText, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </Grid>
                             <Grid>
@@ -676,10 +725,10 @@
                                 <TextBlock 
                                     Grid.Row="0"
                                     Text="Large file" 
-                                    Style="{StaticResource ContextHeaderTextBlock}"
-                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1" Grid.RowSpan="2">
                                     <ListBox 
+                                        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
                                         ItemsSource="{Binding ClearModel.LargeFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         HorizontalContentAlignment="Stretch">
                                         <ListBox.ItemTemplate>
@@ -687,7 +736,6 @@
                                                 <CheckBox
                                                     HorizontalAlignment="Stretch"
                                                     Template="{StaticResource CheckBoxTemplate}" 
-                                                    IsThreeState="True"
                                                     Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                                     IsChecked="{Binding IsChecked, Mode=TwoWay}">
 
@@ -700,15 +748,13 @@
                                                         <TextBlock 
                                                             Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
                                                             Grid.Column="0"
-                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                             FontFamily="Segoe MDL2 Assets" 
                                                             Text="&#xE838;"
                                                             />
                                                         <TextBlock 
                                                             Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                             Grid.Column="1" 
-                                                            Text="{Binding Path=Item.Path}"
+                                                            Text="{Binding Item.Path}"
                                                             Padding="25,3,0,0"/>
                                                     </Grid>
                                                 </CheckBox>
@@ -716,6 +762,7 @@
                                         </ListBox.ItemTemplate>
                                         <ListBox.ItemContainerStyle>
                                             <Style TargetType="ListBoxItem">
+                                                <Setter Property="Padding" Value="0"/>
                                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                                             </Style>
                                         </ListBox.ItemContainerStyle>
@@ -729,7 +776,7 @@
                                         Content="Clean"
                                         Command="{Binding CleanLargeButton}"/>
                             </Grid>
-                            
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -737,14 +784,13 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock 
                                     Grid.Row="0"
-                                    Text="Duplicate file" 
-                                    Style="{StaticResource ContextHeaderTextBlock}"
-                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                    Text="{Binding DuplicateFileText, UpdateSourceTrigger=PropertyChanged}" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1">
                                     <Button 
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
-                                        Content="Open file" 
+                                        Style="{StaticResource RoundButton}"
                                         Command="{Binding DuplicateFileOpenFolderButton}"
                                         Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
                                 </Grid>
@@ -758,8 +804,7 @@
                                 <TextBlock 
                                     Grid.Row="0"
                                     Text="Duplicate file" 
-                                    Style="{StaticResource ContextHeaderTextBlock}"
-                                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1" Grid.RowSpan="2">
                                     <ListBox 
                                         ItemsSource="{Binding ClearModel.DuplicateFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -769,10 +814,8 @@
                                                 <CheckBox
                                                     HorizontalAlignment="Stretch"
                                                     Template="{StaticResource CheckBoxTemplate}" 
-                                                    IsThreeState="True"
                                                     Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                                     IsChecked="{Binding IsChecked, Mode=TwoWay}">
-
                                                     <Grid 
                                                         HorizontalAlignment="Stretch">
                                                         <Grid.ColumnDefinitions>
@@ -782,15 +825,13 @@
                                                         <TextBlock 
                                                             Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
                                                             Grid.Column="0"
-                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                             FontFamily="Segoe MDL2 Assets" 
                                                             Text="&#xE838;"
                                                             />
                                                         <TextBlock 
                                                             Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
                                                             Grid.Column="1" 
-                                                            Text="{Binding Path=Item.Path}"
+                                                            Text="{Binding Item.Path}"
                                                             Padding="25,3,0,0"/>
                                                     </Grid>
                                                 </CheckBox>
@@ -818,7 +859,7 @@
 
                 </Grid>
 
-                
+
 
             </Frame>
         </NavigationView>

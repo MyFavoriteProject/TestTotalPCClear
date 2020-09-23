@@ -28,7 +28,7 @@
                                   BackgroundSource="HostBackdrop"
                                   TintOpacity="0.05"
                                   TintColor="#3e3e3e"/>
-    <AcrylicBrush x:Key="IsCheckBlockDarkAcrylicBrush"
+    <AcrylicBrush x:Key="IsCheckBlockAcrylicBrush"
                                   BackgroundSource="HostBackdrop"
                                   TintOpacity="0.45"
                                   TintColor="#0078d6"/>

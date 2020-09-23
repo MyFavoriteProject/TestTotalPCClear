@@ -384,8 +384,6 @@ namespace TestTotalPCClear.Model
             bool isExeption = false;
 
             typeCacheAndStorageFiles = new Dictionary<string, List<StorageFile>>();
-            StorageFile storageFile = null;
-            BasicProperties basicProperties = null;
             List<StorageFile> storageFiles = new List<StorageFile>();
             int fileSize;
 
@@ -396,8 +394,10 @@ namespace TestTotalPCClear.Model
                 {
                     try
                     {
-                        storageFile = await StorageFile.GetFileFromPathAsync(filePath);
-                        basicProperties = await storageFile.GetBasicPropertiesAsync();
+                        StorageFile storageFile = await StorageFile.GetFileFromPathAsync(filePath);
+                        BasicProperties basicProperties = await storageFile.GetBasicPropertiesAsync();
+                        storageFiles.Add(storageFile);
+                        fileSize += (int)basicProperties.Size;
                     }
                     catch (Exception) 
                     {
@@ -406,9 +406,6 @@ namespace TestTotalPCClear.Model
 
                     if(isExeption == false)
                     {
-                        storageFiles.Add(storageFile);
-                        fileSize += (int)basicProperties.Size;
-
                         if (this.cacheName[0].Equals(key))
                         {
                             SystemCacheSize = fileSize;
@@ -471,6 +468,7 @@ namespace TestTotalPCClear.Model
 
         public async Task ScannDuplicateFiles()
         {
+            //Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
             ObservableCollection<CheckedListItem<StorageFile>> fileCollection = new ObservableCollection<CheckedListItem<StorageFile>>();
 
             FolderPicker folderPicker = new FolderPicker();
@@ -487,7 +485,7 @@ namespace TestTotalPCClear.Model
                 {
                     var a = fileList[i].GetHashCode();
 
-                    for (int j = 1; j < fileList.Count; j++)
+                    for (int j = i+1; j < fileList.Count; j++)
                     {
                         if(fileList[i].FileType == fileList[j].FileType && i!=j)
                         {
@@ -536,7 +534,10 @@ namespace TestTotalPCClear.Model
             string driveLetter;
 
             List<StorageFolder> drives = new List<StorageFolder>();
+
             StorageFolder removableDevices = KnownFolders.RemovableDevices;
+
+
             IReadOnlyList<StorageFolder> folders = Task.Run(async () => await removableDevices.GetFoldersAsync()).Result;
 
             foreach (StorageFolder removableDevice in folders)

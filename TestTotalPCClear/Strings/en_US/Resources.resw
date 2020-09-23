@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcentColorText" xml:space="preserve">
+    <value>Acent Color</value>
+  </data>
+  <data name="AddFoldersText" xml:space="preserve">
+    <value>Add folders</value>
+  </data>
   <data name="ApplicationCacheText" xml:space="preserve">
     <value>Application cache</value>
   </data>
+  <data name="AutoCleaningAtDeviceStartupText" xml:space="preserve">
+    <value>Auto cleaning at device startup</value>
+  </data>
   <data name="AutoClearingText" xml:space="preserve">
     <value>Auto Clearing</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Auto Start</value>
   </data>
   <data name="BrowserCacheText" xml:space="preserve">
     <value>Browser cache</value>
@@ -135,23 +147,53 @@
   <data name="ComeToUsMoreOftenText" xml:space="preserve">
     <value>Come to us more often ! See you !</value>
   </data>
+  <data name="DarkText" xml:space="preserve">
+    <value>Dark</value>
+  </data>
   <data name="DeleteCacheText" xml:space="preserve">
     <value>Delete cache</value>
   </data>
   <data name="DeselectAllText" xml:space="preserve">
     <value>Deselect all</value>
   </data>
+  <data name="DesignThemeText" xml:space="preserve">
+    <value>Design theme</value>
+  </data>
+  <data name="DuplicateFileText" xml:space="preserve">
+    <value>Duplicate file</value>
+  </data>
   <data name="DuplicateText" xml:space="preserve">
     <value>Duplicate</value>
   </data>
+  <data name="HelloText" xml:space="preserve">
+    <value>Hello !</value>
+  </data>
   <data name="LargeFilesText" xml:space="preserve">
     <value>Large Files</value>
+  </data>
+  <data name="LargeFileText" xml:space="preserve">
+    <value>Large file</value>
+  </data>
+  <data name="LenguageText" xml:space="preserve">
+    <value>Lenguage</value>
+  </data>
+  <data name="LetsPutThingsInOrderText" xml:space="preserve">
+    <value>Let's put things in order?</value>
+  </data>
+  <data name="LightText" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="MailCacheText" xml:space="preserve">
     <value>Mail cache</value>
   </data>
   <data name="OfficeCacheText" xml:space="preserve">
     <value>Office cache</value>
+  </data>
+  <data name="OffText" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="OnText" xml:space="preserve">
+    <value>On</value>
   </data>
   <data name="PropertyText" xml:space="preserve">
     <value>Property</value>
@@ -168,10 +210,16 @@
   <data name="SelectAllText" xml:space="preserve">
     <value>Select all</value>
   </data>
+  <data name="SettingText" xml:space="preserve">
+    <value>Setting</value>
+  </data>
   <data name="SuccessfulCleanText" xml:space="preserve">
     <value>Cleaning Was Successfully !</value>
   </data>
   <data name="SystemCacheText" xml:space="preserve">
     <value>System cache</value>
+  </data>
+  <data name="UserSystemSettingText" xml:space="preserve">
+    <value>User system setting</value>
   </data>
 </root>

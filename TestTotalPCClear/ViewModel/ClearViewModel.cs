@@ -63,6 +63,8 @@ namespace TestTotalPCClear.ViewModel
             this.CleanDuplicateFileButton = new DelegateCommand(CleanDuplicateFileButton_Click);
 
             #endregion
+
+
         }
 
         #endregion
@@ -196,6 +198,23 @@ namespace TestTotalPCClear.ViewModel
         public string SuccessfulCleanText { get=>this.resourceLoader.GetString("SuccessfulCleanText"); }
         public string ComeToUsMoreOftenText { get=>this.resourceLoader.GetString("ComeToUsMoreOftenText"); }
 
+        public string SettingText { get=>this.resourceLoader.GetString("SettingText"); }
+        public string LenguageText { get=>this.resourceLoader.GetString("LenguageText"); }
+        public string AutoCleaningAtDeviceStartupText { get=>this.resourceLoader.GetString("AutoCleaningAtDeviceStartupText"); }
+        public string AutoStart { get=>this.resourceLoader.GetString("AutoStart"); }
+        public string OffText { get=>this.resourceLoader.GetString("OffText"); }
+        public string OnText { get=>this.resourceLoader.GetString("OnText"); }
+        public string DesignThemeText { get=>this.resourceLoader.GetString("DesignThemeText"); }
+        public string LightText { get=>this.resourceLoader.GetString("LightText"); }
+        public string DarkText { get=>this.resourceLoader.GetString("DarkText"); }
+        public string UserSystemSettingText { get=>this.resourceLoader.GetString("UserSystemSettingText"); }
+        public string AcentColorText { get=>this.resourceLoader.GetString("AcentColorText"); }
+        public string LargeFileText { get=>this.resourceLoader.GetString("LargeFileText"); }
+        public string DuplicateFileText { get=>this.resourceLoader.GetString("DuplicateFileText"); }
+        public string HelloText { get=>this.resourceLoader.GetString("HelloText"); }
+        public string LetsPutThingsInOrderText { get=>this.resourceLoader.GetString("LetsPutThingsInOrderText"); }
+        public string AddFoldersText { get=>this.resourceLoader.GetString("AddFoldersText"); }
+
         #endregion
 
         #region Command
@@ -252,10 +271,10 @@ namespace TestTotalPCClear.ViewModel
 
         #region public Methods
 
+        
+
         public async static Task<bool> RequestMicrophonePermission()
         {
-            bool returnValue = true;
-
             try
             {
                 MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
@@ -271,11 +290,11 @@ namespace TestTotalPCClear.ViewModel
             }
             catch (TypeLoadException)
             {
-                returnValue = false;
+                return false;
             }
             catch (UnauthorizedAccessException)
             {
-                returnValue = false;
+                return false;
             }
             catch (Exception exception)
             {
@@ -283,7 +302,7 @@ namespace TestTotalPCClear.ViewModel
 
                 if (exception.HResult == NoCaptureDevicesHResult)
                 {
-                    returnValue = false;
+                    return false;
                 }
                 else
                 {
@@ -370,23 +389,32 @@ namespace TestTotalPCClear.ViewModel
             {
                 this.IsShowScannOrClean = false;
 
-                this.isScann = false;
-
                 //this.clearModel.IsActiveScannOrClean = true;
 
-                this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
-
-                this.ScannOrCleanText = CleanText;
+                try
+                {
+                    this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
+                    this.ScannOrCleanText = CleanText;
+                    this.isScann = false;
+                }
+                catch 
+                {
+                    AccessFileSystem().ConfigureAwait(true);
+                }
             }
             else
             {
-                this.isScann = true;
-
-                this.clearModel.DeleteFileAsync().ConfigureAwait(true);
-
-                this.StateOfScanning = 2;
-
-                this.ScannOrCleanText = ScannText;
+                try
+                {
+                    this.clearModel.DeleteFileAsync().ConfigureAwait(true);
+                    this.ScannOrCleanText = ScannText;
+                    this.StateOfScanning = 2;
+                    this.isScann = true;
+                }
+                catch
+                {
+                    AccessFileSystem().ConfigureAwait(true);
+                }
             }
 
             this.IsShowScannOrClean = true;
@@ -437,6 +465,11 @@ namespace TestTotalPCClear.ViewModel
         private void CleanDuplicateFileButton_Click(object obj)
         {
             this.clearModel.CleanDuplicateFiles().ConfigureAwait(true);
+        }
+
+        private async Task AccessFileSystem()
+        {
+            bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-broadfilesystemaccess"));
         }
 
         #endregion

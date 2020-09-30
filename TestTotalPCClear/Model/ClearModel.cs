@@ -19,7 +19,7 @@ namespace TestTotalPCClear.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName = "")
+        protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -33,8 +33,10 @@ namespace TestTotalPCClear.Model
         private bool isActiveScannOrClean = false;
 
         private string driveLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        ObservableCollection<CheckedListItem<StorageFile>> largeFileCollection;
-        ObservableCollection<CheckedListItem<StorageFile>> duplicateFileCollection;
+        ObservableCollection<CheckedListFile<StorageFile>> largeFileCollection;
+        ObservableCollection<CheckedListItem<StorageFolder>> largeFolderCollection;
+        ObservableCollection<CheckedListFile<StorageFile>> duplicateFileCollection;
+        ObservableCollection<CheckedListItem<StorageFolder>> duplicateFolderCollection;
 
         private bool isSystemCacheSelect = false,
             isApplicationCacheSelect = false,
@@ -197,7 +199,7 @@ namespace TestTotalPCClear.Model
                 OnPropertyChanged(nameof(DeleteCacheSize));
             } 
         }
-        public ObservableCollection<CheckedListItem<StorageFile>> LargeFileCollection
+        public ObservableCollection<CheckedListFile<StorageFile>> LargeFileCollection
         {
             get => this.largeFileCollection;
             set
@@ -209,8 +211,19 @@ namespace TestTotalPCClear.Model
                 }
             }
         }
-
-        public ObservableCollection<CheckedListItem<StorageFile>> DuplicateFileCollection 
+        public ObservableCollection<CheckedListItem<StorageFolder>> LargeFolderCollection
+        {
+            get => this.largeFolderCollection;
+            set
+            {
+                if (this.largeFolderCollection == null || !this.largeFolderCollection.Equals(value))
+                {
+                    this.largeFolderCollection = value;
+                    OnPropertyChanged(nameof(LargeFolderCollection));
+                }
+            }
+        }
+        public ObservableCollection<CheckedListFile<StorageFile>> DuplicateFileCollection 
         { 
             get=>this.duplicateFileCollection; 
             set
@@ -219,6 +232,18 @@ namespace TestTotalPCClear.Model
                 {
                     this.duplicateFileCollection = value;
                     OnPropertyChanged(nameof(DuplicateFileCollection));
+                }
+            }
+        }
+        public ObservableCollection<CheckedListItem<StorageFolder>> DuplicateFolderCollection
+        {
+            get => this.duplicateFolderCollection;
+            set
+            {
+                if (this.duplicateFolderCollection == null || !this.duplicateFolderCollection.Equals(value))
+                {
+                    this.duplicateFolderCollection = value;
+                    OnPropertyChanged(nameof(DuplicateFolderCollection));
                 }
             }
         }
@@ -325,6 +350,8 @@ namespace TestTotalPCClear.Model
             typeCacheAndStorageFiles = new Dictionary<string, List<StorageFile>>();
         }
 
+        #region CacheMethods
+
         public async Task DeleteFileAsync()
         {
             if(DeleteCacheSize != 0)
@@ -375,17 +402,17 @@ namespace TestTotalPCClear.Model
             //this.Default();
         }
 
-        public async Task ScaningSystemCacheAsync()
+        public async Task ScanningSystemCacheAsync()
         {
             this.IsActiveScannOrClean = true;
 
             try
             {
-                await SearchPathes().ConfigureAwait(true);
+                await SearchPathesAsync().ConfigureAwait(true);
             }
-            catch(Exception e)
+            catch(UnauthorizedAccessException UAE)
             {
-                throw new Exception();
+                throw UAE;
             }
 
 
@@ -445,9 +472,24 @@ namespace TestTotalPCClear.Model
             this.IsActiveScannOrClean = false;
         }
 
-        public async Task OpenLargeFolder()
+        #endregion
+
+        #region LargeFolderMatheds
+
+        public async Task<bool> OpenLargeFolderAsync()
         {
-            ObservableCollection<CheckedListItem<StorageFile>> largeFileCollection = new ObservableCollection<CheckedListItem<StorageFile>>();
+            if (this.LargeFileCollection != null)
+            {
+                LargeFileCollection.Clear();
+            }
+            if (this.LargeFolderCollection != null)
+            {
+                LargeFolderCollection.Clear();
+            }
+
+            bool isOpenFolder = false;
+
+            ObservableCollection<CheckedListItem<StorageFolder>> largeFolders = new ObservableCollection<CheckedListItem<StorageFolder>>();
 
             FolderPicker folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
@@ -457,27 +499,72 @@ namespace TestTotalPCClear.Model
 
             if (storageFolder != null)
             {
-                IReadOnlyList<StorageFile> fileList = await PullFilesFromFolder(storageFolder).ConfigureAwait(true);
-                foreach(StorageFile storageFile in fileList)
+                isOpenFolder = true;
+
+                IReadOnlyList<StorageFolder> fileList = await PullFoldersFromFolderAsync(storageFolder).ConfigureAwait(true);
+                foreach(StorageFolder folder in fileList)
                 {
-                    largeFileCollection.Add(new CheckedListItem<StorageFile>(storageFile));
+                    largeFolders.Add(new CheckedListItem<StorageFolder>(folder));
                 }
             }
 
-            this.LargeFileCollection = largeFileCollection;
+            this.LargeFolderCollection = largeFolders;
+
+            return isOpenFolder;
         }
 
-        public async Task CleanLargeFiles()
+        public bool IsSelectedLargeFileDeleteFolder()
+        {
+            bool result = IsSelectedDeleteFolderAsync(LargeFolderCollection);
+
+            return result;
+        }
+
+        public void LargeFileDeleteFolder()
+        {
+            ObservableCollection<CheckedListItem<StorageFolder>> checkedLists = DeleteFolder(this.LargeFolderCollection);
+
+            if (!checkedLists.Equals(this.LargeFolderCollection))
+            {
+                this.LargeFolderCollection = checkedLists;
+            }
+        }
+
+        public async Task ScanningLargeFolderAsync()
+        {
+            List<StorageFile> storageFiles = await PullFilesFromFolderAsync(this.LargeFolderCollection).ConfigureAwait(true);
+
+            ObservableCollection<CheckedListFile<StorageFile>> storageFileColl = new ObservableCollection<CheckedListFile<StorageFile>>();
+
+            foreach (StorageFile storageFile in storageFiles)
+            {
+                BasicProperties properties = await storageFile.GetBasicPropertiesAsync();
+
+                storageFileColl.Add(new CheckedListFile<StorageFile>(storageFile, properties));
+            }
+
+            this.LargeFileCollection = storageFileColl;
+        }
+
+        public async Task CleanLargeFilesAsync()
         {
             List<StorageFile> largeFileList = this.LargeFileCollection.Where(c => c.IsChecked == true).Select(c=>c.Item).ToList();
 
             LargeFileCollection.Clear();
         }
 
-        public async Task ScannDuplicateFiles()
+        #endregion
+
+        #region DuplicateMEthods
+
+        public async Task<bool> OpenDuplicateFolderAsync()
         {
-            //Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-            ObservableCollection<CheckedListItem<StorageFile>> fileCollection = new ObservableCollection<CheckedListItem<StorageFile>>();
+            this.DuplicateFolderCollection.Clear();
+            this.DuplicateFileCollection.Clear();
+
+            bool isOpenFolder = false;
+
+            ObservableCollection<CheckedListItem<StorageFolder>> folderCollection = new ObservableCollection<CheckedListItem<StorageFolder>>();
 
             FolderPicker folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
@@ -487,7 +574,52 @@ namespace TestTotalPCClear.Model
 
             if (storageFolder != null)
             {
-                List<StorageFile> fileList = await PullFilesFromFolder(storageFolder).ConfigureAwait(true);
+                isOpenFolder = true;
+                List<StorageFolder> storageFolders = await PullFoldersFromFolderAsync(storageFolder);
+
+                foreach(StorageFolder folder in storageFolders)
+                {
+                    folderCollection.Add(new CheckedListItem<StorageFolder>(folder));
+                }
+
+            }
+
+            this.DuplicateFolderCollection = folderCollection;
+
+            return isOpenFolder;
+        }
+
+        public bool IsSelectedDuplicateDeleteFolder()
+        {
+            bool result = IsSelectedDeleteFolderAsync(DuplicateFolderCollection);
+
+            return result;
+        }
+
+        public void DuplicateDeleteFolder()
+        {
+            ObservableCollection<CheckedListItem<StorageFolder>> checkedLists = DeleteFolder(this.DuplicateFolderCollection);
+
+            if (!checkedLists.Equals(this.DuplicateFolderCollection))
+            {
+                this.DuplicateFolderCollection = checkedLists;
+            }
+        }
+
+        public async Task ScannDuplicateFilesAsync()
+        {
+            //Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
+            ObservableCollection<CheckedListFile<StorageFile>> fileCollection = new ObservableCollection<CheckedListFile<StorageFile>>();
+
+            FolderPicker folderPicker = new FolderPicker();
+            folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder storageFolder = await folderPicker.PickSingleFolderAsync();
+
+            if (storageFolder != null)
+            {
+                List<StorageFile> fileList = await PullFilesFromFolderAsync(DuplicateFolderCollection).ConfigureAwait(true);
 
                 for(int i = 0; i< fileList.Count; i++)
                 {
@@ -507,7 +639,7 @@ namespace TestTotalPCClear.Model
 
                                 if (byteI.SequenceEqual(byteJ))
                                 {
-                                    fileCollection.Add(new CheckedListItem<StorageFile>(fileList[j]));
+                                    fileCollection.Add(new CheckedListFile<StorageFile>(fileList[j], basicJFile));
                                 }
                             }
                         }
@@ -518,7 +650,7 @@ namespace TestTotalPCClear.Model
             }
         }
 
-        public async Task CleanDuplicateFiles()
+        public async Task CleanDuplicateFilesAsync()
         {
             List<StorageFile> duplicateFileList = this.DuplicateFileCollection.Where(c => c.IsChecked == true).Select(c => c.Item).ToList();
 
@@ -527,9 +659,11 @@ namespace TestTotalPCClear.Model
 
         #endregion
 
+        #endregion
+
         #region private Methods
 
-        private async Task SearchPathes()
+        private async Task SearchPathesAsync()
         {
             this.Default();
 
@@ -552,7 +686,9 @@ namespace TestTotalPCClear.Model
                 driveLetter = removableDevice.Path.Substring(0, 1).ToUpper();
 
                 if (driveLetters.IndexOf(driveLetter) > -1)
+                {
                     removableDriveLetters += driveLetter;
+                }
             }
 
             for (int curDrive = 0; curDrive < driveLettersLen; curDrive++)
@@ -604,7 +740,7 @@ namespace TestTotalPCClear.Model
             this.typeCacheAndPathes.Add(key, realPathes);
         }
 
-        private async Task<IReadOnlyList<StorageFolder>> PullFoldersFromFolder(StorageFolder storageFolder)
+        private async Task<List<StorageFolder>> PullFoldersFromFolderAsync(StorageFolder storageFolder)
         {
             bool isHaveFolder = true;
 
@@ -641,23 +777,48 @@ namespace TestTotalPCClear.Model
             return storageFoldersList;
         }
 
-        private async Task<List<StorageFile>> PullFilesFromFolder(StorageFolder storageFolder)
+        private async Task<List<StorageFile>> PullFilesFromFolderAsync(ObservableCollection<CheckedListItem<StorageFolder>> checkedListItems)
         {
             List<StorageFile> storageFileList = new List<StorageFile>();
 
-            IReadOnlyList<StorageFolder> folderList = await PullFoldersFromFolder(storageFolder).ConfigureAwait(true);
-
-            foreach (StorageFolder folder in folderList)
+            foreach (CheckedListItem<StorageFolder> folder in this.LargeFolderCollection)
             {
-                IReadOnlyList<StorageFile> fileList = await folder.GetFilesAsync();
+                IReadOnlyList<StorageFile> fileList = await folder.Item.GetFilesAsync();
 
                 foreach(StorageFile storageFile in fileList)
                 {
                     storageFileList.Add(storageFile);
                 }
+
+                GC.Collect(2);
             }
 
             return storageFileList;
+        }
+
+        private bool IsSelectedDeleteFolderAsync(ObservableCollection<CheckedListItem<StorageFolder>> checkedListItems)
+        {
+            bool isFounded = checkedListItems.Any(c => c.IsChecked == true);
+
+            return isFounded;
+        }
+
+        private ObservableCollection<CheckedListItem<StorageFolder>> DeleteFolder(ObservableCollection<CheckedListItem<StorageFolder>> checkedListItems)
+        {
+            ObservableCollection<CheckedListItem<StorageFolder>> checkedLists = new ObservableCollection<CheckedListItem<StorageFolder>>();
+
+
+            foreach (CheckedListItem<StorageFolder> listItem in checkedListItems)
+            {
+                if (listItem.IsChecked != true)
+                {
+                    checkedLists.Add(listItem);
+                }
+
+                GC.Collect(2);
+            }
+
+            return checkedLists;
         }
 
         #endregion

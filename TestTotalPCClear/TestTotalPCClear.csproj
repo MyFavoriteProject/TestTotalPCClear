@@ -120,9 +120,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CommandImplementation\DelegateCommand.cs" />
+    <Compile Include="CustomXamlElements\CustomListBox.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\CheckedListFile.cs" />
+    <Compile Include="Model\CheckedListFolder.cs" />
     <Compile Include="Model\CheckedListItem.cs" />
     <Compile Include="Model\ClearModel.cs" />
     <Compile Include="MultiViewControl.xaml.cs">

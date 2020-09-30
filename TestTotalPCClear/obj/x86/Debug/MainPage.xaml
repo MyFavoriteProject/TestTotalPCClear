@@ -9,12 +9,13 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core" 
     xmlns:muxc="using:Windows.UI.Xaml.Controls"
-    xmlns:binding="using:TestTotalPCClear.Themes.BindingHelpers">
+    xmlns:binding="using:TestTotalPCClear.Themes.BindingHelpers"
+    xmlns:сustom="using:TestTotalPCClear.CustomXamlElements">
 
     <Page.Resources>
 
         <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
-            
+
             <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
@@ -27,8 +28,8 @@
                                 <Setter Target="CheckGlyph.Opacity" Value="1"/>
                             </VisualState.Setters>
                             <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridCheckBox"
-                                           Storyboard.TargetProperty="Background">
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="GridCheckBox" 
+                                                               Storyboard.TargetProperty="Background">
                                     <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IsCheckBlockAcrylicBrush}" />
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
@@ -40,11 +41,6 @@
                                 <Setter Target="IndeterminateGlyph.Opacity" Value="1"/>
                             </VisualState.Setters>
                         </VisualState>
-                        <!-- This Storyboard is equivalent to the Setter. -->
-                        <!--<Storyboard>
-                        <DoubleAnimation Duration="0" To="1"
-                         Storyboard.TargetName="IndeterminateGlyph" Storyboard.TargetProperty="Opacity"/>
-                    </Storyboard>-->
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Grid x:Name="GridCheckBox">
@@ -69,19 +65,15 @@
                         Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
                         StrokeThickness="{ThemeResource CheckBoxBorderThemeThickness}"
                         UseLayoutRounding="False"/>
-                    <!--<Path 
-                        Grid.Column="1" 
-                        x:Name="CheckGlyph"
-                        Data="M103,240 L111,240 119,248 127,240 135,240 123,252 135,264 127,264 119,257 111,264 103,264 114,252 z"
-                        Fill="{ThemeResource CheckBoxForegroundThemeBrush}"
-                        FlowDirection="LeftToRight"
-                        Height="10" Width="12" Opacity="0" Stretch="Fill"/>-->
+
                     <Path 
-                        Grid.Column="1" x:Name="CheckGlyph" Data="M0,4 5,9 9,0 4,5" 
+                        Grid.Column="1" 
+                        x:Name="CheckGlyph" 
+                        Data="M0,4 5,9 9,0 4,5" 
                         Fill="{ThemeResource CheckBoxForegroundThemeBrush}" 
                         FlowDirection="LeftToRight" 
                         Height="14" Width="16" Opacity="0" Stretch="Fill"/>
-                    
+
                     <Ellipse
                         Grid.Column="1"
                         x:Name="IndeterminateGlyph"
@@ -89,8 +81,8 @@
                         Height="8" Width="8" Opacity="0" UseLayoutRounding="False" />
                 </Grid>
             </Border>
-            
-            
+
+
 
         </ControlTemplate>
 
@@ -159,6 +151,7 @@
             <Setter Property="Height" Value="Auto"/>
             <Setter Property="Width" Value="Auto"/>
         </Style>
+
         <Style x:ConnectionId='10' x:Name="HeaderButtonBase" TargetType="Button">
             <Setter Property="FontSize" Value="19"/>
             <Setter Property="Margin" Value="0"/>
@@ -181,6 +174,24 @@
             <Setter Property="Content" Value="&#xE948;"/>
             <Setter Property="Padding" Value="25"/>
         </Style>
+
+        <Style x:ConnectionId='13' x:Name="RoundButtonSmall" TargetType="Button">
+            <Setter Property="Height" Value="37px"/>
+            <Setter Property="Width" Value="37px"/>
+            <Setter Property="Background" Value="#0078d7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="Content" Value="&#xE948;"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style x:ConnectionId='14' x:Name="ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+
     </Page.Resources>
 
     <Grid >
@@ -191,11 +202,10 @@
             RelativePanel.AlignLeftWithPanel="True">
 
             <NavigationView.MenuItems>
-                
+
                 <NavigationViewItem 
                     Icon="Delete" 
                     Content="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                    
                     >
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
@@ -205,7 +215,7 @@
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
-                
+
                 <NavigationViewItem Icon="Page2" Content="{Binding LargeFilesText, UpdateSourceTrigger=PropertyChanged}">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
@@ -252,7 +262,7 @@
             </NavigationView.MenuItems>
             <Frame>
                 <Grid Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}">
-                    <local:MultiViewControl x:ConnectionId='24' x:Name="mltView" >
+                    <local:MultiViewControl x:ConnectionId='26' x:Name="mltView" >
                         <local:MultiViewControl.Views>
 
                             <StackPanel>
@@ -267,8 +277,6 @@
 
                                 <StackPanel Grid.Row="0">
                                     <Grid Height="118px">
-
-
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
@@ -683,7 +691,8 @@
                                         HorizontalAlignment="Center"
                                         Grid.Row="0"
                                         Width="Auto" 
-                                        Height="Auto">
+                                        Height="Auto"
+                                        Margin="0,0,0,28">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
@@ -692,13 +701,17 @@
                                             Grid.Row="0" 
                                             HorizontalAlignment="Center"
                                             Style="{StaticResource BaseTextBlock}"
-                                            Text="{Binding HelloText, UpdateSourceTrigger=PropertyChanged}"/>
+                                            Text="{Binding HelloText, UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="24"
+                                            Margin="0,0,0,6"/>
 
                                         <TextBlock 
                                             Grid.Row="1" 
                                             HorizontalAlignment="Center"
                                             Style="{StaticResource BaseTextBlock}"
-                                            Text="{Binding LetsPutThingsInOrderText, UpdateSourceTrigger=PropertyChanged}"/>
+                                            Text="{Binding LetsPutThingsInOrderText, UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="24"
+                                            Margin="0,6,0,0"/>
                                     </Grid>
 
                                     <Button 
@@ -713,7 +726,9 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Style="{StaticResource BaseTextBlock}"
-                                        Text="{Binding AddFoldersText, UpdateSourceTrigger=PropertyChanged}"/>
+                                        Text="{Binding AddFoldersText, UpdateSourceTrigger=PropertyChanged}"
+                                        FontSize="15"
+                                        Margin="0,21,0,0"/>
                                 </Grid>
                             </Grid>
                             <Grid>
@@ -724,19 +739,26 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock 
                                     Grid.Row="0"
-                                    Text="Large file" 
+                                    Text="{Binding LargeFileText, UpdateSourceTrigger=PropertyChanged}" 
                                     Style="{StaticResource ContextHeaderTextBlock}"/>
+                                <Button
+                                    Style="{StaticResource RoundButtonSmall}"
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    Command="{Binding LargeFileDeleteFolderButton}"/>
                                 <Grid Grid.Row="1" Grid.RowSpan="2">
-                                    <ListBox 
+                                    <сustom:CustomListBox 
                                         Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                        ItemsSource="{Binding ClearModel.LargeFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        HorizontalContentAlignment="Stretch">
-                                        <ListBox.ItemTemplate>
+                                        ItemsSource="{Binding ClearModel.LargeFolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                                        HorizontalContentAlignment="Stretch"
+                                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
+                                        <сustom:CustomListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <CheckBox
                                                     HorizontalAlignment="Stretch"
                                                     Template="{StaticResource CheckBoxTemplate}" 
-                                                    Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
                                                     IsChecked="{Binding IsChecked, Mode=TwoWay}">
 
                                                     <Grid 
@@ -759,21 +781,108 @@
                                                     </Grid>
                                                 </CheckBox>
                                             </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                        <ListBox.ItemContainerStyle>
-                                            <Style TargetType="ListBoxItem">
-                                                <Setter Property="Padding" Value="0"/>
-                                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                            </Style>
-                                        </ListBox.ItemContainerStyle>
-                                    </ListBox>
+                                        </сustom:CustomListBox.ItemTemplate>
+                                    </сustom:CustomListBox>
                                 </Grid>
+                                
                                 <Button 
                                         Grid.Row="2"
                                         VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
                                         Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="Clean"
+                                        Content="{Binding ScannText, UpdateSourceTrigger=PropertyChanged}"
+                                        Command="{Binding LargeFileScannFolder}"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="{Binding LargeFileText, UpdateSourceTrigger=PropertyChanged}" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
+                                <StackPanel Grid.Row="1" Grid.RowSpan="2">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock  
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="Name" 
+                                            Grid.Column="0"/>
+                                        <TextBlock 
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="Size" 
+                                            Grid.Column="1"/>
+                                        <TextBlock
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="Date" 
+                                            Grid.Column="2"/>
+
+                                    </Grid>
+                                    <сustom:CustomListBox 
+                                        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        ItemsSource="{Binding ClearModel.LargeFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                                        HorizontalContentAlignment="Stretch"
+                                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
+                                        <сustom:CustomListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    HorizontalAlignment="Stretch"
+                                                    Template="{StaticResource CheckBoxTemplate}" 
+                                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+
+                                                    <Grid 
+                                                        HorizontalAlignment="Stretch">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30px"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="65px"/>
+                                                            <ColumnDefinition Width="138px"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                                            Grid.Column="0"
+                                                            FontFamily="Segoe MDL2 Assets" 
+                                                            Text="&#xE7C3;"
+                                                            />
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Grid.Column="1" 
+                                                            Text="{Binding Item.DisplayName}"
+                                                            Padding="25,3,0,0"/>
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Grid.Column="3" 
+                                                            HorizontalAlignment="Right"
+                                                            Text="{Binding BasicProperties.Size}"
+                                                            Padding="13,3,13,0"/>
+                                                        <TextBlock 
+                                                            binding:BackgroundBindingHelper.Background="White"
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Grid.Column="4" 
+                                                            Text="{Binding Date}"
+                                                            Padding="18,2,16,0"/>
+                                                    </Grid>
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </сustom:CustomListBox.ItemTemplate>
+                                    </сustom:CustomListBox>
+                                </StackPanel>
+                                <Button 
+                                        Grid.Row="2"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource ButtonRoundedCorners}"
+                                        Content="{Binding CleanText, UpdateSourceTrigger=PropertyChanged}"
                                         Command="{Binding CleanLargeButton}"/>
                             </Grid>
 
@@ -787,13 +896,116 @@
                                     Text="{Binding DuplicateFileText, UpdateSourceTrigger=PropertyChanged}" 
                                     Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1">
-                                    <Button 
-                                        VerticalAlignment="Center"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid
+                                        VerticalAlignment="Bottom"
                                         HorizontalAlignment="Center"
+                                        Grid.Row="0"
+                                        Width="Auto" 
+                                        Height="Auto"
+                                        Margin="0,0,0,28">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock 
+                                            Grid.Row="0" 
+                                            HorizontalAlignment="Center"
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="{Binding HelloText, UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="24"
+                                            Margin="0,0,0,6"/>
+
+                                        <TextBlock 
+                                            Grid.Row="1" 
+                                            HorizontalAlignment="Center"
+                                            Style="{StaticResource BaseTextBlock}"
+                                            Text="{Binding LetsPutThingsInOrderText, UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="24"
+                                            Margin="0,6,0,0"/>
+                                    </Grid>
+                                    <Button 
+                                        HorizontalAlignment="Center"
+                                        Grid.Row="1"
                                         Style="{StaticResource RoundButton}"
                                         Command="{Binding DuplicateFileOpenFolderButton}"
                                         Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                                    <TextBlock 
+                                        Grid.Row="2" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Style="{StaticResource BaseTextBlock}"
+                                        Text="{Binding AddFoldersText, UpdateSourceTrigger=PropertyChanged}"
+                                        FontSize="15"
+                                        Margin="0,21,0,0"/>
                                 </Grid>
+                            </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    Grid.Row="0"
+                                    Text="{Binding LargeFileText, UpdateSourceTrigger=PropertyChanged}" 
+                                    Style="{StaticResource ContextHeaderTextBlock}"/>
+                                <Button
+                                    Style="{StaticResource RoundButtonSmall}"
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    Command="{Binding DuplicateFileDeleteFolderButton}"/>
+                                <Grid Grid.Row="1" Grid.RowSpan="2">
+                                    <сustom:CustomListBox 
+                                        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        ItemsSource="{Binding ClearModel.DuplicateFolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                                        HorizontalContentAlignment="Stretch"
+                                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
+                                        <сustom:CustomListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                    HorizontalAlignment="Stretch"
+                                                    Template="{StaticResource CheckBoxTemplate}" 
+                                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+
+                                                    <Grid 
+                                                        HorizontalAlignment="Stretch">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30px"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                                            Grid.Column="0"
+                                                            FontFamily="Segoe MDL2 Assets" 
+                                                            Text="&#xE838;"
+                                                            />
+                                                        <TextBlock 
+                                                            Style="{StaticResource TextBlockInCheckBoxForText}"
+                                                            Grid.Column="1" 
+                                                            Text="{Binding Item.Path}"
+                                                            Padding="25,3,0,0"/>
+                                                    </Grid>
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </сustom:CustomListBox.ItemTemplate>
+                                    </сustom:CustomListBox>
+                                </Grid>
+
+                                <Button 
+                                        Grid.Row="2"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource ButtonRoundedCorners}"
+                                        Content="{Binding ScannText, UpdateSourceTrigger=PropertyChanged}"
+                                        Command="{Binding DuplicateScannFolderButton}"/>
                             </Grid>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -806,10 +1018,13 @@
                                     Text="Duplicate file" 
                                     Style="{StaticResource ContextHeaderTextBlock}"/>
                                 <Grid Grid.Row="1" Grid.RowSpan="2">
-                                    <ListBox 
+                                    <сustom:CustomListBox 
                                         ItemsSource="{Binding ClearModel.DuplicateFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        HorizontalContentAlignment="Stretch">
-                                        <ListBox.ItemTemplate>
+                                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                                        HorizontalContentAlignment="Stretch"
+                                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
+                                        <сustom:CustomListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <CheckBox
                                                     HorizontalAlignment="Stretch"
@@ -836,13 +1051,8 @@
                                                     </Grid>
                                                 </CheckBox>
                                             </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                        <ListBox.ItemContainerStyle>
-                                            <Style TargetType="ListBoxItem">
-                                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                            </Style>
-                                        </ListBox.ItemContainerStyle>
-                                    </ListBox>
+                                        </сustom:CustomListBox.ItemTemplate>
+                                    </сustom:CustomListBox>
                                 </Grid>
                                 <Button 
                                         Grid.Row="2"
@@ -859,12 +1069,10 @@
 
                 </Grid>
 
-
-
             </Frame>
         </NavigationView>
 
-        
+
     </Grid>
 
 </Page>

@@ -10,6 +10,9 @@ using TestTotalPCClear.Themes;
 using System;
 using System.Threading.Tasks;
 using Windows.Media.Capture;
+using Windows.UI.Xaml.Media;
+using Windows.UI;
+using System.Collections.ObjectModel;
 
 namespace TestTotalPCClear.ViewModel
 {
@@ -25,12 +28,12 @@ namespace TestTotalPCClear.ViewModel
         private string scannOrCleanText;
 
         private int stateOfScanning;
-        private int systemCacheCount = 0;
-        private int sizeSystemCache;
 
         private bool isScann = true;
         private bool isShowScannOrClean = true;
         private bool isShowSelectOrDeselectButton = false;
+
+        ContentDialog deleteDialog;
 
         #endregion
 
@@ -43,6 +46,8 @@ namespace TestTotalPCClear.ViewModel
             this.languagesList = new List<string>() { "English", "Русский"};
             ResourceContext.SetGlobalQualifierValue("Language", "en-US");
             this.ScannOrCleanText = ScannText;
+
+            DisplayDeleteDialog();
 
             #region Event Subscription
 
@@ -58,8 +63,12 @@ namespace TestTotalPCClear.ViewModel
             this.ThemeDarkRadioButton = new DelegateCommand(ThemeDarkRadioButton_Click);
             this.ThemeLightRadioButton = new DelegateCommand(ThemeLightRadioButton_Click);
             this.LargeFileOpenFolder = new DelegateCommand(LargeFileOpenFolder_Click);
+            this.LargeFileDeleteFolderButton = new DelegateCommand(LargeFileDeleteFolderButton_Click);
+            this.LargeFileScannFolder = new DelegateCommand(LargeFileScannFolder_Click);
             this.CleanLargeButton = new DelegateCommand(CleanLargeButton_Click);
             this.DuplicateFileOpenFolderButton = new DelegateCommand(DuplicateFileOpenFolderButton_Click);
+            this.DuplicateFileDeleteFolderButton = new DelegateCommand(DuplicateFileDeleteFolderButton_click);
+            this.DuplicateScannFolderButton = new DelegateCommand(DuplicateScannFolderButton_Click);
             this.CleanDuplicateFileButton = new DelegateCommand(CleanDuplicateFileButton_Click);
 
             #endregion
@@ -110,6 +119,16 @@ namespace TestTotalPCClear.ViewModel
                     OnPropertyChanged(nameof(StateOfScanning));
                 }
             }
+        }
+
+        public ContentDialog DeleteDialog 
+        { 
+            get=>this.deleteDialog;
+            set
+            {
+                this.deleteDialog = value;
+                OnPropertyChanged(nameof(DeleteDialog));
+            } 
         }
 
         #endregion
@@ -231,8 +250,12 @@ namespace TestTotalPCClear.ViewModel
         public ICommand ThemeDarkRadioButton { get; set; }
         public ICommand ThemeLightRadioButton { get; set; }
         public ICommand LargeFileOpenFolder { get; set; }
+        public ICommand LargeFileScannFolder { get; set; }
+        public ICommand LargeFileDeleteFolderButton { get; set; }
         public ICommand CleanLargeButton { get; set; }
         public ICommand DuplicateFileOpenFolderButton { get; set; }
+        public ICommand DuplicateFileDeleteFolderButton { get; set; }
+        public ICommand DuplicateScannFolderButton { get; set; }
         public ICommand CleanDuplicateFileButton { get; set; }
 
         #endregion
@@ -271,46 +294,7 @@ namespace TestTotalPCClear.ViewModel
 
         #region public Methods
 
-        
 
-        public async static Task<bool> RequestMicrophonePermission()
-        {
-            try
-            {
-                MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
-                {
-                    StreamingCaptureMode = StreamingCaptureMode.Audio,
-                    MediaCategory = MediaCategory.Speech
-                };
-
-                using (MediaCapture capture = new MediaCapture())
-                {
-                    await capture.InitializeAsync(settings);
-                }
-            }
-            catch (TypeLoadException)
-            {
-                return false;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return false;
-            }
-            catch (Exception exception)
-            {
-                int NoCaptureDevicesHResult = -1072845856;
-
-                if (exception.HResult == NoCaptureDevicesHResult)
-                {
-                    return false;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return true;
-        }
 
         #endregion
 
@@ -355,7 +339,7 @@ namespace TestTotalPCClear.ViewModel
 
         private void DuplicateButton_Click(object obj)
         {
-            this.StateOfScanning = 6;
+            this.StateOfScanning = 7;
         }
 
         private void AutoClearingButton_Click(object obj)
@@ -390,15 +374,19 @@ namespace TestTotalPCClear.ViewModel
 
                 try
                 {
-                    await this.clearModel.ScaningSystemCacheAsync().ConfigureAwait(true);
+                    await this.clearModel.ScanningSystemCacheAsync().ConfigureAwait(true);
                     this.IsShowScannOrClean = false;
                     this.ScannOrCleanText = CleanText;
                     this.isScann = false;
                 }
-                catch (Exception e)
+                catch (UnauthorizedAccessException e)
                 {
                     this.clearModel.IsActiveScannOrClean = false;
                     await AccessFileSystem().ConfigureAwait(true);
+                }
+                catch(Exception e)
+                {
+
                 }
             }
             else
@@ -410,10 +398,14 @@ namespace TestTotalPCClear.ViewModel
                     this.StateOfScanning = 2;
                     this.isScann = true;
                 }
-                catch
+                catch (UnauthorizedAccessException e)
                 {
                     this.clearModel.IsActiveScannOrClean = false;
                     await AccessFileSystem().ConfigureAwait(true);
+                }
+                catch (Exception e)
+                {
+
                 }
             }
 
@@ -443,33 +435,98 @@ namespace TestTotalPCClear.ViewModel
             App.ThemeManager.LoadTheme(ThemeManager.DarkThemePath);
         }
 
-        private void LargeFileOpenFolder_Click(object obj)
+        private async void LargeFileOpenFolder_Click(object obj)
         {
-            this.clearModel.OpenLargeFolder().ConfigureAwait(true);
+            bool result = await this.clearModel.OpenLargeFolderAsync().ConfigureAwait(true);
 
-            this.StateOfScanning = 5;
+            if(result == true)
+            {
+                this.StateOfScanning = 5;
+            }
+        }
+
+        private async void LargeFileDeleteFolderButton_Click(object obj)
+        {
+            bool isSelected = this.clearModel.IsSelectedLargeFileDeleteFolder();
+
+            if (isSelected == true)
+            {
+                await this.deleteDialog.ShowAsync();
+            }
+        }
+
+        private async void LargeFileScannFolder_Click(object obj)
+        {
+            await this.clearModel.ScanningLargeFolderAsync().ConfigureAwait(true);
+
+            this.StateOfScanning = 6;
         }
 
         private void CleanLargeButton_Click(object obj)
         {
-            this.clearModel.CleanLargeFiles().ConfigureAwait(true);
+            this.clearModel.CleanLargeFilesAsync().ConfigureAwait(true);
         }
 
-        private void DuplicateFileOpenFolderButton_Click(object obj)
+        private async void DuplicateFileOpenFolderButton_Click(object obj)
         {
-            this.clearModel.ScannDuplicateFiles();
+            bool result = await this.clearModel.OpenDuplicateFolderAsync();
 
-            this.StateOfScanning = 7;
+            if(result == true)
+            {
+                this.StateOfScanning = 7;
+            }
+        }
+
+        private async void DuplicateFileDeleteFolderButton_click(object obj)
+        {
+            bool result = this.clearModel.IsSelectedDuplicateDeleteFolder();
+
+            if(result == true)
+            {
+                await this.deleteDialog.ShowAsync();
+            }
+        }
+
+        private async void DuplicateScannFolderButton_Click(object obj)
+        {
+            await this.clearModel.ScannDuplicateFilesAsync();
+
+            this.StateOfScanning = 8;
         }
 
         private void CleanDuplicateFileButton_Click(object obj)
         {
-            this.clearModel.CleanDuplicateFiles().ConfigureAwait(true);
+            this.clearModel.CleanDuplicateFilesAsync().ConfigureAwait(true);
         }
 
         private async Task AccessFileSystem()
         {
             bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-broadfilesystemaccess"));
+        }
+
+        private void DisplayDeleteDialog()
+        {
+            this.deleteDialog = new ContentDialog()
+            {
+                Title = "Delete ?",
+                Content = "Delete folder from list?",
+                PrimaryButtonText = "Detet",
+                CloseButtonText = "Cancel"
+            };
+
+            this.deleteDialog.PrimaryButtonClick += DeleteDialog_PrimaryButtonClick;
+        }
+
+        private void DeleteDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            if(this.StateOfScanning == 5)
+            {
+                this.clearModel.LargeFileDeleteFolder();
+            }
+            if(this.StateOfScanning == 7)
+            {
+                this.clearModel.DuplicateDeleteFolder();
+            }
         }
 
         #endregion
@@ -479,7 +536,7 @@ namespace TestTotalPCClear.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName = "")
+        protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

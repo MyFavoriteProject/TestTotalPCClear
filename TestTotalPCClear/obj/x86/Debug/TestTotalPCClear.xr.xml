@@ -15,19 +15,32 @@
     <RootPropertyPathName Name="CleanDuplicateFileButton" />
     <RootPropertyPathName Name="ClearModel" />
     <RootPropertyPathName Name="DuplicateFileCollection" />
+    <RootPropertyPathName Name="CheckBlockDarkAcrylicBrush" />
     <RootPropertyPathName Name="CheckBlockLightAcrylicBrush" />
     <RootPropertyPathName Name="IsChecked" />
     <RootPropertyPathName Name="Item" />
     <RootPropertyPathName Name="Path" />
-    <RootPropertyPathName Name="DuplicateFileOpenFolderButton" />
-    <RootPropertyPathName Name="DuplicateFileText" />
-    <RootPropertyPathName Name="CleanLargeButton" />
-    <RootPropertyPathName Name="LargeFileCollection" />
+    <RootPropertyPathName Name="ScannText" />
+    <RootPropertyPathName Name="DuplicateScannFolderButton" />
+    <RootPropertyPathName Name="DuplicateFolderCollection" />
+    <RootPropertyPathName Name="DuplicateFileDeleteFolderButton" />
+    <RootPropertyPathName Name="LargeFileText" />
     <RootPropertyPathName Name="AddFoldersText" />
-    <RootPropertyPathName Name="LargeFileOpenFolder" />
+    <RootPropertyPathName Name="DuplicateFileOpenFolderButton" />
     <RootPropertyPathName Name="LetsPutThingsInOrderText" />
     <RootPropertyPathName Name="HelloText" />
-    <RootPropertyPathName Name="LargeFileText" />
+    <RootPropertyPathName Name="DuplicateFileText" />
+    <RootPropertyPathName Name="CleanText" />
+    <RootPropertyPathName Name="CleanLargeButton" />
+    <RootPropertyPathName Name="LargeFileCollection" />
+    <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="BasicProperties" />
+    <RootPropertyPathName Name="Size" />
+    <RootPropertyPathName Name="DisplayName" />
+    <RootPropertyPathName Name="LargeFileScannFolder" />
+    <RootPropertyPathName Name="LargeFolderCollection" />
+    <RootPropertyPathName Name="LargeFileDeleteFolderButton" />
+    <RootPropertyPathName Name="LargeFileOpenFolder" />
     <RootPropertyPathName Name="AcentColorText" />
     <RootPropertyPathName Name="UserSystemSettingText" />
     <RootPropertyPathName Name="ThemeDarkRadioButton" />
@@ -52,7 +65,6 @@
     <RootPropertyPathName Name="IsBrowserCacheSelect" />
     <RootPropertyPathName Name="BrowserCacheSize" />
     <RootPropertyPathName Name="BrowserCacheText" />
-    <RootPropertyPathName Name="CheckBlockDarkAcrylicBrush" />
     <RootPropertyPathName Name="IsOfficeCacheSelect" />
     <RootPropertyPathName Name="OfficeCacheSize" />
     <RootPropertyPathName Name="OfficeCacheText" />
@@ -151,6 +163,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem" />
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
@@ -286,11 +299,13 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
+    <RootType FullName="TestTotalPCClear.CustomXamlElements.CustomListBox">
       <RootProperty Name="ItemsSource" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="EvenListBoxItemBackground" />
+      <RootProperty Name="OddListBoxItemBackground" />
+      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
@@ -303,7 +318,6 @@
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="FontSize" />
       <RootProperty Name="Margin" />

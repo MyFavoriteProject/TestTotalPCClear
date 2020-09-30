@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.FileProperties;
 
 namespace TestTotalPCClear.Model
 {
-    public class CheckedListItem<T> : INotifyPropertyChanged
+    public class CheckedListItem<T> : BaseModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,10 +31,9 @@ namespace TestTotalPCClear.Model
             set
             {
                 item = value;
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("Item"));
+                OnPropertyChanged(nameof(Item));
             }
         }
-
 
         public bool IsChecked
         {
@@ -40,7 +41,7 @@ namespace TestTotalPCClear.Model
             set
             {
                 isChecked = value;
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("IsChecked"));
+                OnPropertyChanged(nameof(IsChecked));
             }
         }
     }

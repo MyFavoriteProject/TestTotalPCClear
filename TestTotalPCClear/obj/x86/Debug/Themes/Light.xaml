@@ -20,11 +20,11 @@
                         TintColor="#ffffff"/>
     <AcrylicBrush x:Key="CheckBlockLightAcrylicBrush"
                                   BackgroundSource="HostBackdrop"
-                                  TintOpacity="0.15"
+                                  TintOpacity="0.05"
                                   TintColor="#ffffff"/>
     <AcrylicBrush x:Key="CheckBlockDarkAcrylicBrush"
                                   BackgroundSource="HostBackdrop"
-                                  TintOpacity="0.05"
+                                  TintOpacity="0.1"
                                   TintColor="#3e3e3e"/>
     <AcrylicBrush x:Key="IsCheckBlockAcrylicBrush"
                                   BackgroundSource="HostBackdrop"

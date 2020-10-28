@@ -1,0 +1,128 @@
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Windows.ApplicationModel.Resources.Core;
+
+namespace PCCleaner.Resources.Core
+{
+    public class ResourceProvider
+    {
+        /// <summary>
+        /// Path to resource file.
+        /// </summary>
+        private readonly string subtreeName;
+
+        /// <summary>
+        /// A collection of related resources.
+        /// </summary>
+        private ResourceMap resourceStringMap;
+
+        /// <summary>
+        /// Object performs all of the factors ("qualifiers") that might affect resource selection.
+        /// </summary>
+        private ResourceContext context;
+
+        /// <summary>
+        /// Culture used when last query to resource performed.
+        /// </summary>
+        private CultureInfo lastUsedCultureInfo;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResourceProvider"/> class 
+        /// </summary>
+        /// <param name="resourceSubtreeName">Path to resource in application package.</param>
+        public ResourceProvider(string resourceSubtreeName)
+        {
+            this.subtreeName = resourceSubtreeName;
+        }
+
+        /// <summary>
+        /// Gets or sets culture that must be used for every instance of <see cref="ResourceProvider"/>
+        /// </summary>
+        public static CultureInfo GlobalOverrideCulture => CultureInfo.DefaultThreadCurrentUICulture ?? CultureInfo.CurrentUICulture;
+
+        /// <summary>
+        /// Gets culture that used globally for retrieving string resources
+        /// </summary>
+        public static CultureInfo GlobalActualCulture
+        {
+            get
+            {
+                var actual = CultureInfo.CurrentUICulture;
+
+                if (GlobalOverrideCulture != null)
+                {
+                    actual = GlobalOverrideCulture;
+                }
+
+                return actual;
+            }
+        }
+
+        /// <summary>
+        /// Overrides the current thread's CurrentUICulture property for all
+        /// resource lookups using this strongly typed resource class.
+        /// </summary>
+        public CultureInfo OverridedCultureInfo { get; set; }
+
+        /// <summary>
+        /// Gets collection of all resources.
+        /// </summary>
+        private ResourceMap ResourceStringMap
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceStringMap, null))
+                {
+                    resourceStringMap = ResourceManager.Current.MainResourceMap.GetSubtree(this.subtreeName);
+                }
+
+                return resourceStringMap;
+            }
+        }
+
+        /// <summary>
+        /// Gets object for querying resources by selected culture.
+        /// </summary>
+        private ResourceContext Context
+        {
+            get
+            {
+                if (!Equals(this.ActualCulture, this.lastUsedCultureInfo))
+                {
+                    this.lastUsedCultureInfo = ActualCulture;
+                    this.context = new ResourceContext { Languages = new List<string> { this.lastUsedCultureInfo.Name } };
+                }
+
+                return this.context;
+            }
+        }
+
+        /// <summary>
+        /// Gets culture that must be used now for resource querying.
+        /// </summary>
+        private CultureInfo ActualCulture
+        {
+            get
+            {
+                var actual = GlobalActualCulture;
+
+                if (this.OverridedCultureInfo != null)
+                {
+                    actual = this.OverridedCultureInfo;
+                }
+
+                return actual;
+            }
+        }
+
+        /// <summary>
+        /// Read string value from resources.
+        /// </summary>
+        /// <param name="resourceKey">Key of resource.</param>
+        /// <returns>Value of resource.</returns>
+        public string GetString(string resourceKey)
+        {
+            return ResourceStringMap.GetValue(resourceKey, this.Context).ValueAsString;
+        }
+    }
+}

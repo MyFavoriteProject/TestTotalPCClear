@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.FileProperties;
 
@@ -30,8 +25,8 @@ namespace TestTotalPCClear.Model
         {
             "&#xE7C3;",
             "&#xE8A5;",
-            -"&#xE7C3;",
-            -"&#xE7C3;",
+            "&#xE7C3;",
+            "&#xE7C3;",
             "&#xE81E;",
             "&#xE786;",
         };

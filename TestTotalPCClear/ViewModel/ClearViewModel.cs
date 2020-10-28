@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using TestTotalPCClear.Model;
-using TestTotalPCClear.CommandImplementation;
 using System.Windows.Input;
 using Windows.ApplicationModel.Resources;
 using Windows.ApplicationModel.Resources.Core;
@@ -9,10 +8,6 @@ using Windows.UI.Xaml.Controls;
 using TestTotalPCClear.Themes;
 using System;
 using System.Threading.Tasks;
-using Windows.Media.Capture;
-using Windows.UI.Xaml.Media;
-using Windows.UI;
-using System.Collections.ObjectModel;
 
 namespace TestTotalPCClear.ViewModel
 {

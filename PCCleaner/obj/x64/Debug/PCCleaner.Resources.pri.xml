@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="PCCleaner.Resources" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>EN-US,RU</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="PCCleaner.Resources">
+				<NamedResource name="Cleaner.Resources.csproj" uri="ms-resource://PCCleaner.Resources/Files/PCCleaner.Resources/Cleaner.Resources.csproj">
+					<Candidate type="Path">
+						<Value>PCCleaner.Resources\Cleaner.Resources.csproj</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ResourceFileCodeGenerator.tt" uri="ms-resource://PCCleaner.Resources/Files/PCCleaner.Resources/ResourceFileCodeGenerator.tt">
+					<Candidate type="Path">
+						<Value>PCCleaner.Resources\ResourceFileCodeGenerator.tt</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="PCCleaner.Resources">
+			<ResourceMapSubtree name="CommonResources">
+				<NamedResource name="AcentColorText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/AcentColorText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Acent Color</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="AddFoldersText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/AddFoldersText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Add folders</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ApplicationCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/ApplicationCacheText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Application cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="AutoCleaningAtDeviceStartupText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/AutoCleaningAtDeviceStartupText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Auto cleaning at device startup</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="AutoClearingText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/AutoClearingText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Автоматическая очистка</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Auto Clearing</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="AutoStart" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/AutoStart">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Auto Start</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="BrowserCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/BrowserCacheText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Browser cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="CacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/CacheText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Кэш</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="CleanText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/CleanText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Clean</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ComeToUsMoreOftenText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/ComeToUsMoreOftenText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Come to us more often ! See you !</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DarkText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DarkText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Dark</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DeleteCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DeleteCacheText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Удалить кэш</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Delete cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DeselectAllText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DeselectAllText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Убрать выделение со всего</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Deselect all</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DesignThemeText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DesignThemeText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Design theme</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DuplicateFileText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DuplicateFileText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Duplicate file</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DuplicateText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/DuplicateText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Дублированный</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Duplicate</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="HelloText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/HelloText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Hello !</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LargeFilesText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/LargeFilesText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Большие файлы</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Large Files</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LargeFileText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/LargeFileText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Large file</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LenguageText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/LenguageText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Lenguage</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LetsPutThingsInOrderText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/LetsPutThingsInOrderText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Let's put things in order?</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LightText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/LightText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Light</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MailCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/MailCacheText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Mail cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="OfficeCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/OfficeCacheText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Office cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="OffText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/OffText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Off</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="OnText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/OnText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>On</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="PropertyText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/PropertyText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Свойства</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Property</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="PurityText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/PurityText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Purity</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ScanFilesText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/ScanFilesText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Сканировать файлы</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Scan files</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ScannText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/ScannText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Scann</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SelectAllText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/SelectAllText">
+					<Candidate qualifiers="Language-RU" type="String">
+						<Value>Выбрать все</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Select all</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SettingText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/SettingText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Setting</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SuccessfulCleanText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/SuccessfulCleanText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cleaning Was Successfully !</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SystemCacheText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/SystemCacheText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>System cache</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="UserSystemSettingText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/UserSystemSettingText">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>User system setting</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

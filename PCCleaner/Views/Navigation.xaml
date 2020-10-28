@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="PCCleaner.Views.Navigation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView 
+            Grid.Row="1" 
+            IsPaneOpen="False" 
+            RelativePanel.AlignLeftWithPanel="True"
+            ItemInvoked="NavView_ItemInvoked">
+
+            <NavigationView.MenuItems>
+                <!--Content="{Binding CommonResources.CacheText, Source={StaticResource LocalizedStrings}}"-->
+
+                <NavigationViewItem 
+                    Icon="Delete" 
+                    Tag="cache"
+                    Content="{Binding CommonResources.CacheText, Source={StaticResource LocalizedStrings}}">
+                    <!--<i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding CacheButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>-->
+                </NavigationViewItem>
+
+                <NavigationViewItem 
+                    Icon="Page2" 
+                    Content="{Binding LargeFilesText, UpdateSourceTrigger=PropertyChanged}"
+                    Tag="largeFiles">
+                    <!--<i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding LargeFilesButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>-->
+                </NavigationViewItem>
+
+                <NavigationViewItem 
+                    Content="{Binding DuplicateText, UpdateSourceTrigger=PropertyChanged}"
+                    Tag="duplicate">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE81E;"/>
+                    </NavigationViewItem.Icon>
+                    <!--<i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding DuplicateButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>-->
+                </NavigationViewItem>
+
+                <NavigationViewItem 
+                    Icon="CalendarWeek" 
+                    Content="{Binding AutoClearingText, UpdateSourceTrigger=PropertyChanged}"
+                    Tag="autoClearning">
+                    <!--<i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding AutoClearingButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>-->
+                </NavigationViewItem>
+
+                <!--<NavigationViewItem Icon="Setting" Content="Setting">
+                    --><!--<i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:EventTriggerBehavior.Actions>
+                                <core:InvokeCommandAction Command="{Binding SettingButton}"/>
+                            </core:EventTriggerBehavior.Actions>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>--><!--
+                </NavigationViewItem>-->
+
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame">
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Page>

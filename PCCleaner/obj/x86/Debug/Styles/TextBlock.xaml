@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="PCCleaner.Styles.TextBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PCCleaner.Styles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:binding="using:PCCleaner.Themes.BindingHelpers"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:ConnectionId='2' x:Name="BaseTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15px"/>
+            <Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+            <Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>
+        </Style>
+
+        <Style x:ConnectionId='3' x:Name="StandartTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+            <Setter Property="FontSize" Value="15px"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="19px"/>
+            <Setter Property="Width" Value="100px"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style x:ConnectionId='4' x:Name="TextBlockInCheckBox" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+
+            <Setter Property="Height" Value="40px"/>
+        </Style>
+
+        <Style x:ConnectionId='5' x:Name="TextBlockInCheckBoxForSegoeMDL2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+            <Setter Property="FontSize" Value="22px"/>
+            <Setter Property="Padding" Value="4,2,0,3"/>
+        </Style>
+        <Style x:ConnectionId='6' x:Name="TextBlockInCheckBoxForText" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+            <Setter Property="Padding" Value="25,3,0,3"/>
+        </Style>
+        <Style x:ConnectionId='7' x:Name="TextBlockInCheckBoxForCount" TargetType="TextBlock" BasedOn="{StaticResource TextBlockInCheckBox}">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0,3,0,3"/>
+        </Style>
+        <Style x:ConnectionId='8' x:Name="ContextHeaderTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="Margin" Value="43,34,0,56"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+    </Page.Resources>
+</Page>
+

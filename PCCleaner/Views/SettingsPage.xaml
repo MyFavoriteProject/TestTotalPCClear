@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="PCCleaner.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PCCleaner.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+                                    Grid.Row="0"
+                                    Text="{Binding SettingText, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ContextHeaderTextBlock}"
+                                    Margin="43,34,0,0"
+                                    HorizontalAlignment="Left"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="43,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                                                       FontSize="15"
+                                                       Margin="0,0,0,10"
+                                                       Style="{StaticResource BaseTextBlock}"
+                                                       Text="{Binding LenguageText, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox
+                                                Margin="0,10,0,10"
+                                                Height="32px"
+                                                Width="296px"
+                                                Grid.Row="1"/>
+                </Grid>
+                <ToggleSwitch
+                                            FontSize="15"
+                                            Margin="0,10,0,0"
+                                            Grid.Row="1"
+                                            Header="{Binding AutoCleaningAtDeviceStartupText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OffContent="{Binding OffText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OnContent="{Binding OnText, UpdateSourceTrigger=PropertyChanged}" 
+                                            IsOn="False" 
+                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+                <ToggleSwitch
+                                            FontSize="15"
+                                            Margin="0,10,0,0"
+                                            Grid.Row="2"
+                                            Header="{Binding AutoStart, UpdateSourceTrigger=PropertyChanged}" 
+                                            OffContent="{Binding OffText, UpdateSourceTrigger=PropertyChanged}" 
+                                            OnContent="{Binding OnText, UpdateSourceTrigger=PropertyChanged}" 
+                                            IsOn="True" 
+                                            Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+
+                <StackPanel Grid.Row="3" Margin="0,15,0,0">
+                    <TextBlock Text="{Binding DesignThemeText, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Style="{StaticResource BaseTextBlock}" />
+
+                    <RadioButton 
+                                                Command="{Binding ThemeLightRadioButton}" 
+                                                Style="{StaticResource RadioButtonBase}"
+                                                Content="{Binding LightText, UpdateSourceTrigger=PropertyChanged}" 
+                                                FontSize="15"
+                                                Padding="8,6,0,0"
+                                                Margin="5"
+                                                />
+                    <RadioButton 
+                                                Command="{Binding ThemeDarkRadioButton}" 
+                                                Style="{StaticResource RadioButtonBase}"
+                                                Content="{Binding DarkText, UpdateSourceTrigger=PropertyChanged}"
+                                                FontSize="15"
+                                                Padding="8,6,0,0"
+                                                Margin="5"
+                                                />
+                    <RadioButton 
+                                                Content="{Binding UserSystemSettingText, UpdateSourceTrigger=PropertyChanged}" 
+                                                Style="{StaticResource RadioButtonBase}"
+                                                FontSize="15"
+                                                Padding="8,6,0,0"
+                                                Margin="5"
+                                                />
+                </StackPanel>
+                <TextBlock  Grid.Row="4" Text="{Binding AcentColorText, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" FontSize="15"/>
+                <StackPanel Grid.Row="5" Orientation="Horizontal">
+                    <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="First color"/>
+                    <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="Second color"/>
+                    <RadioButton Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}" Content="Thert color"/>
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

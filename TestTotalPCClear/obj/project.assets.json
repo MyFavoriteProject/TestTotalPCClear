@@ -440,7 +440,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -976,6 +976,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1021,6 +1030,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -1832,7 +1898,7 @@
           "runtime.any.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -2386,6 +2452,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2431,6 +2506,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -3273,7 +3405,7 @@
           "runtime.aot.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -3321,7 +3453,7 @@
           "runtime.win.System.Diagnostics.Debug": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Diagnostics.Debug.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -3599,7 +3731,7 @@
           "runtime.aot.System.Resources.ResourceManager": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Resources.ResourceManager.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -3637,7 +3769,7 @@
           "runtime.win.System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -3827,6 +3959,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3872,6 +4013,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -4714,7 +4912,7 @@
           "runtime.aot.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -4762,7 +4960,7 @@
           "runtime.win.System.Diagnostics.Debug": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Diagnostics.Debug.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -5040,7 +5238,7 @@
           "runtime.aot.System.Resources.ResourceManager": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Resources.ResourceManager.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -5078,7 +5276,7 @@
           "runtime.win.System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -5268,6 +5466,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5313,6 +5520,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -6124,7 +6388,7 @@
           "runtime.any.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -6678,6 +6942,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -6723,6 +6996,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -7565,7 +7895,7 @@
           "runtime.aot.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -7613,7 +7943,7 @@
           "runtime.win.System.Diagnostics.Debug": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Diagnostics.Debug.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -7891,7 +8221,7 @@
           "runtime.aot.System.Resources.ResourceManager": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Resources.ResourceManager.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -7929,7 +8259,7 @@
           "runtime.win.System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -8119,6 +8449,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8164,6 +8503,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -8975,7 +9371,7 @@
           "runtime.any.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -9529,6 +9925,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -9574,6 +9979,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     },
@@ -10416,7 +10878,7 @@
           "runtime.aot.System.Collections": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Collections.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -10464,7 +10926,7 @@
           "runtime.win.System.Diagnostics.Debug": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Diagnostics.Debug.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -10742,7 +11204,7 @@
           "runtime.aot.System.Resources.ResourceManager": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Resources.ResourceManager.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -10780,7 +11242,7 @@
           "runtime.win.System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -10970,6 +11432,15 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/uap10.0.16299/_._": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/_._": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -11015,6 +11486,63 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.15063",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Helpers": "1.0.0",
+          "PCCleaner.ViewModels": "1.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.dll": {}
+        }
+      },
+      "PCCleaner.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.17763",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Helpers.dll": {}
+        }
+      },
+      "PCCleaner.Models/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "Microsoft.Toolkit.Uwp": "6.1.1"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Models.dll": {}
+        }
+      },
+      "PCCleaner.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.ViewModels.dll": {}
         }
       }
     }
@@ -11968,7 +12496,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -18827,6 +19355,50 @@
         "system.threading.tasks.extensions.nuspec"
       ]
     },
+    "System.ValueTuple/4.5.0": {
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Xml.ReaderWriter/4.3.0": {
       "sha512": "GrprA+Z0RUXaR4N7/eW71j1rgMnEnEVlgii49GZyAjTH7uliMnrOU3HNFBr6fEDBCJCIdlVNq9hHbaDR621XBA==",
       "type": "package",
@@ -18937,6 +19509,26 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "PCCleaner/1.0.0": {
+      "type": "project",
+      "path": "../PCCleaner/PCCleaner.csproj",
+      "msbuildProject": "../PCCleaner/PCCleaner.csproj"
+    },
+    "PCCleaner.Helpers/1.0.0": {
+      "type": "project",
+      "path": "../PCCleaner.Helpers/PCCleaner.Helpers.csproj",
+      "msbuildProject": "../PCCleaner.Helpers/PCCleaner.Helpers.csproj"
+    },
+    "PCCleaner.Models/1.0.0": {
+      "type": "project",
+      "path": "../PCCleaner.Model/PCCleaner.Models.csproj",
+      "msbuildProject": "../PCCleaner.Model/PCCleaner.Models.csproj"
+    },
+    "PCCleaner.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../PCCleaner.ViewModels/PCCleaner.ViewModels.csproj",
+      "msbuildProject": "../PCCleaner.ViewModels/PCCleaner.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -18944,43 +19536,47 @@
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 3.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.10",
       "Microsoft.Toolkit.Uwp >= 6.1.1",
-      "Microsoft.Xaml.Behaviors.Uwp.Managed >= 2.0.1"
+      "Microsoft.Xaml.Behaviors.Uwp.Managed >= 2.0.1",
+      "PCCleaner >= 1.0.0",
+      "System.Collections >= 4.3.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\home\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\dmitr\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
+      "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
       "projectName": "TestTotalPCClear",
-      "projectPath": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
-      "packagesPath": "C:\\Users\\home\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\obj\\",
+      "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
+      "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\home\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "uap10.0.18362"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.dct.ua/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "uap10.0.18362": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj": {
+              "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj"
+            }
+          }
         }
       }
     },
@@ -19004,6 +19600,10 @@
           "Microsoft.Xaml.Behaviors.Uwp.Managed": {
             "target": "Package",
             "version": "[2.0.1, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

@@ -1,38 +1,335 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj": {}
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj": {}
   },
   "projects": {
-    "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj": {
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\PCCleaner.Helpers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
-        "projectName": "TestTotalPCClear",
-        "projectPath": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
-        "packagesPath": "C:\\Users\\home\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\home\\source\\repos\\TestTotalPCClear\\TestTotalPCClear\\obj\\",
+        "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\PCCleaner.Helpers.csproj",
+        "projectName": "PCCleaner.Helpers",
+        "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\PCCleaner.Helpers.csproj",
+        "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\home\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.17763"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.dct.ua/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.17763": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.17763": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj",
+        "projectName": "PCCleaner.Models",
+        "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj",
+        "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "uap10.0.18362"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.dct.ua/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "uap10.0.18362": {
             "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.18362": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            },
+            "Microsoft.Toolkit.Uwp": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\PCCleaner.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\PCCleaner.ViewModels.csproj",
+        "projectName": "PCCleaner.ViewModels",
+        "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\PCCleaner.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.18362"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.dct.ua/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.18362": {
+            "projectReferences": {
+              "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj": {
+                "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.18362": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj",
+        "projectName": "PCCleaner",
+        "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj",
+        "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.15063"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.dct.ua/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.15063": {
+            "projectReferences": {
+              "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\PCCleaner.Helpers.csproj": {
+                "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Helpers\\PCCleaner.Helpers.csproj"
+              },
+              "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\PCCleaner.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.ViewModels\\PCCleaner.ViewModels.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.15063": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            },
+            "System.ValueTuple": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
+        "projectName": "TestTotalPCClear",
+        "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\TestTotalPCClear.csproj",
+        "packagesPath": "C:\\Users\\dmitr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\TestTotalPCClear\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dmitr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.18362"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.dct.ua/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.18362": {
+            "projectReferences": {
+              "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj": {
+                "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj"
+              }
+            }
           }
         }
       },
@@ -56,6 +353,10 @@
             "Microsoft.Xaml.Behaviors.Uwp.Managed": {
               "target": "Package",
               "version": "[2.0.1, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

@@ -1,3 +1,4 @@
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources\Player.Resources.csproj
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources\ResourceFileCodeGenerator.tt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources.dll
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources.pdb

@@ -4,64 +4,286 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PCCleaner.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:сustom="using:PCCleaner.Helpers.CustomXamlElements"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:сustom="using:PCCleaner.Helpers.CustomXamlElements"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid
+        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+        >
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock 
-            Grid.Row="0"
-            Text="Duplicate file" 
-            Style="{StaticResource ContextHeaderTextBlock}"/>
-        <Grid Grid.Row="1" Grid.RowSpan="2">
-            <сustom:CustomListBox 
-                ItemsSource="{Binding ClearModel.DuplicateFileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                ItemContainerStyle="{StaticResource ListBoxItemStyle}"
-                HorizontalContentAlignment="Stretch"
-                EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
-                OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
-                <сustom:CustomListBox.ItemTemplate>
-                    <DataTemplate>
-                        <CheckBox
-                                HorizontalAlignment="Stretch"
-                                Template="{StaticResource CheckBoxTemplate}" 
-                                Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                IsChecked="{Binding IsChecked, Mode=TwoWay}">
-                            <Grid 
-                                    HorizontalAlignment="Stretch">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30px"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock 
-                                Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                Grid.Column="0"
-                                FontFamily="Segoe MDL2 Assets" 
-                                Text="&#xE838;"
-                                />
-                                <TextBlock 
-                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                    Grid.Column="1" 
-                                    Text="{Binding Item.Path}"
-                                    Padding="25,3,0,0"/>
-                            </Grid>
-                        </CheckBox>
-                    </DataTemplate>
-                </сustom:CustomListBox.ItemTemplate>
-            </сustom:CustomListBox>
+                Grid.Row="0"
+                Text="{Binding CommonResources.DuplicateFilesText, Source={StaticResource LocalizedStrings}}" 
+                Style="{StaticResource ContextHeaderTextBlock}"
+                />
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Right">
+            <Button 
+                Command="{Binding MoreButtonCommand}"
+                Content="More Button"/>
+            <Button
+                Command="{Binding SelectedAllCommand}"
+                Content="Select All"/>
+            <Button
+                Command="{Binding DeselectedAllCommand}"
+                Content="Deselected All"/>
+        </StackPanel>
+        
+        <Grid
+            Grid.Row="1"
+            Visibility="{Binding ShowAddFolderPage, UpdateSourceTrigger=PropertyChanged}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Grid.Row="0"
+                    Width="Auto" 
+                    Height="Auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock 
+                        Grid.Row="0" 
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BaseTextBlock}"
+                        Text="{Binding CommonResources.HelloText, Source={StaticResource LocalizedStrings}}"/>
+
+                    <TextBlock 
+                        Grid.Row="1" 
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BaseTextBlock}"
+                        Text="{Binding CommonResources.LetsPutThingsInOrderText, Source={StaticResource LocalizedStrings}}"/>
+                </Grid>
+
+                <Button 
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource RoundButton}"
+                    Command="{Binding FileOpenFolderButton}"
+                    Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
+
+                <TextBlock 
+                    Grid.Row="2" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource BaseTextBlock}"
+                    Text="{Binding CommonResources.AddFoldersText, Source={StaticResource LocalizedStrings}}"/>
+            </Grid>
         </Grid>
-        <Button 
-            Grid.Row="2"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Style="{StaticResource ButtonRoundedCorners}"
-            Content="Clean"
-            Command="{Binding CleanDuplicateFileButton}"/>
+        
+        <Grid 
+            Grid.Row="1"
+            Visibility="{Binding ShowFolderPage, UpdateSourceTrigger=PropertyChanged}"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.RowSpan="2">
+                <сustom:CustomListBox 
+                    ItemsSource="{Binding DuplicateModel.DuplicateFolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    HorizontalContentAlignment="Stretch"
+                    ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                    EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    >
+                    <сustom:CustomListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox
+                                    HorizontalAlignment="Stretch"
+                                    Template="{StaticResource CheckBoxTemplate}" 
+                                    Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+                                <Grid 
+                                        HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30px"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock 
+                                            Grid.Column="0"
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Text="{Binding Icone}"
+                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                    />
+                                    <TextBlock 
+                                            Grid.Column="1" 
+                                            Text="{Binding Path}"
+                                            Padding="25,3,0,0"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                </Grid>
+                            </CheckBox>
+                        </DataTemplate>
+                    </сustom:CustomListBox.ItemTemplate>
+                </сustom:CustomListBox>
+            </Grid>
+            <Button 
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Style="{StaticResource ButtonRoundedCorners}"
+                Content="{Binding CommonResources.ScannText, Source={StaticResource LocalizedStrings}}"
+                Command="{Binding DuplicateScannFolderButton}"/>
+        </Grid>
+
+        <Grid 
+            Grid.Row="1"
+            Visibility="{Binding ShowFilesPage, UpdateSourceTrigger=PropertyChanged}"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.RowSpan="2">
+                <сustom:CustomListBox 
+                    ItemsSource="{Binding DuplicateModel.DuplicatCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    HorizontalContentAlignment="Stretch"
+                    ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                    EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                    >
+                    <сustom:CustomListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30px"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock 
+                                            Grid.Column="0"
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Text="{Binding Icone}"
+                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                    />
+                                    <TextBlock 
+                                            Grid.Column="1" 
+                                            Text="{Binding Path}"
+                                            Padding="25,3,0,0"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+
+                                    <TextBlock 
+                                            Grid.Column="3"
+                                            Text="{Binding BasicProperties.Size}"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                    <TextBlock
+                                            Grid.Column="4"
+                                            Text="B"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                </Grid>
+                                <ListBox
+                                    ItemsSource="{Binding FileCollection}"
+                                    Background="Green"
+                                    BorderBrush="Red"
+                                    HorizontalContentAlignment="Stretch"
+                                    ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                                    >
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30px"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock 
+                                                    Grid.Column="0"
+                                                    FontFamily="Segoe MDL2 Assets" 
+                                                    Text="{Binding Icone}"
+                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                                />
+                                                <TextBlock 
+                                                    Grid.Column="1" 
+                                                    Text="{Binding Path}"
+                                                    Padding="25,3,0,0"
+                                                    Style="{StaticResource TextBlockInCheckBoxForText}"/>
+
+                                                <TextBlock 
+                                                    Grid.Column="3"
+                                                    Text="{Binding BasicProperties.Size}"
+                                                    Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                                <TextBlock
+                                                    Grid.Column="4"
+                                                    Text="B"
+                                                    Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <!--Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                    EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                    OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"-->
+                                    
+                                </ListBox>
+                            </StackPanel>
+                            <!--<CheckBox
+                                    HorizontalAlignment="Stretch"
+                                    Template="{StaticResource CheckBoxTemplate}" 
+                                    Background="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                    IsChecked="{Binding IsChecked, Mode=TwoWay}">
+                                <Grid 
+                                        HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30px"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock 
+                                            Grid.Column="0"
+                                            FontFamily="Segoe MDL2 Assets" 
+                                            Text="{Binding Icone}"
+                                            Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
+                                    />
+                                    <TextBlock 
+                                            Grid.Column="1" 
+                                            Text="{Binding Path}"
+                                            Padding="25,3,0,0"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+
+                                    <TextBlock 
+                                            Grid.Column="3"
+                                            Text="{Binding BasicProperties.Size}"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                    <TextBlock
+                                            Grid.Column="4"
+                                            Text="B"
+                                            Style="{StaticResource TextBlockInCheckBoxForText}"/>
+                                </Grid>
+                            </CheckBox>-->
+                        </DataTemplate>
+                    </сustom:CustomListBox.ItemTemplate>
+                </сustom:CustomListBox>
+            </Grid>
+            <Button 
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Style="{StaticResource ButtonRoundedCorners}"
+                Content="{Binding CommonResources.CleanText, Source={StaticResource LocalizedStrings}}"
+                Command="{Binding CleanDuplicateFileButton}"/>
+        </Grid>
     </Grid>
 </Page>
 

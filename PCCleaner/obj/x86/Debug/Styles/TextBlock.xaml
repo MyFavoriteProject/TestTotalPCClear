@@ -12,8 +12,9 @@
     <Page.Resources>
         <Style x:ConnectionId='2' x:Name="BaseTextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15px"/>
-            <Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>
-            <Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>
+            <Setter Property="Foreground" Value="White"/>
+            <!--<Setter Property="Foreground" Value="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"/>-->
+            <!--<Setter Property="binding:ForegroundBindingHelper.Foreground" Value="ForegroundBrush"/>-->
         </Style>
 
         <Style x:ConnectionId='3' x:Name="StandartTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">

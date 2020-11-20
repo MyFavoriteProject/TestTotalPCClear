@@ -3,10 +3,10 @@ using Windows.Storage;
 
 namespace PCCleaner.Model.Collections
 {
-    public class StorageFolderObservableCollection<T> : BaseObservableCollection<T> where T : IStorageFolder
+    public class StorageFolderObservableCollection<T> : BaseStorageType<T> where T : IStorageFolder
     {
         private T folder;
-        private ObservableCollection<StorageFileObservableCollection<StorageFile>> fileCollection;
+        private ObservableCollection<StorageFileType<StorageFile>> fileCollection;
         private string path;
         private string folderName;
 
@@ -44,7 +44,7 @@ namespace PCCleaner.Model.Collections
             } 
         }
 
-        public ObservableCollection<StorageFileObservableCollection<StorageFile>> FileCollection
+        public ObservableCollection<StorageFileType<StorageFile>> FileCollection
         {
             get => this.fileCollection;
             set
@@ -61,7 +61,7 @@ namespace PCCleaner.Model.Collections
             get => this.path;
             set
             {
-                if (!value.Equals(this.path) && Folder == null)
+                if (!value.Equals(this.path) /*&& Folder == null*/)
                 {
                     this.path = value;
                 }

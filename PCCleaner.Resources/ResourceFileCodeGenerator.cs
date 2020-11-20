@@ -1,7 +1,7 @@
 ﻿
-namespace AppleMusicPlayer.Resources
+namespace PCCleaner.Resources
 {
-	using PCCleaner.Resources.Core;
+	using Core;
     using System;
 	using System.ComponentModel;
 	using System.Globalization;
@@ -17,7 +17,7 @@ namespace AppleMusicPlayer.Resources
 		/// <summary>
         /// Contains logic for accessing contsnt of resource file.
         /// </summary>
-		private static readonly ResourceProvider resourceProvider = new ResourceProvider("AppleMusicPlayer.Resources/CommonResources");
+		private static readonly ResourceProvider resourceProvider = new ResourceProvider("PCCleaner.Resources/CommonResources");
 
 		/// <summary>
         /// Overrides the current thread's CurrentUICulture property for all
@@ -38,7 +38,12 @@ namespace AppleMusicPlayer.Resources
 
 
 		/// <summary>
-        /// Gets a localized string similar to Acent Color
+        /// Gets a localized string similar to Duplicate file
+        /// </summary>
+		public static string a => resourceProvider.GetString("a");
+
+		/// <summary>
+        /// Gets a localized string similar to Accent Color
         /// </summary>
 		public static string AcentColorText => resourceProvider.GetString("AcentColorText");
 
@@ -108,9 +113,9 @@ namespace AppleMusicPlayer.Resources
 		public static string DesignThemeText => resourceProvider.GetString("DesignThemeText");
 
 		/// <summary>
-        /// Gets a localized string similar to Duplicate file
+        /// Gets a localized string similar to Duplicate File
         /// </summary>
-		public static string DuplicateFileText => resourceProvider.GetString("DuplicateFileText");
+		public static string DuplicateFilesText => resourceProvider.GetString("DuplicateFilesText");
 
 		/// <summary>
         /// Gets a localized string similar to Duplicate
@@ -133,7 +138,7 @@ namespace AppleMusicPlayer.Resources
 		public static string LargeFileText => resourceProvider.GetString("LargeFileText");
 
 		/// <summary>
-        /// Gets a localized string similar to Lenguage
+        /// Gets a localized string similar to Language
         /// </summary>
 		public static string LenguageText => resourceProvider.GetString("LenguageText");
 

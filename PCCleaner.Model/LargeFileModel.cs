@@ -14,8 +14,8 @@ namespace PCCleaner.Model
     {
         #region Fiedls
 
-        ObservableCollection<StorageFileObservableCollection<StorageFile>> largeFileCollection;
-        ObservableCollection<StorageFolderObservableCollection<StorageFolder>> largeFolderCollection;
+        ObservableCollection<StorageFileType<StorageFile>> largeFileCollection;
+        ObservableCollection<StorageFolderType<StorageFolder>> largeFolderCollection;
 
         #endregion
 
@@ -23,15 +23,15 @@ namespace PCCleaner.Model
 
         public LargeFileModel() 
         {
-            this.largeFileCollection = new ObservableCollection<StorageFileObservableCollection<StorageFile>>();
-            this.largeFolderCollection = new ObservableCollection<StorageFolderObservableCollection<StorageFolder>>();
+            this.largeFileCollection = new ObservableCollection<StorageFileType<StorageFile>>();
+            this.largeFolderCollection = new ObservableCollection<StorageFolderType<StorageFolder>>();
         }
 
         #endregion
 
         #region public Propertys
 
-        public ObservableCollection<StorageFileObservableCollection<StorageFile>> LargeFileCollection  
+        public ObservableCollection<StorageFileType<StorageFile>> LargeFileCollection  
         {
             get => this.largeFileCollection;
             set
@@ -43,7 +43,7 @@ namespace PCCleaner.Model
                 }
             }
         }
-        public ObservableCollection<StorageFolderObservableCollection<StorageFolder>> LargeFolderCollection
+        public ObservableCollection<StorageFolderType<StorageFolder>> LargeFolderCollection
         {
             get => this.largeFolderCollection;
             set
@@ -72,7 +72,7 @@ namespace PCCleaner.Model
                 LargeFolderCollection.Clear();
             }
 
-            ObservableCollection<StorageFolderObservableCollection<StorageFolder>> largeFolders = new ObservableCollection<StorageFolderObservableCollection<StorageFolder>>();
+            ObservableCollection<StorageFolderType<StorageFolder>> largeFolders = new ObservableCollection<StorageFolderType<StorageFolder>>();
 
             FolderPicker folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
@@ -86,7 +86,7 @@ namespace PCCleaner.Model
                 IReadOnlyList<StorageFolder> fileList = await PullFoldersFromFolderAsync(storageFolder).ConfigureAwait(true);
                 foreach (StorageFolder folder in fileList)
                 {
-                    largeFolders.Add(new StorageFolderObservableCollection<StorageFolder>(folder));
+                    largeFolders.Add(new StorageFolderType<StorageFolder>(folder));
                 }
             }
 
@@ -102,7 +102,7 @@ namespace PCCleaner.Model
 
         public void LargeFileDeleteFolder()
         {
-            ObservableCollection<StorageFolderObservableCollection<StorageFolder>> checkedLists = DeleteFolder(this.LargeFolderCollection);
+            ObservableCollection<StorageFolderType<StorageFolder>> checkedLists = DeleteFolder(this.LargeFolderCollection);
 
             if (!checkedLists.Equals(this.LargeFolderCollection))
             {
@@ -114,13 +114,13 @@ namespace PCCleaner.Model
         {
             List<StorageFile> storageFiles = await PullFilesFromFolderAsync(this.LargeFolderCollection).ConfigureAwait(true);
 
-            ObservableCollection<StorageFileObservableCollection<StorageFile>> storageFileColl = new ObservableCollection<StorageFileObservableCollection<StorageFile>>();
+            ObservableCollection<StorageFileType<StorageFile>> storageFileColl = new ObservableCollection<StorageFileType<StorageFile>>();
 
             foreach (StorageFile storageFile in storageFiles)
             {
                 BasicProperties properties = await storageFile.GetBasicPropertiesAsync();
 
-                storageFileColl.Add(new StorageFileObservableCollection<StorageFile>(storageFile, properties));
+                storageFileColl.Add(new StorageFileType<StorageFile>(storageFile, properties));
             }
 
             this.LargeFileCollection = storageFileColl;
@@ -175,11 +175,11 @@ namespace PCCleaner.Model
             return storageFoldersList;
         }
 
-        private async Task<List<StorageFile>> PullFilesFromFolderAsync(ObservableCollection<StorageFolderObservableCollection<StorageFolder>> checkedListItems)
+        private async Task<List<StorageFile>> PullFilesFromFolderAsync(ObservableCollection<StorageFolderType<StorageFolder>> checkedListItems)
         {
             List<StorageFile> storageFileList = new List<StorageFile>();
 
-            foreach (StorageFolderObservableCollection<StorageFolder> folder in this.LargeFolderCollection)
+            foreach (StorageFolderType<StorageFolder> folder in this.LargeFolderCollection)
             {
                 IReadOnlyList<StorageFile> fileList = await folder.Folder.GetFilesAsync();
 
@@ -194,18 +194,18 @@ namespace PCCleaner.Model
             return storageFileList;
         }
 
-        private bool IsSelectedDeleteFolderAsync(ObservableCollection<StorageFolderObservableCollection<StorageFolder>> checkedListItems)
+        private bool IsSelectedDeleteFolderAsync(ObservableCollection<StorageFolderType<StorageFolder>> checkedListItems)
         {
             bool isFounded = checkedListItems.Any(c => c.IsChecked == true);
 
             return isFounded;
         }
 
-        private ObservableCollection<StorageFolderObservableCollection<StorageFolder>> DeleteFolder(ObservableCollection<StorageFolderObservableCollection<StorageFolder>> checkedListItems)
+        private ObservableCollection<StorageFolderType<StorageFolder>> DeleteFolder(ObservableCollection<StorageFolderType<StorageFolder>> checkedListItems)
         {
-            ObservableCollection<StorageFolderObservableCollection<StorageFolder>> checkedLists = new ObservableCollection<StorageFolderObservableCollection<StorageFolder>>();
+            ObservableCollection<StorageFolderType<StorageFolder>> checkedLists = new ObservableCollection<StorageFolderType<StorageFolder>>();
 
-            foreach (StorageFolderObservableCollection<StorageFolder> listItem in checkedListItems)
+            foreach (StorageFolderType<StorageFolder> listItem in checkedListItems)
             {
                 if (listItem.IsChecked != true)
                 {

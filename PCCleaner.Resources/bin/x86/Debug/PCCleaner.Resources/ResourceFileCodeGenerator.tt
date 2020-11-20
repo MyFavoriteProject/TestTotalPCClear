@@ -18,7 +18,7 @@
 	int iterator = 0;
 	var additionalNamespaces = new List<string>();
 	#>
-namespace AppleMusicPlayer.Resources
+namespace PCCleaner.Resources
 {
 	using Core;
     using System;
@@ -51,7 +51,7 @@ namespace AppleMusicPlayer.Resources
 		/// <summary>
         /// Contains logic for accessing contsnt of resource file.
         /// </summary>
-		private static readonly ResourceProvider resourceProvider = new ResourceProvider("AppleMusicPlayer.Resources/<#= resourceClassName #>");
+		private static readonly ResourceProvider resourceProvider = new ResourceProvider("PCCleaner.Resources/<#= resourceClassName #>");
 
 		/// <summary>
         /// Overrides the current thread's CurrentUICulture property for all

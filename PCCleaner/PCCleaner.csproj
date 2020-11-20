@@ -119,31 +119,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RootFrame\RootFrame.xaml.cs">
-      <DependentUpon>RootFrame.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Styles\ButtonStyle.xaml.cs">
-      <DependentUpon>ButtonStyle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Styles\BrushStyle.xaml.cs">
-      <DependentUpon>BrushStyle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Styles\CheckBoxControlTemplate.xaml.cs">
-      <DependentUpon>CheckBoxControlTemplate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Styles\ListBoxStyle.xaml.cs">
-      <DependentUpon>ListBoxStyle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Styles\NavigationViewStyle.xaml.cs">
-      <DependentUpon>NavigationViewStyle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Styles\TextBlock.xaml.cs">
-      <DependentUpon>TextBlock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Themes\BindingHelpers\BackgroundBindingHelper.cs" />
     <Compile Include="Themes\BindingHelpers\ForegroundBindingHelper.cs" />
     <Compile Include="Themes\Dark.xaml.cs">
@@ -195,7 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\RootFrame\RootFrame.xaml">
+    <Page Include="Styles\BrushStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,10 +185,6 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\BrushStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\CheckBoxControlTemplate.xaml">
       <SubType>Designer</SubType>
@@ -278,13 +253,16 @@
       <Name>PCCleaner.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\PCCleaner.Resources\PCCleaner.Resources.csproj">
-      <Project>{a6e19753-57d7-460e-8108-e7382d279d89}</Project>
+      <Project>{9a6c44d6-0419-46bc-997a-2cce30c93ae5}</Project>
       <Name>PCCleaner.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\PCCleaner.ViewModels\PCCleaner.ViewModels.csproj">
       <Project>{f9bbf71e-8002-4c19-99e6-de1be03f6b00}</Project>
       <Name>PCCleaner.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

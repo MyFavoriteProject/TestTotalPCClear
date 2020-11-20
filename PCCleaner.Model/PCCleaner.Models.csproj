@@ -122,9 +122,11 @@
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
     <Compile Include="CacheModel.cs" />
-    <Compile Include="Collections\BaseObservableCollection.cs" />
-    <Compile Include="Collections\StorageFileObservableCollection.cs" />
-    <Compile Include="Collections\StorageFolderObservableCollection.cs" />
+    <Compile Include="Collections\BaseStorageType.cs" />
+    <Compile Include="Collections\DuplicatType.cs" />
+    <Compile Include="Collections\StorageFileType.cs" />
+    <Compile Include="Collections\StorageFolderType.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="DuplicateModel.cs" />
     <Compile Include="LargeFileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,7 +140,6 @@
       <Version>6.1.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

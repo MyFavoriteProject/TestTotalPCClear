@@ -46,6 +46,9 @@
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\bin\x86\Debug\PCCleaner.Helpers.dll">
       <PackagePath>PCCleaner.Helpers.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources.dll">
+      <PackagePath>PCCleaner.Resources.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x86\Debug\PCCleaner.ViewModels.dll">
       <PackagePath>PCCleaner.ViewModels.dll</PackagePath>
     </AppxPackagedFile>
@@ -54,6 +57,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources\Player.Resources.csproj">
+      <PackagePath>PCCleaner.Resources\Player.Resources.csproj</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x86\Debug\PCCleaner.Resources\ResourceFileCodeGenerator.tt">
+      <PackagePath>PCCleaner.Resources\ResourceFileCodeGenerator.tt</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>

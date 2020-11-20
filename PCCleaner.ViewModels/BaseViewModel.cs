@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PCCleaner.ViewModels
 {
-    public class BaseViewModel
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

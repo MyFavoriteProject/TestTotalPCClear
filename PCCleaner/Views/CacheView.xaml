@@ -10,7 +10,8 @@
     xmlns:binding="using:PCCleaner.Themes.BindingHelpers"
     xmlns:сustom="using:PCCleaner.Helpers.CustomXamlElements">
 
-    <Grid>
+    <Grid
+        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
@@ -28,45 +29,54 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock
-                                            Grid.Column="0"
-                                            
-                                            Text="{Binding CacheText, UpdateSourceTrigger=PropertyChanged}"
-                                            Style="{StaticResource ContextHeaderTextBlock}"
-                                            HorizontalAlignment="Left"
-                                        />
+                    Grid.Column="0"
+                    Text="{Binding CommonResources.CacheText, Source={StaticResource LocalizedStrings}}"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource ContextHeaderTextBlock}"
+                    />
+
 
                 <Button 
-                                            Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
-                                            Grid.Column="2"
-                                                Style="{StaticResource HeaderButtonBase}"
-                                                FontFamily="Segoe MDL2 Assets" 
-                                                Command="{Binding SelectAllButton}"
-                                                Content="&#xE8B3;"/>
+                    Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="2"
+                    FontFamily="Segoe MDL2 Assets" 
+                    Style="{StaticResource HeaderButtonBase}"
+                    Command="{Binding SelectAllButton}"
+                    Content="&#xE8B3;"/>
+                <!--Style="{StaticResource HeaderButtonBase}"-->
+
                 <Button 
-                                            Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
-                                            Grid.Column="3"
-                                            Style="{StaticResource HeaderButtonBase}"
-                                            Command="{Binding DeselectAllButton}"
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Content="&#xE8E6;"/>
+                    Visibility="{Binding IsShowSelectOrDeselectButton, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="3"
+                    Command="{Binding DeselectAllButton}"
+                    FontFamily="Segoe MDL2 Assets" 
+                    Style="{StaticResource HeaderButtonBase}"
+                    Content="&#xE8E6;"/>
+
                 <Button 
-                                            Grid.Column="4"
-                                            Style="{StaticResource HeaderButtonBase}"
-                                            Command="{Binding MoreButton}"
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Content="&#xE712;"
-                                            />
+                    Grid.Column="4"
+                    Command="{Binding MoreButton}"
+                    Style="{StaticResource HeaderButtonBase}"
+                    FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xE712;"
+                    />
+
             </Grid>
 
             <Grid>
                     <сustom:CustomListBox 
-                                        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                        ItemsSource="{Binding CacheModel.FolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
-                                        HorizontalContentAlignment="Stretch"
-                                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
-                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}">
-                        <сustom:CustomListBox.ItemTemplate>
+                        Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
+                        ItemsSource="{Binding CacheModel.FolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        HorizontalContentAlignment="Stretch"
+                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                        EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        >
+                    <!--EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
+                                        OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"
+                        ItemContainerStyle="{StaticResource ListBoxItemStyle}"-->
+
+                    <сustom:CustomListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox
                                                     HorizontalAlignment="Stretch"
@@ -83,26 +93,33 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
+
+                                    <!--<FontIcon HorizontalAlignment="Center"
+                                              FontFamily="Segoe MDL2 Assets" 
+                                              />-->
                                     <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
-                                                    Grid.Column="0"
-                                                    FontFamily="Segoe MDL2 Assets" 
-                                                    Text="{Binding Icone}"
+                                        Grid.Column="0"
+                                        FontFamily="Segoe MDL2 Assets" 
+                                        Text="{Binding Icone}"
+                                        Style="{StaticResource TextBlockInCheckBoxForSegoeMDL2}"
                                                     />
                                     <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForText}"
-                                                    Grid.Column="1" 
-                                                    Text="{Binding Path}"
-                                                        Padding="25,3,0,0"/>
+                                        Grid.Column="1" 
+                                        Text="{Binding Path}"
+                                        Padding="25,3,0,0"
+                                        Style="{StaticResource TextBlockInCheckBoxForText}"/>
+
                                     <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="3" 
-                                                    Text="{Binding FolderSize}"/>
+                                        Grid.Column="3" 
+                                        Text="{Binding FolderSize}"
+                                        Style="{StaticResource TextBlockInCheckBoxForCount}"/>
+
                                     <TextBlock 
-                                                    Style="{StaticResource TextBlockInCheckBoxForCount}"
-                                                    Grid.Column="4" 
-                                                    Text="B"/>
-                                    </Grid>
+                                        Grid.Column="4" 
+                                        Text="B"
+                                        Style="{StaticResource TextBlockInCheckBoxForCount}"/>
+
+                                </Grid>
                                 </CheckBox>
                             </DataTemplate>
                         </сustom:CustomListBox.ItemTemplate>
@@ -119,29 +136,32 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ProgressRing 
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center" 
-                                        Width="138" 
-                                        Height="138"  
-                                        IsActive="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
-                                        />
+            <!--<ProgressRing 
+                Grid.Column="1"
+                VerticalAlignment="Center" 
+                Width="138" 
+                Height="138"  
+                IsActive="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
+                />
             <TextBlock
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center"  
-                                        Width="Auto"
-                                        Visibility="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
-                                        Text="000"/>
+                Grid.Column="1"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"  
+                Width="Auto"
+                Visibility="{Binding ClearModel.IsActiveScannOrClean, UpdateSourceTrigger=PropertyChanged}"
+                Text="000"/>-->
 
             <Button 
-                                        Grid.Column="1"
-                                        VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Center"
-                                        Style="{StaticResource ButtonRoundedCorners}"
-                                        Content="{Binding ScannOrCleanText, UpdateSourceTrigger=PropertyChanged}"
-                                        Command="{Binding ScannAndCleanButton}"
-                                        Visibility="{Binding IsShowScannOrClean, UpdateSourceTrigger=PropertyChanged}"/>
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Content="{Binding CommonResources.ScannText, Source={StaticResource LocalizedStrings}}"
+                Command="{Binding ScannCacheButton}"
+                Style="{StaticResource ButtonRoundedCorners}"
+                />
+            <!--Style="{StaticResource ButtonRoundedCorners}"
+            Visibility="{Binding IsShowScannOrClean, UpdateSourceTrigger=PropertyChanged}"-->
+
         </Grid>
     </Grid>
 </Page>

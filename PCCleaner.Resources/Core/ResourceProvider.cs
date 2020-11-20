@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using Windows.ApplicationModel.Resources.Core;
-
-namespace PCCleaner.Resources.Core
+﻿namespace PCCleaner.Resources.Core
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using Windows.ApplicationModel.Resources.Core;
+
     public class ResourceProvider
     {
         /// <summary>

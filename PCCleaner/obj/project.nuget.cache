@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6YVnJQ2kFCZyHxGNvzxkDz6nN63qgrrSSHgIsWKG4HB5fC58cvKpJq5HYd2KjZcXSTkTP2bZ6OJF9XTDdcgjhA==",
+  "dgSpecHash": "qM8MUOEQ2gOp+xBAPEDyJQye2r51pp7LxkguT2iPo0asqw88E76VbmVIVBUnhMkuFjrG3jpFAzsfk4pcEaqd1w==",
   "success": true,
   "projectFilePath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner\\PCCleaner.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.netcore.universalwindowsplatform\\6.2.10\\microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
     "C:\\Users\\dmitr\\.nuget\\packages\\microsoft.toolkit\\6.1.1\\microsoft.toolkit.6.1.1.nupkg.sha512",
     "C:\\Users\\dmitr\\.nuget\\packages\\microsoft.toolkit.uwp\\6.1.1\\microsoft.toolkit.uwp.6.1.1.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\dmitr\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\dmitr\\.nuget\\packages\\newtonsoft.json\\10.0.3\\newtonsoft.json.10.0.3.nupkg.sha512",
     "C:\\Users\\dmitr\\.nuget\\packages\\runtime.any.system.collections\\4.3.0\\runtime.any.system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\dmitr\\.nuget\\packages\\runtime.any.system.globalization\\4.3.0\\runtime.any.system.globalization.4.3.0.nupkg.sha512",

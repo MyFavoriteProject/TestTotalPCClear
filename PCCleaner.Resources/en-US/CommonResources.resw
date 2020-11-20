@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcentColorText" xml:space="preserve">
-    <value>Acent Color</value>
+    <value>Accent Color</value>
   </data>
   <data name="AddFoldersText" xml:space="preserve">
     <value>Add folders</value>
@@ -159,7 +159,7 @@
   <data name="DesignThemeText" xml:space="preserve">
     <value>Design theme</value>
   </data>
-  <data name="DuplicateFileText" xml:space="preserve">
+  <data name="a" xml:space="preserve">
     <value>Duplicate file</value>
   </data>
   <data name="DuplicateText" xml:space="preserve">
@@ -175,7 +175,7 @@
     <value>Large file</value>
   </data>
   <data name="LenguageText" xml:space="preserve">
-    <value>Lenguage</value>
+    <value>Language</value>
   </data>
   <data name="LetsPutThingsInOrderText" xml:space="preserve">
     <value>Let's put things in order?</value>
@@ -221,5 +221,8 @@
   </data>
   <data name="UserSystemSettingText" xml:space="preserve">
     <value>User system setting</value>
+  </data>
+  <data name="DuplicateFilesText" xml:space="preserve">
+    <value>Duplicate File</value>
   </data>
 </root>

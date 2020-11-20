@@ -1,4 +1,5 @@
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\PCCleaner.Helpers.csproj;x86
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Model\PCCleaner.Models.csproj;x86
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\PCCleaner.Resources.csproj;x86
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\PCCleaner.ViewModels.csproj;x86
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\PCCleaner.csproj;x86

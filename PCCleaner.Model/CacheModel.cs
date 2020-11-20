@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace PCCleaner.Model
     {
         #region Fields
 
-        ObservableCollection<StorageFolderObservableCollection<StorageFolder>> folderCollection;
+        ObservableCollection<StorageFolderType<StorageFolder>> folderCollection;
 
         private const string driveLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -72,25 +73,31 @@ namespace PCCleaner.Model
         {
             cacheView = new List<(string key, string icon, List<string> pathes)>
             {
-                (key:cacheName[0], icon:"&#xE770;", pathes:this.systemCacheUniversalPaths),
-                (key:cacheName[1], icon:"&#xE74C;", pathes:this.applicationCacheUniversalPath),
-                (key:cacheName[2], icon:"&#xE715;", pathes:this.mailCacheUniversalPath),
-                (key:cacheName[3], icon:"&#xF56E;", pathes:this.officeCacheUniversalPath),
-                (key:cacheName[4], icon:"&#xE774;", pathes:this.browserCacheUniversalPath)
+                (key:cacheName[0], icon:Constants.FileTypeGlyph.SystemCacheGlyph, pathes:this.systemCacheUniversalPaths),
+                (key:cacheName[1], icon:Constants.FileTypeGlyph.ApplicationCacheGlyph, pathes:this.applicationCacheUniversalPath),
+                (key:cacheName[2], icon:Constants.FileTypeGlyph.MailCacheGlyph, pathes:this.mailCacheUniversalPath),
+                (key:cacheName[3], icon:Constants.FileTypeGlyph.OfficeCacheGlyph, pathes:this.officeCacheUniversalPath),
+                (key:cacheName[4], icon:Constants.FileTypeGlyph.BrowserCacheGlyph, pathes:this.browserCacheUniversalPath)
             };
+
+            this.FolderCollection = new ObservableCollection<StorageFolderType<StorageFolder>>();
+
+            foreach(var item in cacheView)
+            {
+                this.FolderCollection.Add(new StorageFolderType<StorageFolder> { FolderName = item.key, Icone = item.icon });
+            }
         }
 
         #endregion
 
         #region public Properties
 
-        public ObservableCollection<StorageFolderObservableCollection<StorageFolder>> FolderCollection 
+        public ObservableCollection<StorageFolderType<StorageFolder>> FolderCollection 
         { 
             get=>this.folderCollection;
             set
             {
                 this.folderCollection = value;
-                
             } 
         }
 
@@ -100,7 +107,7 @@ namespace PCCleaner.Model
 
         public async Task ScanningSystemCacheAsync()
         {
-            this.FolderCollection = new ObservableCollection<StorageFolderObservableCollection<StorageFolder>>();
+            this.FolderCollection = new ObservableCollection<StorageFolderType<StorageFolder>>();
 
             try
             {
@@ -111,7 +118,9 @@ namespace PCCleaner.Model
                 throw UAE;
             }
 
-            foreach(var folder in this.FolderCollection)
+            var folders = this.FolderCollection;
+
+            foreach (var folder in folders)
             {
                 foreach(var file in folder.FileCollection)
                 {
@@ -126,6 +135,8 @@ namespace PCCleaner.Model
                     catch (Exception) { }
                 }
             }
+
+            this.FolderCollection = folders;
         }
 
         public async Task DeleteFileAsync()
@@ -148,6 +159,14 @@ namespace PCCleaner.Model
                 }
             }
 
+        }
+
+        public void SetChekValue(bool value)
+        {
+            foreach(var folder in FolderCollection)
+            {
+                folder.IsChecked = value;
+            }
         }
 
         #endregion
@@ -206,7 +225,13 @@ namespace PCCleaner.Model
 
                     var fileCollection = SetPathesAsync(pathes);
 
-                    this.FolderCollection.Add(new StorageFolderObservableCollection<StorageFolder> { FileCollection = fileCollection , FolderName  = item.key, Icone = item.icon });
+                    var collection = FolderCollection.FirstOrDefault(c => c.FolderName.Equals(item.key));
+                    if (collection != null)
+                    {
+                        collection.FileCollection = fileCollection;
+                    }
+
+                    //this.FolderCollection.Add(new StorageFolderObservableCollection<StorageFolder> { FileCollection = fileCollection , FolderName  = item.key, Icone = item.icon });
                 }
             }
             else
@@ -215,15 +240,15 @@ namespace PCCleaner.Model
             }
         }
 
-        private ObservableCollection<StorageFileObservableCollection<StorageFile>> SetPathesAsync(List<string> pathes)
+        private ObservableCollection<StorageFileType<StorageFile>> SetPathesAsync(List<string> pathes)
         {
-            ObservableCollection<StorageFileObservableCollection<StorageFile>> fileCollection = new ObservableCollection<StorageFileObservableCollection<StorageFile>>();
+            ObservableCollection<StorageFileType<StorageFile>> fileCollection = new ObservableCollection<StorageFileType<StorageFile>>();
 
             foreach (string path in pathes)
             {
                 if (File.Exists(path) == true)
                 {
-                    fileCollection.Add(new StorageFileObservableCollection<StorageFile> { Path = path });
+                    fileCollection.Add(new StorageFileType<StorageFile> { Path = path });
                 }
             }
 

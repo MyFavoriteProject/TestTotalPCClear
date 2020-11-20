@@ -13,7 +13,8 @@ namespace PCCleaner.ViewModels
     {
         #region Fields
 
-        public CacheModel cacheModel;
+        private CacheModel cacheModel;
+        private bool isShowSelectOrDeselectButton;
 
         #endregion
 
@@ -23,8 +24,13 @@ namespace PCCleaner.ViewModels
         {
             this.cacheModel = new CacheModel();
 
+            //this.cacheModel.SetFolderCollectionAsynk();
+
             this.ScannCacheButton = new DelegateCommand(ScannCacheButton_Click);
             this.CleanCacheButton = new DelegateCommand(CleanCacheButton_Click);
+            this.SelectAllButton = new DelegateCommand(SelectAllButton_Click);
+            this.DeselectAllButton = new DelegateCommand(DeselectAllButton_Click);
+            this.MoreButton = new DelegateCommand(MoreButton_Click);
         }
 
         #endregion
@@ -44,8 +50,24 @@ namespace PCCleaner.ViewModels
             } 
         }
 
+        public bool IsShowSelectOrDeselectButton 
+        { 
+            get=>this.isShowSelectOrDeselectButton;
+            set
+            {
+                if (!value.Equals(this.isShowSelectOrDeselectButton))
+                {
+                    this.isShowSelectOrDeselectButton = value;
+                    OnPropertyChanged(nameof(IsShowSelectOrDeselectButton));
+                }
+            } 
+        }
+
         public ICommand ScannCacheButton { get; set; }
         public ICommand CleanCacheButton { get; set; }
+        public ICommand SelectAllButton { get; set; }
+        public ICommand DeselectAllButton { get; set; }
+        public ICommand MoreButton { get; set; }
 
         #endregion
 
@@ -63,7 +85,7 @@ namespace PCCleaner.ViewModels
             }
             catch (UnauthorizedAccessException)
             {
-               //await AccessFileSystem().ConfigureAwait(true);
+               await AccessFileSystem().ConfigureAwait(true);
             }
         }
 
@@ -77,6 +99,29 @@ namespace PCCleaner.ViewModels
             {
                 //await AccessFileSystem().ConfigureAwait(true);
             }
+        }
+
+        private void SelectAllButton_Click(object obj)
+        {
+            this.cacheModel.SetChekValue(true);
+        }
+
+        private void DeselectAllButton_Click(object obj)
+        {
+            this.cacheModel.SetChekValue(false);
+        }
+
+        private void MoreButton_Click(object obj)
+        {
+            if (IsShowSelectOrDeselectButton)
+                IsShowSelectOrDeselectButton = false;
+            if (!IsShowSelectOrDeselectButton)
+                IsShowSelectOrDeselectButton = true;
+        }
+
+        private async Task AccessFileSystem()
+        {
+            bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-broadfilesystemaccess"));
         }
 
         #endregion

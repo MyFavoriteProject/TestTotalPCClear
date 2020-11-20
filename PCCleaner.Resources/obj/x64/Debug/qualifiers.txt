@@ -1,2 +1,2 @@
 Language=EN-US
-Language=RU
+Language=RU-RU

@@ -58,8 +58,8 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\Cleaner.Resources.csproj">
-      <PackagePath>PCCleaner.Resources\Cleaner.Resources.csproj</PackagePath>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\Player.Resources.csproj">
+      <PackagePath>PCCleaner.Resources\Player.Resources.csproj</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\ResourceFileCodeGenerator.tt">
       <PackagePath>PCCleaner.Resources\ResourceFileCodeGenerator.tt</PackagePath>
@@ -100,17 +100,14 @@
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Controls\RootFrame\RootFrame.xbf">
-      <PackagePath>Controls\RootFrame\RootFrame.xbf</PackagePath>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\BrushStyle.xbf">
+      <PackagePath>Styles\BrushStyle.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\ButtonStyle.xbf">
       <PackagePath>Styles\ButtonStyle.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\BrushStyle.xbf">
-      <PackagePath>Styles\BrushStyle.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\CheckBoxControlTemplate.xbf">
       <PackagePath>Styles\CheckBoxControlTemplate.xbf</PackagePath>

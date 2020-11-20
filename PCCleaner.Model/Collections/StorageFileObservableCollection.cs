@@ -3,7 +3,7 @@ using Windows.Storage.FileProperties;
 
 namespace PCCleaner.Model.Collections
 {
-    public class StorageFileObservableCollection<T> : BaseObservableCollection<T> where T : IStorageFile
+    public class StorageFileObservableCollection<T> : BaseStorageType<T> where T : IStorageFile
     {
         T fileCO;
         BasicProperties basicProperties;

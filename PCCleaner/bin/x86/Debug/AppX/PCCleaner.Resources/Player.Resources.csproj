@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1926CF9B-0581-4D84-B147-FE3F6D6B5509}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Player.Resources</RootNamespace>
+    <AssemblyName>Player.Resources</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <PRIResource Include="zh-HK\RateAndFeedBackResources.resw" />
+    <PRIResource Include="zh-CN\RateAndFeedBackResources.resw" />
+    <PRIResource Include="uk-UA\RateAndFeedBackResources.resw" />
+    <PRIResource Include="tr-TR\RateAndFeedBackResources.resw" />
+    <PRIResource Include="ru-RU\RateAndFeedBackResources.resw" />
+    <PRIResource Include="pt-PT\RateAndFeedBackResources.resw" />
+    <PRIResource Include="tr-TR\RemovableMediaResources.resw" />
+    <PRIResource Include="tr-TR\TutorialResources.resw" />
+    <PRIResource Include="tr-TR\TrackInfoResources.resw" />
+    <PRIResource Include="tr-TR\ToolTipResources.resw" />
+    <PRIResource Include="tr-TR\StreamsViewResources.resw" />
+    <PRIResource Include="tr-TR\SliderLimitationResources.resw" />
+    <PRIResource Include="tr-TR\SettingsPageResources.resw" />
+    <PRIResource Include="tr-TR\SearchPageResources.resw" />
+    <PRIResource Include="tr-TR\RateAndReviewResources.resw" />
+    <PRIResource Include="tr-TR\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="tr-TR\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="tr-TR\MenuControlResources.resw" />
+    <PRIResource Include="tr-TR\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="tr-TR\LocalMediaViewResources.resw" />
+    <PRIResource Include="tr-TR\LastFmResources.resw" />
+    <PRIResource Include="tr-TR\HomeViewResources.resw" />
+    <PRIResource Include="tr-TR\EqualizerResources.resw" />
+    <PRIResource Include="tr-TR\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="tr-TR\CommonResources.resw" />
+    <PRIResource Include="tr-TR\CastingResources.resw" />
+    <PRIResource Include="tr-TR\CachingViewResources.resw" />
+    <PRIResource Include="tr-TR\AppBarResources.resw" />
+    <PRIResource Include="tr-TR\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="tr-TR\AboutApplicationResources.resw" />
+    <PRIResource Include="zh-HK\RemovableMediaResources.resw" />
+    <PRIResource Include="zh-CN\RemovableMediaResources.resw" />
+    <PRIResource Include="uk-UA\RemovableMediaResources.resw" />
+    <PRIResource Include="ru-RU\RemovableMediaResources.resw" />
+    <PRIResource Include="pt-PT\RemovableMediaResources.resw" />
+    <PRIResource Include="zh-HK\CastingResources.resw" />
+    <PRIResource Include="zh-CN\CastingResources.resw" />
+    <PRIResource Include="uk-UA\CastingResources.resw" />
+    <PRIResource Include="ru-RU\CastingResources.resw" />
+    <PRIResource Include="pt-PT\CastingResources.resw" />
+    <PRIResource Include="zh-HK\SliderLimitationResources.resw" />
+    <PRIResource Include="zh-CN\SliderLimitationResources.resw" />
+    <PRIResource Include="uk-UA\SliderLimitationResources.resw" />
+    <PRIResource Include="ru-RU\SliderLimitationResources.resw" />
+    <PRIResource Include="pt-PT\SliderLimitationResources.resw" />
+    <PRIResource Include="zh-HK\LocalMediaViewResources.resw" />
+    <PRIResource Include="zh-CN\LocalMediaViewResources.resw" />
+    <PRIResource Include="uk-UA\LocalMediaViewResources.resw" />
+    <PRIResource Include="ru-RU\LocalMediaViewResources.resw" />
+    <PRIResource Include="pt-PT\LocalMediaViewResources.resw" />
+    <PRIResource Include="zh-HK\TutorialResources.resw" />
+    <PRIResource Include="zh-CN\TutorialResources.resw" />
+    <PRIResource Include="uk-UA\TutorialResources.resw" />
+    <PRIResource Include="ru-RU\TutorialResources.resw" />
+    <PRIResource Include="pt-PT\TutorialResources.resw" />
+    <PRIResource Include="zh-HK\MenuControlResources.resw" />
+    <PRIResource Include="zh-CN\MenuControlResources.resw" />
+    <PRIResource Include="uk-UA\MenuControlResources.resw" />
+    <PRIResource Include="ru-RU\MenuControlResources.resw" />
+    <PRIResource Include="pt-PT\MenuControlResources.resw" />
+    <PRIResource Include="zh-HK\ToolTipResources.resw" />
+    <PRIResource Include="zh-CN\ToolTipResources.resw" />
+    <PRIResource Include="uk-UA\ToolTipResources.resw" />
+    <PRIResource Include="ru-RU\ToolTipResources.resw" />
+    <PRIResource Include="pt-PT\ToolTipResources.resw" />
+    <PRIResource Include="zh-HK\TrackInfoResources.resw" />
+    <PRIResource Include="zh-HK\StreamsViewResources.resw" />
+    <PRIResource Include="zh-HK\SettingsPageResources.resw" />
+    <PRIResource Include="zh-HK\SearchPageResources.resw" />
+    <PRIResource Include="zh-HK\RateAndReviewResources.resw" />
+    <PRIResource Include="zh-HK\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="zh-HK\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="zh-HK\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="zh-HK\LastFmResources.resw" />
+    <PRIResource Include="zh-HK\HomeViewResources.resw" />
+    <PRIResource Include="zh-HK\EqualizerResources.resw" />
+    <PRIResource Include="zh-HK\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="zh-HK\CommonResources.resw" />
+    <PRIResource Include="zh-HK\CachingViewResources.resw" />
+    <PRIResource Include="zh-HK\AppBarResources.resw" />
+    <PRIResource Include="zh-HK\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="zh-HK\AboutApplicationResources.resw" />
+    <PRIResource Include="zh-CN\TrackInfoResources.resw" />
+    <PRIResource Include="zh-CN\StreamsViewResources.resw" />
+    <PRIResource Include="zh-CN\SettingsPageResources.resw" />
+    <PRIResource Include="zh-CN\SearchPageResources.resw" />
+    <PRIResource Include="zh-CN\RateAndReviewResources.resw" />
+    <PRIResource Include="zh-CN\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="zh-CN\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="zh-CN\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="zh-CN\LastFmResources.resw" />
+    <PRIResource Include="zh-CN\HomeViewResources.resw" />
+    <PRIResource Include="zh-CN\EqualizerResources.resw" />
+    <PRIResource Include="zh-CN\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="zh-CN\CommonResources.resw" />
+    <PRIResource Include="zh-CN\CachingViewResources.resw" />
+    <PRIResource Include="zh-CN\AppBarResources.resw" />
+    <PRIResource Include="zh-CN\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="zh-CN\AboutApplicationResources.resw" />
+    <PRIResource Include="uk-UA\TrackInfoResources.resw" />
+    <PRIResource Include="uk-UA\StreamsViewResources.resw" />
+    <PRIResource Include="uk-UA\SettingsPageResources.resw" />
+    <PRIResource Include="uk-UA\SearchPageResources.resw" />
+    <PRIResource Include="uk-UA\RateAndReviewResources.resw" />
+    <PRIResource Include="uk-UA\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="uk-UA\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="uk-UA\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="uk-UA\LastFmResources.resw" />
+    <PRIResource Include="uk-UA\HomeViewResources.resw" />
+    <PRIResource Include="uk-UA\EqualizerResources.resw" />
+    <PRIResource Include="uk-UA\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="uk-UA\CommonResources.resw" />
+    <PRIResource Include="uk-UA\CachingViewResources.resw" />
+    <PRIResource Include="uk-UA\AppBarResources.resw" />
+    <PRIResource Include="uk-UA\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="uk-UA\AboutApplicationResources.resw" />
+    <PRIResource Include="ru-RU\TrackInfoResources.resw" />
+    <PRIResource Include="ru-RU\StreamsViewResources.resw" />
+    <PRIResource Include="ru-RU\SettingsPageResources.resw" />
+    <PRIResource Include="ru-RU\SearchPageResources.resw" />
+    <PRIResource Include="ru-RU\RateAndReviewResources.resw" />
+    <PRIResource Include="ru-RU\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="ru-RU\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="ru-RU\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="ru-RU\LastFmResources.resw" />
+    <PRIResource Include="ru-RU\HomeViewResources.resw" />
+    <PRIResource Include="ru-RU\EqualizerResources.resw" />
+    <PRIResource Include="ru-RU\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="ru-RU\CommonResources.resw" />
+    <PRIResource Include="ru-RU\CachingViewResources.resw" />
+    <PRIResource Include="ru-RU\AppBarResources.resw" />
+    <PRIResource Include="ru-RU\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="ru-RU\AboutApplicationResources.resw" />
+    <PRIResource Include="pt-PT\TrackInfoResources.resw" />
+    <PRIResource Include="pt-PT\StreamsViewResources.resw" />
+    <PRIResource Include="pt-PT\SettingsPageResources.resw" />
+    <PRIResource Include="pt-PT\SearchPageResources.resw" />
+    <PRIResource Include="pt-PT\RateAndReviewResources.resw" />
+    <PRIResource Include="pt-PT\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="pt-PT\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="pt-PT\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="pt-PT\LastFmResources.resw" />
+    <PRIResource Include="pt-PT\HomeViewResources.resw" />
+    <PRIResource Include="pt-PT\EqualizerResources.resw" />
+    <PRIResource Include="pt-PT\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="pt-PT\CommonResources.resw" />
+    <PRIResource Include="pt-PT\CachingViewResources.resw" />
+    <PRIResource Include="pt-PT\AppBarResources.resw" />
+    <PRIResource Include="pt-PT\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="pt-PT\AboutApplicationResources.resw" />
+    <PRIResource Include="de-DE\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="de-DE\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="de-DE\AppBarResources.resw" />
+    <PRIResource Include="de-DE\CachingViewResources.resw" />
+    <PRIResource Include="de-DE\CommonResources.resw" />
+    <PRIResource Include="de-DE\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="de-DE\EqualizerResources.resw" />
+    <PRIResource Include="de-DE\HomeViewResources.resw" />
+    <PRIResource Include="de-DE\LastFmResources.resw" />
+    <PRIResource Include="de-DE\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="de-DE\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="de-DE\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="de-DE\RateAndReviewResources.resw" />
+    <PRIResource Include="de-DE\SearchPageResources.resw" />
+    <PRIResource Include="de-DE\SettingsPageResources.resw" />
+    <PRIResource Include="de-DE\StreamsViewResources.resw" />
+    <PRIResource Include="de-DE\TrackInfoResources.resw" />
+    <PRIResource Include="en-US\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="en-US\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="en-US\AppBarResources.resw" />
+    <PRIResource Include="en-US\CachingViewResources.resw" />
+    <PRIResource Include="en-US\CommonResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="en-US\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="en-US\EqualizerResources.resw" />
+    <PRIResource Include="en-US\HomeViewResources.resw" />
+    <PRIResource Include="en-US\LastFmResources.resw" />
+    <PRIResource Include="en-US\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="en-US\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="en-US\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="en-US\RateAndReviewResources.resw" />
+    <PRIResource Include="en-US\SearchPageResources.resw" />
+    <PRIResource Include="en-US\SettingsPageResources.resw" />
+    <PRIResource Include="en-US\StreamsViewResources.resw" />
+    <PRIResource Include="en-US\TrackInfoResources.resw" />
+    <PRIResource Include="es-ES\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="es-ES\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="es-ES\AppBarResources.resw" />
+    <PRIResource Include="es-ES\CachingViewResources.resw" />
+    <PRIResource Include="es-ES\CommonResources.resw" />
+    <PRIResource Include="es-ES\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="es-ES\EqualizerResources.resw" />
+    <PRIResource Include="es-ES\HomeViewResources.resw" />
+    <PRIResource Include="es-ES\LastFmResources.resw" />
+    <PRIResource Include="es-ES\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="es-ES\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="es-ES\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="es-ES\RateAndReviewResources.resw" />
+    <PRIResource Include="es-ES\SearchPageResources.resw" />
+    <PRIResource Include="es-ES\SettingsPageResources.resw" />
+    <PRIResource Include="es-ES\StreamsViewResources.resw" />
+    <PRIResource Include="es-ES\TrackInfoResources.resw" />
+    <PRIResource Include="fr-FR\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="fr-FR\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="fr-FR\AppBarResources.resw" />
+    <PRIResource Include="fr-FR\CachingViewResources.resw" />
+    <PRIResource Include="fr-FR\CommonResources.resw" />
+    <PRIResource Include="fr-FR\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="fr-FR\EqualizerResources.resw" />
+    <PRIResource Include="fr-FR\HomeViewResources.resw" />
+    <PRIResource Include="fr-FR\LastFmResources.resw" />
+    <PRIResource Include="fr-FR\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="fr-FR\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="fr-FR\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="fr-FR\RateAndReviewResources.resw" />
+    <PRIResource Include="fr-FR\SearchPageResources.resw" />
+    <PRIResource Include="fr-FR\SettingsPageResources.resw" />
+    <PRIResource Include="fr-FR\StreamsViewResources.resw" />
+    <PRIResource Include="fr-FR\TrackInfoResources.resw" />
+    <PRIResource Include="it-IT\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="it-IT\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="it-IT\AppBarResources.resw" />
+    <PRIResource Include="it-IT\CachingViewResources.resw" />
+    <PRIResource Include="it-IT\CommonResources.resw" />
+    <PRIResource Include="it-IT\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="it-IT\EqualizerResources.resw" />
+    <PRIResource Include="it-IT\HomeViewResources.resw" />
+    <PRIResource Include="it-IT\LastFmResources.resw" />
+    <PRIResource Include="it-IT\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="it-IT\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="it-IT\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="it-IT\RateAndReviewResources.resw" />
+    <PRIResource Include="it-IT\SearchPageResources.resw" />
+    <PRIResource Include="it-IT\SettingsPageResources.resw" />
+    <PRIResource Include="it-IT\StreamsViewResources.resw" />
+    <PRIResource Include="it-IT\TrackInfoResources.resw" />
+    <PRIResource Include="ja-JP\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="ja-JP\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="ja-JP\AppBarResources.resw" />
+    <PRIResource Include="ja-JP\CachingViewResources.resw" />
+    <PRIResource Include="ja-JP\CommonResources.resw" />
+    <PRIResource Include="ja-JP\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="ja-JP\EqualizerResources.resw" />
+    <PRIResource Include="ja-JP\HomeViewResources.resw" />
+    <PRIResource Include="ja-JP\LastFmResources.resw" />
+    <PRIResource Include="ja-JP\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="ja-JP\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="ja-JP\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="ja-JP\RateAndReviewResources.resw" />
+    <PRIResource Include="ja-JP\SearchPageResources.resw" />
+    <PRIResource Include="ja-JP\SettingsPageResources.resw" />
+    <PRIResource Include="ja-JP\StreamsViewResources.resw" />
+    <PRIResource Include="ja-JP\TrackInfoResources.resw" />
+    <PRIResource Include="ko-KR\AboutApplicationResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="ko-KR\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="ko-KR\AppBarResources.resw" />
+    <PRIResource Include="ko-KR\CachingViewResources.resw" />
+    <PRIResource Include="ko-KR\CommonResources.resw" />
+    <PRIResource Include="ko-KR\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="ko-KR\EqualizerResources.resw" />
+    <PRIResource Include="ko-KR\HomeViewResources.resw" />
+    <PRIResource Include="ko-KR\LastFmResources.resw" />
+    <PRIResource Include="ko-KR\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="ko-KR\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="ko-KR\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="ko-KR\RateAndReviewResources.resw" />
+    <PRIResource Include="ko-KR\SearchPageResources.resw" />
+    <PRIResource Include="ko-KR\SettingsPageResources.resw" />
+    <PRIResource Include="ko-KR\StreamsViewResources.resw" />
+    <PRIResource Include="ko-KR\TrackInfoResources.resw" />
+    <PRIResource Include="en-US\ToolTipResources.resw" />
+    <PRIResource Include="de-DE\ToolTipResources.resw" />
+    <PRIResource Include="es-ES\ToolTipResources.resw" />
+    <PRIResource Include="fr-FR\ToolTipResources.resw" />
+    <PRIResource Include="it-IT\ToolTipResources.resw" />
+    <PRIResource Include="ja-JP\ToolTipResources.resw" />
+    <PRIResource Include="ko-KR\ToolTipResources.resw" />
+    <PRIResource Include="en-US\MenuControlResources.resw" />
+    <PRIResource Include="de-DE\MenuControlResources.resw" />
+    <PRIResource Include="es-ES\MenuControlResources.resw" />
+    <PRIResource Include="fr-FR\MenuControlResources.resw" />
+    <PRIResource Include="it-IT\MenuControlResources.resw" />
+    <PRIResource Include="ja-JP\MenuControlResources.resw" />
+    <PRIResource Include="ko-KR\MenuControlResources.resw" />
+    <PRIResource Include="en-US\TutorialResources.resw" />
+    <PRIResource Include="es-ES\TutorialResources.resw" />
+    <PRIResource Include="fr-FR\TutorialResources.resw" />
+    <PRIResource Include="it-IT\TutorialResources.resw" />
+    <PRIResource Include="ja-JP\TutorialResources.resw" />
+    <PRIResource Include="ko-KR\TutorialResources.resw" />
+    <PRIResource Include="de-DE\TutorialResources.resw" />
+    <PRIResource Include="de-DE\LocalMediaViewResources.resw" />
+    <PRIResource Include="en-US\LocalMediaViewResources.resw" />
+    <PRIResource Include="es-ES\LocalMediaViewResources.resw" />
+    <PRIResource Include="fr-FR\LocalMediaViewResources.resw" />
+    <PRIResource Include="it-IT\LocalMediaViewResources.resw" />
+    <PRIResource Include="ja-JP\LocalMediaViewResources.resw" />
+    <PRIResource Include="ko-KR\LocalMediaViewResources.resw" />
+    <PRIResource Include="en-US\SliderLimitationResources.resw" />
+    <PRIResource Include="de-DE\SliderLimitationResources.resw" />
+    <PRIResource Include="es-ES\SliderLimitationResources.resw" />
+    <PRIResource Include="fr-FR\SliderLimitationResources.resw" />
+    <PRIResource Include="it-IT\SliderLimitationResources.resw" />
+    <PRIResource Include="ja-JP\SliderLimitationResources.resw" />
+    <PRIResource Include="ko-KR\SliderLimitationResources.resw" />
+    <PRIResource Include="en-US\ExceptionResources.resw" />
+    <PRIResource Include="en-US\LoggerResources.resw" />
+    <PRIResource Include="en-US\StringPatternResources.resw" />
+    <PRIResource Include="en-US\CastingResources.resw" />
+    <PRIResource Include="de-DE\CastingResources.resw" />
+    <PRIResource Include="es-ES\CastingResources.resw" />
+    <PRIResource Include="fr-FR\CastingResources.resw" />
+    <PRIResource Include="it-IT\CastingResources.resw" />
+    <PRIResource Include="ja-JP\CastingResources.resw" />
+    <PRIResource Include="ko-KR\CastingResources.resw" />
+    <PRIResource Include="en-US\RemovableMediaResources.resw" />
+    <PRIResource Include="de-DE\RemovableMediaResources.resw" />
+    <PRIResource Include="es-ES\RemovableMediaResources.resw" />
+    <PRIResource Include="fr-FR\RemovableMediaResources.resw" />
+    <PRIResource Include="it-IT\RemovableMediaResources.resw" />
+    <PRIResource Include="ja-JP\RemovableMediaResources.resw" />
+    <PRIResource Include="ko-KR\RemovableMediaResources.resw" />
+    <PRIResource Include="en-US\RateAndFeedBackResources.resw" />
+    <PRIResource Include="de-DE\RateAndFeedBackResources.resw" />
+    <PRIResource Include="es-ES\RateAndFeedBackResources.resw" />
+    <PRIResource Include="fr-FR\RateAndFeedBackResources.resw" />
+    <PRIResource Include="it-IT\RateAndFeedBackResources.resw" />
+    <PRIResource Include="ja-JP\RateAndFeedBackResources.resw" />
+    <PRIResource Include="ko-KR\RateAndFeedBackResources.resw" />
+    <PRIResource Include="pl-PL\AboutApplicationResources.resw" />
+    <PRIResource Include="pl-PL\AlbumDetailsViewResources.resw" />
+    <PRIResource Include="pl-PL\AppBarResources.resw" />
+    <PRIResource Include="pl-PL\CachingViewResources.resw" />
+    <PRIResource Include="pl-PL\CastingResources.resw" />
+    <PRIResource Include="pl-PL\CommonResources.resw" />
+    <PRIResource Include="pl-PL\CreateEditPlaylistViewResources.resw" />
+    <PRIResource Include="pl-PL\EqualizerResources.resw" />
+    <PRIResource Include="pl-PL\HomeViewResources.resw" />
+    <PRIResource Include="pl-PL\LastFmResources.resw" />
+    <PRIResource Include="pl-PL\LocalMediaViewResources.resw" />
+    <PRIResource Include="pl-PL\MediaPlaylistsViewResources.resw" />
+    <PRIResource Include="pl-PL\MenuControlResources.resw" />
+    <PRIResource Include="pl-PL\NewStreamingSourceViewResources.resw" />
+    <PRIResource Include="pl-PL\PlaylistDetailsViewResources.resw" />
+    <PRIResource Include="pl-PL\RateAndFeedBackResources.resw" />
+    <PRIResource Include="pl-PL\RateAndReviewResources.resw" />
+    <PRIResource Include="pl-PL\RemovableMediaResources.resw" />
+    <PRIResource Include="pl-PL\SearchPageResources.resw" />
+    <PRIResource Include="pl-PL\SettingsPageResources.resw" />
+    <PRIResource Include="pl-PL\SliderLimitationResources.resw" />
+    <PRIResource Include="pl-PL\StreamsViewResources.resw" />
+    <PRIResource Include="pl-PL\ToolTipResources.resw" />
+    <PRIResource Include="pl-PL\TrackInfoResources.resw" />
+    <PRIResource Include="pl-PL\TutorialResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ResourceProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceFileCodeGenerator.cs">
+      <DependentUpon>ResourceFileCodeGenerator.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Content Include="Properties\Player.Resources.rd.xml" />
+    <Content Include="ResourceFileCodeGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ResourceFileCodeGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETNative.Analyzer">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .NET Native|ARM'">
+    <OutputPath>bin\ARM\Debug .NET Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>false</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .NET Native|x64'">
+    <OutputPath>bin\x64\Debug .NET Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>false</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .NET Native|x86'">
+    <OutputPath>bin\x86\Debug .NET Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>false</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release%28Apps4Store%29|ARM'">
+    <OutputPath>bin\ARM\Release%28Apps4Store%29\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release%28Apps4Store%29|x64'">
+    <OutputPath>bin\x64\Release%28Apps4Store%29\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release%28Apps4Store%29|x86'">
+    <OutputPath>bin\x86\Release%28Apps4Store%29\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseVIP|ARM'">
+    <OutputPath>bin\ARM\ReleaseVIP\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseVIP|x64'">
+    <OutputPath>bin\x64\ReleaseVIP\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseVIP|x86'">
+    <OutputPath>bin\x86\ReleaseVIP\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

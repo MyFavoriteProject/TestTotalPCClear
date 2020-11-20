@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="ScannOrCleanText" />
-    <RootPropertyPathName Name="ScannAndCleanButton" />
-    <RootPropertyPathName Name="IsShowScannOrClean" />
-    <RootPropertyPathName Name="ClearModel" />
-    <RootPropertyPathName Name="IsActiveScannOrClean" />
     <RootPropertyPathName Name="ContextAcrylicBrush" />
+    <RootPropertyPathName Name="CommonResources" />
+    <RootPropertyPathName Name="ScannText" />
+    <RootPropertyPathName Name="ScannCacheButton" />
     <RootPropertyPathName Name="CacheModel" />
     <RootPropertyPathName Name="FolderCollection" />
     <RootPropertyPathName Name="CheckBlockDarkAcrylicBrush" />
@@ -20,30 +18,40 @@
     <RootPropertyPathName Name="DeselectAllButton" />
     <RootPropertyPathName Name="SelectAllButton" />
     <RootPropertyPathName Name="CacheText" />
-    <RootPropertyPathName Name="CleanDuplicateFileButton" />
-    <RootPropertyPathName Name="DuplicateFileCollection" />
-    <RootPropertyPathName Name="Item" />
-    <RootPropertyPathName Name="ScannText" />
-    <RootPropertyPathName Name="LargeFileScannFolder" />
-    <RootPropertyPathName Name="LargeFolderCollection" />
+    <RootPropertyPathName Name="ShowFilesPage" />
     <RootPropertyPathName Name="CleanText" />
+    <RootPropertyPathName Name="CleanDuplicateFileButton" />
+    <RootPropertyPathName Name="DuplicateModel" />
+    <RootPropertyPathName Name="DuplicatCollection" />
+    <RootPropertyPathName Name="FileCollection" />
+    <RootPropertyPathName Name="BasicProperties" />
+    <RootPropertyPathName Name="Size" />
+    <RootPropertyPathName Name="ShowFolderPage" />
+    <RootPropertyPathName Name="DuplicateScannFolderButton" />
+    <RootPropertyPathName Name="DuplicateFolderCollection" />
+    <RootPropertyPathName Name="ShowAddFolderPage" />
+    <RootPropertyPathName Name="AddFoldersText" />
+    <RootPropertyPathName Name="FileOpenFolderButton" />
+    <RootPropertyPathName Name="ForegroundBrush" />
+    <RootPropertyPathName Name="LetsPutThingsInOrderText" />
+    <RootPropertyPathName Name="HelloText" />
+    <RootPropertyPathName Name="DeselectedAllCommand" />
+    <RootPropertyPathName Name="SelectedAllCommand" />
+    <RootPropertyPathName Name="MoreButtonCommand" />
+    <RootPropertyPathName Name="DuplicateFilesText" />
+    <RootPropertyPathName Name="LargeFileScannFolder" />
+    <RootPropertyPathName Name="ClearModel" />
+    <RootPropertyPathName Name="LargeFolderCollection" />
+    <RootPropertyPathName Name="Item" />
     <RootPropertyPathName Name="CleanLargeButton" />
     <RootPropertyPathName Name="LargeFileCollection" />
     <RootPropertyPathName Name="Date" />
-    <RootPropertyPathName Name="BasicProperties" />
-    <RootPropertyPathName Name="Size" />
     <RootPropertyPathName Name="DisplayName" />
     <RootPropertyPathName Name="LargeFileDeleteFolderButton" />
     <RootPropertyPathName Name="LargeFileText" />
     <RootPropertyPathName Name="AutoClearingText" />
     <RootPropertyPathName Name="DuplicateText" />
-    <RootPropertyPathName Name="LargeFilesText" />
-    <RootPropertyPathName Name="CommonResources" />
-    <RootPropertyPathName Name="AddFoldersText" />
     <RootPropertyPathName Name="LargeFileOpenFolder" />
-    <RootPropertyPathName Name="ForegroundBrush" />
-    <RootPropertyPathName Name="LetsPutThingsInOrderText" />
-    <RootPropertyPathName Name="HelloText" />
     <RootPropertyPathName Name="AcentColorText" />
     <RootPropertyPathName Name="UserSystemSettingText" />
     <RootPropertyPathName Name="ThemeDarkRadioButton" />
@@ -67,36 +75,18 @@
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="PCCleaner.Themes.ThemeManager" />
-    <RootType FullName="AppleMusicPlayer.Resources.LocalizedStrings" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Page">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Resources" />
+    <RootType FullName="PCCleaner.Resources.LocalizedStrings" />
+    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
+      <RootProperty Name="BackgroundSource" />
+      <RootProperty Name="TintOpacity" />
+      <RootProperty Name="TintColor" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
-      <RootProperty Name="ColumnDefinitions" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="RowDefinitions" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Margin" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
-      <RootMethod Name="GetRowSpan" />
-      <RootMethod Name="SetRowSpan" />
-    </RootType>
-    <RootType FullName="PCCleaner.Controls.RootFrame.RootFrame" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Style" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Foreground" />
@@ -141,15 +131,15 @@
       <RootProperty Name="Value" />
       <RootProperty Name="Target" />
     </RootType>
-    <RootType FullName="PCCleaner.ButtonStyle" />
-    <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
-    <RootType FullName="PCCleaner.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Media.AcrylicBrush">
-      <RootProperty Name="BackgroundSource" />
-      <RootProperty Name="TintOpacity" />
-      <RootProperty Name="TintColor" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="Background" />
+      <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="PCCleaner.Styles.BrushStyle" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Frame">
+      <RootProperty Name="Background" />
+    </RootType>
+    <RootType FullName="PCCleaner.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
@@ -187,6 +177,24 @@
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>
@@ -222,56 +230,45 @@
       <RootProperty Name="Opacity" />
       <RootProperty Name="UseLayoutRounding" />
     </RootType>
-    <RootType FullName="PCCleaner.Styles.CheckBoxControlTemplate" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem" />
-    <RootType FullName="PCCleaner.Styles.ListBoxStyle" />
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationViewItem">
       <RootProperty Name="Icon" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="PCCleaner.Styles.NavigationViewStyle" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="FontSize" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Visibility" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="Text" />
       <RootProperty Name="Style" />
-      <RootProperty Name="FontFamily" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="PCCleaner.Styles.TextBlock" />
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Source" />
+      <RootProperty Name="Mode" />
+      <RootProperty Name="UpdateSourceTrigger" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="Orientation" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="IsActive" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="UpdateSourceTrigger" />
-      <RootProperty Name="Source" />
-      <RootProperty Name="Mode" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="PCCleaner.Helpers.CustomXamlElements.CustomListBox">
       <RootProperty Name="Background" />
       <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="EvenListBoxItemBackground" />
       <RootProperty Name="OddListBoxItemBackground" />
       <RootProperty Name="ItemTemplate" />
@@ -287,6 +284,14 @@
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="PCCleaner.Views.CacheView" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="ItemTemplate" />
+    </RootType>
     <RootType FullName="PCCleaner.Views.DuplicateView" />
     <RootType FullName="PCCleaner.Views.FileList" />
     <RootType FullName="PCCleaner.Views.LargeFileView" />

@@ -1,4 +1,3 @@
-C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.ViewModels.csproj.CoreCompileInputs.cache
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.ViewModels.dll
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.ViewModels.pdb
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.ViewModels.pri
@@ -7,6 +6,7 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\b
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Model.pdb
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Model.pri
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.ViewModels.csprojAssemblyReference.cache
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.ViewModels.csproj.CoreCompileInputs.cache
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.ViewModels.csproj.CopyComplete
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.Model.pri.xml
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\Microsoft.Toolkit.Uwp.pri.xml

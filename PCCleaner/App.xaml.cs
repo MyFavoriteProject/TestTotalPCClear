@@ -29,7 +29,7 @@ namespace PCCleaner
         /// </summary>
         /// 
 
-        public static ThemeManager ThemeManager => (ThemeManager)App.Current.Resources["ThemeManager"];
+        //public static ThemeManager ThemeManager => (ThemeManager)App.Current.Resources["ThemeManager"];
 
         public App()
         {

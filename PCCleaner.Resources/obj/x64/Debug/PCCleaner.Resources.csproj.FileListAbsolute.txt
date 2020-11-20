@@ -1,3 +1,5 @@
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\Player.Resources.csproj
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\ResourceFileCodeGenerator.tt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources.dll
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources.pdb
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources.pri
@@ -21,5 +23,3 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\ob
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\obj\x64\Debug\qualifiers.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\ResourceFileCodeGenerator.tt
-C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources\Cleaner.Resources.csproj

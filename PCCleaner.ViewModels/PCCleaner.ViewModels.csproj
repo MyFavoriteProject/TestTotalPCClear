@@ -134,7 +134,6 @@
     <Compile Include="CacheViewModel.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="DuplicateViewModel.cs" />
-    <Compile Include="Interfaces\IPutFile.cs" />
     <Compile Include="LargeFileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\PCCleaner.ViewModels.rd.xml" />
@@ -149,6 +148,9 @@
       <Project>{42fabb80-0efd-44c5-9a1e-63c7c462d59f}</Project>
       <Name>PCCleaner.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

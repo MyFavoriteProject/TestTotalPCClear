@@ -22,13 +22,12 @@
     <RootPropertyPathName Name="CleanText" />
     <RootPropertyPathName Name="CleanDuplicateFileButton" />
     <RootPropertyPathName Name="DuplicateModel" />
-    <RootPropertyPathName Name="DuplicatCollection" />
     <RootPropertyPathName Name="FileCollection" />
     <RootPropertyPathName Name="BasicProperties" />
     <RootPropertyPathName Name="Size" />
+    <RootPropertyPathName Name="FileName" />
     <RootPropertyPathName Name="ShowFolderPage" />
     <RootPropertyPathName Name="DuplicateScannFolderButton" />
-    <RootPropertyPathName Name="DuplicateFolderCollection" />
     <RootPropertyPathName Name="ShowAddFolderPage" />
     <RootPropertyPathName Name="AddFoldersText" />
     <RootPropertyPathName Name="FileOpenFolderButton" />
@@ -43,11 +42,6 @@
     <RootPropertyPathName Name="ClearModel" />
     <RootPropertyPathName Name="LargeFolderCollection" />
     <RootPropertyPathName Name="Item" />
-    <RootPropertyPathName Name="CleanLargeButton" />
-    <RootPropertyPathName Name="LargeFileCollection" />
-    <RootPropertyPathName Name="Date" />
-    <RootPropertyPathName Name="DisplayName" />
-    <RootPropertyPathName Name="LargeFileDeleteFolderButton" />
     <RootPropertyPathName Name="LargeFileText" />
     <RootPropertyPathName Name="AutoClearingText" />
     <RootPropertyPathName Name="DuplicateText" />
@@ -284,14 +278,6 @@
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="PCCleaner.Views.CacheView" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="ItemContainerStyle" />
-      <RootProperty Name="ItemTemplate" />
-    </RootType>
     <RootType FullName="PCCleaner.Views.DuplicateView" />
     <RootType FullName="PCCleaner.Views.FileList" />
     <RootType FullName="PCCleaner.Views.LargeFileView" />

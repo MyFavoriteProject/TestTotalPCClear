@@ -1,7 +1,6 @@
 ﻿using Microsoft.Toolkit.Extensions;
 using PCCleaner.Model;
 using PCCleaner.ViewModels.Command;
-using PCCleaner.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ using Windows.UI.Xaml;
 
 namespace PCCleaner.ViewModels
 {
-    public class DuplicateViewModel:BaseViewModel, IPutFile
+    public class DuplicateViewModel:BaseViewModel
     {
         #region Fields
 
@@ -55,10 +54,6 @@ namespace PCCleaner.ViewModels
                 }
             } 
         }
-
-        public string HelloText { get; set; }
-        public string LetsPutThingsInOrderText { get; set; }
-        public string AddFoldersText { get; set; }
 
         public bool ShowAddFolderPage 
         { 
@@ -178,9 +173,9 @@ namespace PCCleaner.ViewModels
 
         private void SelectedAllExecute(object obj)
         {
-            if(duplicateModel.DuplicateFolderCollection!=null&& duplicateModel.DuplicateFolderCollection.Any())
+            if(duplicateModel.FolderCollection!=null&& duplicateModel.FolderCollection.Any())
             {
-                foreach(var folder in duplicateModel.DuplicateFolderCollection)
+                foreach(var folder in duplicateModel.FolderCollection)
                 {
                     folder.IsChecked = true;
                 }
@@ -189,9 +184,9 @@ namespace PCCleaner.ViewModels
 
         private void DeselectedAllExecute(object obj)
         {
-            if (duplicateModel.DuplicateFolderCollection != null && duplicateModel.DuplicateFolderCollection.Any())
+            if (duplicateModel.FolderCollection != null && duplicateModel.FolderCollection.Any())
             {
-                foreach (var folder in duplicateModel.DuplicateFolderCollection)
+                foreach (var folder in duplicateModel.FolderCollection)
                 {
                     folder.IsChecked = false;
                 }

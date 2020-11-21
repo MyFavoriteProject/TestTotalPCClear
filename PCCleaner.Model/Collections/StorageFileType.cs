@@ -24,12 +24,9 @@ namespace PCCleaner.Model.Collections
             get=>this.fileCO;
             set
             {
-                if(this.fileCO == null || !this.fileCO.Equals(value))
-                {
-                    this.fileCO = value;
-                    this.path = this.fileCO.Path;
-                    OnPropertyChanged(nameof(File));
-                }
+                this.fileCO = value;
+                this.path = this.fileCO.Path;
+                OnPropertyChanged(nameof(File));
             } 
         }
 
@@ -38,11 +35,8 @@ namespace PCCleaner.Model.Collections
             get => this.basicProperties;
             set
             {
-                if (this.fileCO == null || !this.basicProperties.Equals(value))
-                {
-                    this.basicProperties = value;
-                    OnPropertyChanged(nameof(BasicProperties));
-                }
+                this.basicProperties = value;
+                OnPropertyChanged(nameof(BasicProperties));
             }
         }
 
@@ -51,11 +45,8 @@ namespace PCCleaner.Model.Collections
             get => this.path;
             set
             {
-                if (!value.Equals(this.path)&&File==null)
-                {
-                    this.path = value;
-                    OnPropertyChanged(nameof(Path));
-                }
+                this.path = value;
+                OnPropertyChanged(nameof(Path));
             }
         }
 

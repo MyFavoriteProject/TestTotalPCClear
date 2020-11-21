@@ -95,7 +95,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Grid.RowSpan="2">
                 <сustom:CustomListBox 
-                    ItemsSource="{Binding DuplicateModel.DuplicateFolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding DuplicateModel.FolderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
                     HorizontalContentAlignment="Stretch"
                     ItemContainerStyle="{StaticResource ListBoxItemStyle}"
@@ -151,7 +151,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Grid.RowSpan="2">
                 <сustom:CustomListBox 
-                    ItemsSource="{Binding DuplicateModel.DuplicatCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding DuplicateModel.FileCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
                     HorizontalContentAlignment="Stretch"
                     ItemContainerStyle="{StaticResource ListBoxItemStyle}"
@@ -177,7 +177,7 @@
                                     />
                                     <TextBlock 
                                             Grid.Column="1" 
-                                            Text="{Binding Path}"
+                                            Text="{Binding FileName}"
                                             Padding="25,3,0,0"
                                             Style="{StaticResource TextBlockInCheckBoxForText}"/>
 
@@ -190,14 +190,14 @@
                                             Text="B"
                                             Style="{StaticResource TextBlockInCheckBoxForText}"/>
                                 </Grid>
-                                <ListBox
+                                <сustom:CustomListBox
                                     ItemsSource="{Binding FileCollection}"
-                                    Background="Green"
-                                    BorderBrush="Red"
+                                    EvenListBoxItemBackground="Green"
+                                    OddListBoxItemBackground="Red"
                                     HorizontalContentAlignment="Stretch"
                                     ItemContainerStyle="{StaticResource ListBoxItemStyle}"
                                     >
-                                    <ListBox.ItemTemplate>
+                                    <сustom:CustomListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -229,12 +229,12 @@
                                                     Style="{StaticResource TextBlockInCheckBoxForText}"/>
                                             </Grid>
                                         </DataTemplate>
-                                    </ListBox.ItemTemplate>
+                                    </сustom:CustomListBox.ItemTemplate>
                                     <!--Background="{Binding ContextAcrylicBrush, Source={StaticResource ThemeManager}}"
                                     EvenListBoxItemBackground="{Binding CheckBlockDarkAcrylicBrush, Source={StaticResource ThemeManager}}"
                                     OddListBoxItemBackground="{Binding CheckBlockLightAcrylicBrush, Source={StaticResource ThemeManager}}"-->
                                     
-                                </ListBox>
+                                </сustom:CustomListBox>
                             </StackPanel>
                             <!--<CheckBox
                                     HorizontalAlignment="Stretch"

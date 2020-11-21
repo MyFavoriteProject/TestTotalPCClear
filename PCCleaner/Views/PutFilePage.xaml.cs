@@ -1,5 +1,4 @@
-﻿using PCCleaner.ViewModels.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,19 +27,6 @@ namespace PCCleaner.Views
         public PutFilePage()
         {
             this.InitializeComponent();
-        }
-
-        public ICommand OpenFolderCommand 
-        { 
-            get=>(ICommand)GetValue(OpenFolderCommandProperty); 
-            set => SetValue(OpenFolderCommandProperty, value);
-        }
-        public static readonly DependencyProperty OpenFolderCommandProperty =
-            DependencyProperty.Register("SeeAllCommand", typeof(ICommand), typeof(PutFilePage), new PropertyMetadata(null, OpenFolderCommand_Click));
-
-        private static void OpenFolderCommand_Click(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-
         }
     }
 }

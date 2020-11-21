@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PCCleaner.Core
 {
-    class FolderProvider
+    public class FolderProvider
     {
+
     }
 }

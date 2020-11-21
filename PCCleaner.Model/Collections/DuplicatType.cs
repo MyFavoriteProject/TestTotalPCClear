@@ -32,6 +32,7 @@ namespace PCCleaner.Model.Collections
                 // Следующая строка сработает если в коллекцию был добавлен элемент.
                 case NotifyCollectionChangedAction.Add:
                     StorageFileType<StorageFile> newDrink = e.NewItems[e.NewItems.Count-1] as StorageFileType<StorageFile>;
+                    newDrink.Icone = this.Icone;
                     Size += (int)newDrink.BasicProperties.Size;
                     break;
                 // Следующая строка если элемент был удален из коллекции.
@@ -44,6 +45,7 @@ namespace PCCleaner.Model.Collections
                     StorageFileType<StorageFile> replacedDrink = e.OldItems[e.OldItems.Count - 1] as StorageFileType<StorageFile>;
                     Size -= (int)replacedDrink.BasicProperties.Size;
                     StorageFileType<StorageFile> replacingDrink = e.NewItems[e.NewItems.Count - 1] as StorageFileType<StorageFile>;
+                    replacingDrink.Icone = this.Icone;
                     Size += (int)replacingDrink.BasicProperties.Size;
                     break;
             }

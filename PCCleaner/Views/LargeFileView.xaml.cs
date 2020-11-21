@@ -27,7 +27,7 @@ namespace PCCleaner.Views
         {
             this.InitializeComponent();
 
-            this.DataContext = new LargeFileView();
+            this.DataContext = new LargeFileViewModel();
         }
     }
 }

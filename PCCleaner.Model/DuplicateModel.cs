@@ -19,8 +19,10 @@ namespace PCCleaner.Model
     {
         #region Fields
 
-        ObservableCollection<DuplicatType> duplicateFileCollection;
-        ObservableCollection<StorageFolderType<StorageFolder>> duplicateFolderCollection;
+        ObservableCollection<DuplicatType> fileCollection;
+        ObservableCollection<StorageFolderType<StorageFolder>> folderCollection;
+
+        Random random;
 
         #endregion
 
@@ -28,32 +30,34 @@ namespace PCCleaner.Model
 
         public DuplicateModel() 
         {
-            this.duplicateFileCollection = new ObservableCollection<DuplicatType>();
-            this.duplicateFolderCollection = new ObservableCollection<StorageFolderType<StorageFolder>>();
+            this.fileCollection = new ObservableCollection<DuplicatType>();
+            this.folderCollection = new ObservableCollection<StorageFolderType<StorageFolder>>();
+
+            random = new Random();
         }
 
         #endregion
 
         #region public Propertys
 
-        public ObservableCollection<DuplicatType> DuplicatCollection
+        public ObservableCollection<DuplicatType> FileCollection
         {
-            get => this.duplicateFileCollection;
+            get => this.fileCollection;
             set
             {
-                this.duplicateFileCollection = value;
-                OnPropertyChanged(nameof(DuplicatCollection));
+                this.fileCollection = value;
+                OnPropertyChanged(nameof(FileCollection));
             }
         }
-        public ObservableCollection<StorageFolderType<StorageFolder>> DuplicateFolderCollection
+        public ObservableCollection<StorageFolderType<StorageFolder>> FolderCollection
         {
-            get => this.duplicateFolderCollection;
+            get => this.folderCollection;
             set
             {
-                if (this.duplicateFolderCollection == null || !this.duplicateFolderCollection.Equals(value))
+                if (this.folderCollection == null || !this.folderCollection.Equals(value))
                 {
-                    this.duplicateFolderCollection = value;
-                    OnPropertyChanged(nameof(DuplicateFolderCollection));
+                    this.folderCollection = value;
+                    OnPropertyChanged(nameof(FolderCollection));
                 }
             }
         }
@@ -64,8 +68,8 @@ namespace PCCleaner.Model
 
         public async Task<bool> OpenDuplicateFolderAsync()
         {
-            this.DuplicateFolderCollection.Clear();
-            this.DuplicatCollection.Clear();
+            this.FolderCollection.Clear();
+            this.FileCollection.Clear();
 
             bool isOpenFolder = false;
 
@@ -82,7 +86,7 @@ namespace PCCleaner.Model
 
                 foreach (StorageFolder folder in storageFolders)
                 {
-                    this.DuplicateFolderCollection.Add(new StorageFolderType<StorageFolder>(folder) { Path = folder.Path, Icone = FileTypeGlyph.FolderGlyph });
+                    this.FolderCollection.Add(new StorageFolderType<StorageFolder>(folder) { Path = folder.Path, Icone = FileTypeGlyph.FolderGlyph });
                 }
 
             }
@@ -93,18 +97,18 @@ namespace PCCleaner.Model
 
         public bool IsSelectedDuplicateDeleteFolder()
         {
-            bool result = IsSelectedDeleteFolderAsync(DuplicateFolderCollection);
+            bool result = IsSelectedDeleteFolderAsync(FolderCollection);
 
             return result;
         }
 
         public void DuplicateDeleteFolder()
         {
-            ObservableCollection<StorageFolderType<StorageFolder>> checkedLists = DeleteFolder(this.DuplicateFolderCollection);
+            ObservableCollection<StorageFolderType<StorageFolder>> checkedLists = DeleteFolder(this.FolderCollection);
 
-            if (!checkedLists.Equals(this.DuplicateFolderCollection))
+            if (!checkedLists.Equals(this.FolderCollection))
             {
-                this.DuplicateFolderCollection = checkedLists;
+                this.FolderCollection = checkedLists;
             }
         }
         
@@ -114,9 +118,9 @@ namespace PCCleaner.Model
 
             //ObservableCollection<DuplicatType> duplicatType = new ObservableCollection<DuplicatType>();
 
-            var storageFolders = DuplicateFolderCollection.Where(c => c.IsChecked == true).ToList();
+            var storageFolders = FolderCollection.Where(c => c.IsChecked == true).ToList();
 
-            if (storageFolders != null && DuplicateFolderCollection.Any())
+            if (storageFolders != null && FolderCollection.Any())
             {
                 result = true;
 
@@ -150,17 +154,17 @@ namespace PCCleaner.Model
 
                                         if (IndexI==null)
                                         {
-                                            DuplicatCollection.Add(new DuplicatType(fileList[i].DisplayName) { Icone = Constants.FileTypeGlyph.JustGlyph });
+                                            FileCollection.Add(new DuplicatType(fileList[i].DisplayName) { Icone = FileTypeGlyph.GetGlyph() });
 
-                                            DuplicatCollection[DuplicatCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[i], basicIFile));
-                                            DuplicatCollection[DuplicatCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[j], basicJFile));
+                                            FileCollection[FileCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[i], basicIFile));
+                                            FileCollection[FileCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[j], basicJFile));
 
                                             indexList.Add(i);
                                             indexList.Add(j);
                                         }
                                         else if(IndexJ==null)
                                         {
-                                            DuplicatCollection[DuplicatCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[j], basicJFile));
+                                            FileCollection[FileCollection.Count - 1].FileCollection.Add(new StorageFileType<StorageFile>(fileList[j], basicJFile));
                                             indexList.Add(j);
                                         }
                                     }
@@ -180,7 +184,7 @@ namespace PCCleaner.Model
 
             //List<StorageFile> duplicateFileList = this.DuplicateFileCollection.Where(c => c.IsChecked == true).Select(c => c.File).ToList();
 
-            DuplicatCollection.Clear();
+            FileCollection.Clear();
         }
 
         #endregion

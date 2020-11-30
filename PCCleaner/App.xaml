@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="ms-appx:///Styles/ListBoxStyle.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/NavigationViewStyle.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/Converters.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
 

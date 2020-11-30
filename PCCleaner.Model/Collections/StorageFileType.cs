@@ -10,6 +10,10 @@ namespace PCCleaner.Model.Collections
         private string path;
 
         public StorageFileType() { }
+        public StorageFileType(string path) 
+        {
+            this.path = path;
+        }
 
         public StorageFileType(T file, BasicProperties basicProperties, bool isChecked = false)
         {

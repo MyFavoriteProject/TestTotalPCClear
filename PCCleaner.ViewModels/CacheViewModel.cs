@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PCCleaner.Core;
 using PCCleaner.Model;
+using PCCleaner.Model.Collections;
 using PCCleaner.ViewModels.Command;
+using Windows.Storage;
 
 namespace PCCleaner.ViewModels
 {
@@ -13,7 +17,8 @@ namespace PCCleaner.ViewModels
     {
         #region Fields
 
-        private CacheModel cacheModel;
+        ObservableCollection<StorageFolderType<StorageFolder>> folderCollection;
+        private CacheProvider cacheProvider;
         private bool isShowSelectOrDeselectButton;
 
         #endregion
@@ -22,32 +27,46 @@ namespace PCCleaner.ViewModels
 
         public CacheViewModel()
         {
-            this.cacheModel = new CacheModel();
+            this.cacheProvider = new CacheProvider();
+
+            folderCollection = cacheProvider.GetStorageFolderType();
 
             //this.cacheModel.SetFolderCollectionAsynk();
 
             this.ScannCacheButton = new DelegateCommand(ScannCacheButton_Click);
             this.CleanCacheButton = new DelegateCommand(CleanCacheButton_Click);
-            this.SelectAllButton = new DelegateCommand(SelectAllButton_Click);
-            this.DeselectAllButton = new DelegateCommand(DeselectAllButton_Click);
-            this.MoreButton = new DelegateCommand(MoreButton_Click);
+            this.SelectAllButton = new DelegateCommand(SelectedAllExecute);
+            this.DeselectAllButton = new DelegateCommand(DeselectedAllExecute);
+            this.MoreButton = new DelegateCommand(MoreButtonExecute);
         }
 
         #endregion
 
         #region public Properys
 
-        public CacheModel CacheModel 
+        public CacheProvider CacheProvider 
         { 
-            get =>this.cacheModel;
+            get =>this.cacheProvider;
             set
             {
-                if (value != this.cacheModel)
+                if (value != this.cacheProvider)
                 {
-                    this.cacheModel = value;
-                    OnPropertyChanged(nameof(CacheModel));
+                    this.cacheProvider = value;
+                    OnPropertyChanged(nameof(CacheProvider));
                 }
             } 
+        }
+
+        public ObservableCollection<StorageFolderType<StorageFolder>> FolderCollection
+        {
+            get => this.folderCollection;
+            set
+            {
+                if (!value.Equals(this.folderCollection))
+                {
+                    this.folderCollection = value;
+                }
+            }
         }
 
         public bool IsShowSelectOrDeselectButton 
@@ -81,7 +100,7 @@ namespace PCCleaner.ViewModels
         {
             try
             {
-                await this.cacheModel.ScanningSystemCacheAsync().ConfigureAwait(true);
+                await this.cacheProvider.ScanningSystemCacheAsync(folderCollection).ConfigureAwait(true);
             }
             catch (UnauthorizedAccessException)
             {
@@ -93,7 +112,7 @@ namespace PCCleaner.ViewModels
         {
             try
             {
-                await this.cacheModel.DeleteFileAsync().ConfigureAwait(true);
+                await this.cacheProvider.DeleteFileAsync(folderCollection).ConfigureAwait(true);
             }
             catch (UnauthorizedAccessException)
             {
@@ -101,22 +120,39 @@ namespace PCCleaner.ViewModels
             }
         }
 
-        private void SelectAllButton_Click(object obj)
-        {
-            this.cacheModel.SetChekValue(true);
-        }
 
-        private void DeselectAllButton_Click(object obj)
-        {
-            this.cacheModel.SetChekValue(false);
-        }
-
-        private void MoreButton_Click(object obj)
+        private void MoreButtonExecute(object obj)
         {
             if (IsShowSelectOrDeselectButton)
+            {
                 IsShowSelectOrDeselectButton = false;
-            if (!IsShowSelectOrDeselectButton)
+            }
+            else
+            {
                 IsShowSelectOrDeselectButton = true;
+            }
+        }
+
+        private void SelectedAllExecute(object obj)
+        {
+            if (this.FolderCollection != null && this.FolderCollection.Any())
+            {
+                foreach (var folder in this.FolderCollection)
+                {
+                    folder.IsChecked = true;
+                }
+            }
+        }
+
+        private void DeselectedAllExecute(object obj)
+        {
+            if (this.FolderCollection != null && this.FolderCollection.Any())
+            {
+                foreach (var folder in this.FolderCollection)
+                {
+                    folder.IsChecked = false;
+                }
+            }
         }
 
         private async Task AccessFileSystem()

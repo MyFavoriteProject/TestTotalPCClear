@@ -225,4 +225,7 @@
   <data name="DuplicateFilesText" xml:space="preserve">
     <value>Файлы дубликатов</value>
   </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
 </root>

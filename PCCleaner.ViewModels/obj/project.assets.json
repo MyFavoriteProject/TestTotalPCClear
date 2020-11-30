@@ -976,6 +976,20 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        }
+      },
       "PCCleaner.Models/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0.18362",
@@ -2351,6 +2365,20 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
         }
       },
       "PCCleaner.Models/1.0.0": {
@@ -3761,6 +3789,20 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        }
+      },
       "PCCleaner.Models/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0.18362",
@@ -5169,6 +5211,20 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        }
+      },
       "PCCleaner.Models/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0.18362",
@@ -6544,6 +6600,20 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
         }
       },
       "PCCleaner.Models/1.0.0": {
@@ -7954,6 +8024,20 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        }
+      },
       "PCCleaner.Models/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0.18362",
@@ -9329,6 +9413,20 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
         }
       },
       "PCCleaner.Models/1.0.0": {
@@ -10737,6 +10835,20 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "PCCleaner.Core/1.0.0": {
+        "type": "project",
+        "framework": "UAP,Version=v10.0.18362",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.2.10",
+          "PCCleaner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PCCleaner.Core.dll": {}
         }
       },
       "PCCleaner.Models/1.0.0": {
@@ -18214,6 +18326,11 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "PCCleaner.Core/1.0.0": {
+      "type": "project",
+      "path": "../PCCleaner.Core/PCCleaner.Core.csproj",
+      "msbuildProject": "../PCCleaner.Core/PCCleaner.Core.csproj"
+    },
     "PCCleaner.Models/1.0.0": {
       "type": "project",
       "path": "../PCCleaner.Model/PCCleaner.Models.csproj",
@@ -18223,6 +18340,7 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.18362": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.10",
+      "PCCleaner.Core >= 1.0.0",
       "PCCleaner.Models >= 1.0.0"
     ]
   },
@@ -18258,6 +18376,9 @@
       "frameworks": {
         "uap10.0.18362": {
           "projectReferences": {
+            "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Core\\PCCleaner.Core.csproj": {
+              "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Core\\PCCleaner.Core.csproj"
+            },
             "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj": {
               "projectPath": "C:\\Users\\dmitr\\OneDrive\\Documents\\GitHub\\TestTotalPCClear\\PCCleaner.Model\\PCCleaner.Models.csproj"
             }

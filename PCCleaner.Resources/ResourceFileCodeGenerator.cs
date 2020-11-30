@@ -83,6 +83,11 @@ namespace PCCleaner.Resources
 		public static string CacheText => resourceProvider.GetString("CacheText");
 
 		/// <summary>
+        /// Gets a localized string similar to Cancel
+        /// </summary>
+		public static string CancelText => resourceProvider.GetString("CancelText");
+
+		/// <summary>
         /// Gets a localized string similar to Clean
         /// </summary>
 		public static string CleanText => resourceProvider.GetString("CleanText");

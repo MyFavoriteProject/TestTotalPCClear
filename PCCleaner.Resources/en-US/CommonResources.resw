@@ -225,4 +225,7 @@
   <data name="DuplicateFilesText" xml:space="preserve">
     <value>Duplicate File</value>
   </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

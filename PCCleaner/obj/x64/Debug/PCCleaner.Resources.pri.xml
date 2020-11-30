@@ -92,6 +92,14 @@
 						<Value>Cache</Value>
 					</Candidate>
 				</NamedResource>
+				<NamedResource name="CancelText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/CancelText">
+					<Candidate qualifiers="Language-RU-RU" type="String">
+						<Value>Закрыть</Value>
+					</Candidate>
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cancel</Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="CleanText" uri="ms-resource://PCCleaner.Resources/PCCleaner.Resources/CommonResources/CleanText">
 					<Candidate qualifiers="Language-RU-RU" type="String">
 						<Value>Чистый</Value>

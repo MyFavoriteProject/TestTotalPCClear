@@ -1,12 +1,16 @@
 ﻿using Microsoft.Toolkit.Extensions;
+using PCCleaner.Core;
 using PCCleaner.Model;
+using PCCleaner.Model.Collections;
 using PCCleaner.ViewModels.Command;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace PCCleaner.ViewModels
@@ -15,7 +19,10 @@ namespace PCCleaner.ViewModels
     {
         #region Fields
 
-        private DuplicateModel duplicateModel;
+        ObservableCollection<DuplicatType> duplicatCollection;
+        ObservableCollection<StorageFolderType<StorageFolder>> folderCollection;
+
+        private DuplicateProvider duplicateModel;
         private bool showAddFolderPage = true;
         private bool showFolderPage = false;
         private bool showFilesPage = false;
@@ -27,12 +34,13 @@ namespace PCCleaner.ViewModels
 
         public DuplicateViewModel()
         {
-            this.duplicateModel = new DuplicateModel();
+            this.duplicateModel = new DuplicateProvider();
+            
+            this.OpenCommand = new DelegateCommand(OpenExecute);
+            this.FolderDeleteCommand = new DelegateCommand(FolderDeleteExecute);
+            this.ScannCommand = new DelegateCommand(ScannExecute);
+            this.CleanCommand = new DelegateCommand(CleanExecute);
 
-            this.FileOpenFolderButton = new DelegateCommand(FileOpenFolderButton_Click);
-            this.DuplicateFileDeleteFolderButton = new DelegateCommand(DuplicateFileDeleteFolderButton_click);
-            this.DuplicateScannFolderButton = new DelegateCommand(DuplicateScannFolderButton_Click);
-            this.CleanDuplicateFileButton = new DelegateCommand(CleanDuplicateFileButton_Click);
             this.MoreButtonCommand = new DelegateCommand(MoreButtonExecute);
             this.SelectedAllCommand = new DelegateCommand(SelectedAllExecute);
             this.DeselectedAllCommand = new DelegateCommand(DeselectedAllExecute);
@@ -42,7 +50,29 @@ namespace PCCleaner.ViewModels
 
         #region Properties
 
-        public DuplicateModel DuplicateModel 
+        public ObservableCollection<DuplicatType> DuplicatCollection
+        {
+            get => this.duplicatCollection;
+            set
+            {
+                this.duplicatCollection = value;
+                OnPropertyChanged(nameof(DuplicatCollection));
+            }
+        }
+        public ObservableCollection<StorageFolderType<StorageFolder>> FolderCollection
+        {
+            get => this.folderCollection;
+            set
+            {
+                if (this.folderCollection == null || !this.folderCollection.Equals(value))
+                {
+                    this.folderCollection = value;
+                    OnPropertyChanged(nameof(FolderCollection));
+                }
+            }
+        }
+
+        public DuplicateProvider DuplicateModel 
         { 
             get=>this.duplicateModel;
             set
@@ -106,10 +136,10 @@ namespace PCCleaner.ViewModels
             } 
         }
 
-        public ICommand FileOpenFolderButton { get; set; }
-        public ICommand DuplicateFileDeleteFolderButton { get; set; }
-        public ICommand DuplicateScannFolderButton { get; set; }
-        public ICommand CleanDuplicateFileButton { get; set; }
+        public ICommand OpenCommand { get; set; }
+        public ICommand FolderDeleteCommand { get; set; }
+        public ICommand ScannCommand { get; set; }
+        public ICommand CleanCommand { get; set; }
         public ICommand MoreButtonCommand { get; set; }
         public ICommand SelectedAllCommand { get; set; }
         public ICommand DeselectedAllCommand { get; set; }
@@ -122,41 +152,56 @@ namespace PCCleaner.ViewModels
 
         #region private Methods
 
-        private async void FileOpenFolderButton_Click(object obj)
+        private async void OpenExecute(object obj)
         {
-            bool result = await this.duplicateModel.OpenDuplicateFolderAsync();
+            base.BusyCount++;
 
-            if (result)
+            var result = await this.duplicateModel.OpenFolderAsync();
+
+            if (result.Any())
             {
+                FolderCollection = result;
                 ShowAddFolderPage = false;
                 ShowFolderPage = true;
             }
+
+            base.BusyCount--;
         }
 
-        private void DuplicateFileDeleteFolderButton_click(object obj)
+        private void FolderDeleteExecute(object obj)
         {
-            bool result = this.duplicateModel.IsSelectedDuplicateDeleteFolder();
+            base.BusyCount++;
 
-            if (result)
+            var result = this.duplicateModel.IsSelectedDeleteFolder(FolderCollection);
+
+            if (result!=null&&result.Any())
             {
-
+                FolderCollection = this.duplicateModel.DeleteFolder(result);
             }
+
+            base.BusyCount--;
         }
 
-        private async void DuplicateScannFolderButton_Click(object obj)
+        private async void ScannExecute(object obj)
         {
-            var result = await this.duplicateModel.ScannDuplicateFilesAsync().ConfigureAwait(true);
+            base.BusyCount++;
 
-            if (result)
+            var result = await this.duplicateModel.ScannFoldersAsync(FolderCollection).ConfigureAwait(true);
+
+            if (result.Any())
             {
+                DuplicatCollection = result;
                 this.ShowFolderPage = false;
                 this.ShowFilesPage = true;
             }
+            base.BusyCount--;
         }
 
-        private async void CleanDuplicateFileButton_Click(object obj)
+        private async void CleanExecute(object obj)
         {
-            await this.duplicateModel.CleanDuplicateFilesAsync().ConfigureAwait(true);
+            //await this.duplicateModel.CleanFilesAsync(DuplicatCollection).ConfigureAwait(true);
+
+            DuplicatCollection.Clear();
         }
 
         private void MoreButtonExecute(object obj)
@@ -173,9 +218,9 @@ namespace PCCleaner.ViewModels
 
         private void SelectedAllExecute(object obj)
         {
-            if(duplicateModel.FolderCollection!=null&& duplicateModel.FolderCollection.Any())
+            if(FolderCollection!=null&& FolderCollection.Any())
             {
-                foreach(var folder in duplicateModel.FolderCollection)
+                foreach(var folder in FolderCollection)
                 {
                     folder.IsChecked = true;
                 }
@@ -184,9 +229,9 @@ namespace PCCleaner.ViewModels
 
         private void DeselectedAllExecute(object obj)
         {
-            if (duplicateModel.FolderCollection != null && duplicateModel.FolderCollection.Any())
+            if (FolderCollection != null && FolderCollection.Any())
             {
-                foreach (var folder in duplicateModel.FolderCollection)
+                foreach (var folder in FolderCollection)
                 {
                     folder.IsChecked = false;
                 }

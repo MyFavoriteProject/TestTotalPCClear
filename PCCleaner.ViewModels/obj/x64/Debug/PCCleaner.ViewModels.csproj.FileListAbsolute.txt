@@ -27,3 +27,7 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\o
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\qualifiers.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Core.dll
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Core.pdb
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Core.pri
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\obj\x64\Debug\PCCleaner.Core.pri.xml

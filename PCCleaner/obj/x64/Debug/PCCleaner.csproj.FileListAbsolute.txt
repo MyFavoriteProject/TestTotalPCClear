@@ -127,3 +127,10 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debu
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637112498540000000.json
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\Converters.xbf
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\Styles\Converters.xaml
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\Styles\Converters.xbf
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\PCCleaner.Core.dll
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\PCCleaner.Core.pdb
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\PCCleaner.Core.pri
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\obj\x64\Debug\PCCleaner.Core.pri.xml

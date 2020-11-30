@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-11-21T16:08:48.340</Modified>
+      <Modified>2020-11-30T09:37:33.743</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\PCCleaner.exe">
       <PackagePath>entrypoint\PCCleaner.exe</PackagePath>
-      <Modified>2020-11-21T16:08:46.765</Modified>
+      <Modified>2020-11-30T09:37:30.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll">
       <PackagePath>Microsoft.Toolkit.dll</PackagePath>
@@ -60,19 +60,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\bin\x64\Debug\PCCleaner.Helpers.dll">
       <PackagePath>PCCleaner.Helpers.dll</PackagePath>
-      <Modified>2020-11-21T16:03:18.370</Modified>
+      <Modified>2020-11-30T09:25:12.397</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\bin\x64\Debug\PCCleaner.Resources.dll">
       <PackagePath>PCCleaner.Resources.dll</PackagePath>
-      <Modified>2020-11-21T16:03:20.260</Modified>
+      <Modified>2020-11-30T09:25:12.935</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.ViewModels.dll">
       <PackagePath>PCCleaner.ViewModels.dll</PackagePath>
-      <Modified>2020-11-21T16:08:40.962</Modified>
+      <Modified>2020-11-30T09:36:15.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Model.dll">
       <PackagePath>PCCleaner.Model.dll</PackagePath>
-      <Modified>2020-11-21T16:08:40.427</Modified>
+      <Modified>2020-11-30T09:25:12.470</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.ViewModels\bin\x64\Debug\PCCleaner.Core.dll">
+      <PackagePath>PCCleaner.Core.dll</PackagePath>
+      <Modified>2020-11-30T09:25:13.150</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -126,75 +130,79 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\PCCleaner.xr.xml">
       <PackagePath>PCCleaner.xr.xml</PackagePath>
-      <Modified>2020-11-21T16:08:46.626</Modified>
+      <Modified>2020-11-30T09:27:02.673</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\BrushStyle.xbf">
       <PackagePath>Styles\BrushStyle.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.680</Modified>
+      <Modified>2020-11-30T09:37:30.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\ButtonStyle.xbf">
       <PackagePath>Styles\ButtonStyle.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.680</Modified>
+      <Modified>2020-11-30T09:37:30.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\CheckBoxControlTemplate.xbf">
       <PackagePath>Styles\CheckBoxControlTemplate.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.680</Modified>
+      <Modified>2020-11-30T09:37:30.081</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\Converters.xbf">
+      <PackagePath>Styles\Converters.xbf</PackagePath>
+      <Modified>2020-11-30T09:37:30.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\ListBoxStyle.xbf">
       <PackagePath>Styles\ListBoxStyle.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.680</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\NavigationViewStyle.xbf">
       <PackagePath>Styles\NavigationViewStyle.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.680</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Styles\TextBlock.xbf">
       <PackagePath>Styles\TextBlock.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Themes\Dark.xbf">
       <PackagePath>Themes\Dark.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Themes\Light.xbf">
       <PackagePath>Themes\Light.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\CacheView.xbf">
       <PackagePath>Views\CacheView.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.681</Modified>
+      <Modified>2020-11-30T09:37:30.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\DuplicateView.xbf">
       <PackagePath>Views\DuplicateView.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.672</Modified>
+      <Modified>2020-11-30T09:37:30.070</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\FileList.xbf">
       <PackagePath>Views\FileList.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.682</Modified>
+      <Modified>2020-11-30T09:37:30.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\LargeFileView.xbf">
       <PackagePath>Views\LargeFileView.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.682</Modified>
+      <Modified>2020-11-30T09:37:30.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\Navigation.xbf">
       <PackagePath>Views\Navigation.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.683</Modified>
+      <Modified>2020-11-30T09:37:30.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\PutFilePage.xbf">
       <PackagePath>Views\PutFilePage.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.683</Modified>
+      <Modified>2020-11-30T09:37:30.084</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Views\SettingsPage.xbf">
       <PackagePath>Views\SettingsPage.xbf</PackagePath>
-      <Modified>2020-11-21T16:08:46.683</Modified>
+      <Modified>2020-11-30T09:37:30.084</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -202,11 +210,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-11-21T16:08:47.888</Modified>
+      <Modified>2020-11-30T09:25:20.161</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner\bin\x64\Debug\Core\PCCleaner.exe">
       <PackagePath>PCCleaner.exe</PackagePath>
-      <Modified>2020-11-21T16:08:48.334</Modified>
+      <Modified>2020-11-30T09:37:33.736</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

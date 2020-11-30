@@ -97,6 +97,7 @@ namespace PCCleaner.Model
             get=>this.folderCollection;
             set
             {
+                //if(!valueю)
                 this.folderCollection = value;
             } 
         }
@@ -111,7 +112,7 @@ namespace PCCleaner.Model
 
             try
             {
-                await SearchPathesAsync().ConfigureAwait(true);
+                //await SearchPathesAsync().ConfigureAwait(true);
             }
             catch (UnauthorizedAccessException UAE)
             {
@@ -172,88 +173,6 @@ namespace PCCleaner.Model
         #endregion
 
         #region private Methods
-
-        private async Task SearchPathesAsync()
-        {
-            List<string> pathes = new List<string>();
-
-            int driveLettersLen = driveLetters.Length;
-            string removableDriveLetters = "";
-            string driveLetter;
-
-            List<StorageFolder> drives = new List<StorageFolder>();
-
-            StorageFolder removableDevices = KnownFolders.RemovableDevices;
-
-            IReadOnlyList<StorageFolder> folders = Task.Run(async () => await removableDevices.GetFoldersAsync()).Result;
-
-            foreach (StorageFolder removableDevice in folders)
-            {
-                driveLetter = removableDevice.Path.Substring(0, 1).ToUpper();
-
-                if (driveLetters.IndexOf(driveLetter) > -1)
-                {
-                    removableDriveLetters += driveLetter;
-                }
-            }
-
-            for (int curDrive = 0; curDrive < driveLettersLen; curDrive++)
-            {
-                driveLetter = driveLetters.Substring(curDrive, 1);
-
-                try
-                {
-                    StorageFolder drive = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(driveLetter + ":")).Result;
-                    drives.Add(drive);
-                }
-                catch (AggregateException) { }
-
-            }
-
-            if (drives.Any())
-            {
-                foreach (var item in cacheView)
-                {
-                    pathes = new List<string>();
-                    for (int i = 0; i < drives.Count; i++)
-                    {
-                        foreach (string universalPath in item.pathes)
-                        {
-                            pathes.Add(drives[i].Name + universalPath);
-                        }
-                    }
-
-                    var fileCollection = SetPathesAsync(pathes);
-
-                    var collection = FolderCollection.FirstOrDefault(c => c.FolderName.Equals(item.key));
-                    if (collection != null)
-                    {
-                        collection.FileCollection = fileCollection;
-                    }
-
-                    //this.FolderCollection.Add(new StorageFolderObservableCollection<StorageFolder> { FileCollection = fileCollection , FolderName  = item.key, Icone = item.icon });
-                }
-            }
-            else
-            {
-                
-            }
-        }
-
-        private ObservableCollection<StorageFileType<StorageFile>> SetPathesAsync(List<string> pathes)
-        {
-            ObservableCollection<StorageFileType<StorageFile>> fileCollection = new ObservableCollection<StorageFileType<StorageFile>>();
-
-            foreach (string path in pathes)
-            {
-                if (File.Exists(path) == true)
-                {
-                    fileCollection.Add(new StorageFileType<StorageFile> { Path = path });
-                }
-            }
-
-            return fileCollection;
-        }
 
         #endregion
     }

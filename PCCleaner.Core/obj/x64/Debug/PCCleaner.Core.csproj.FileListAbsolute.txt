@@ -22,3 +22,8 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64\Debug\PCCleaner.Core.csprojAssemblyReference.cache
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\bin\x64\Debug\PCCleaner.Model.dll
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\bin\x64\Debug\PCCleaner.Model.pdb
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\bin\x64\Debug\PCCleaner.Model.pri
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64\Debug\PCCleaner.Model.pri.xml
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\obj\x64\Debug\Microsoft.Toolkit.Uwp.pri.xml

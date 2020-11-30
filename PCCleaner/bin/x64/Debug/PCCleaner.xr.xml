@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="ContextAcrylicBrush" />
     <RootPropertyPathName Name="CommonResources" />
@@ -18,19 +21,21 @@
     <RootPropertyPathName Name="DeselectAllButton" />
     <RootPropertyPathName Name="SelectAllButton" />
     <RootPropertyPathName Name="CacheText" />
+    <RootPropertyPathName Name="IsBusy" />
+    <RootPropertyPathName Name="CancelText" />
     <RootPropertyPathName Name="ShowFilesPage" />
     <RootPropertyPathName Name="CleanText" />
-    <RootPropertyPathName Name="CleanDuplicateFileButton" />
-    <RootPropertyPathName Name="DuplicateModel" />
+    <RootPropertyPathName Name="CleanCommand" />
+    <RootPropertyPathName Name="DuplicatCollection" />
     <RootPropertyPathName Name="FileCollection" />
     <RootPropertyPathName Name="BasicProperties" />
     <RootPropertyPathName Name="Size" />
     <RootPropertyPathName Name="FileName" />
     <RootPropertyPathName Name="ShowFolderPage" />
-    <RootPropertyPathName Name="DuplicateScannFolderButton" />
+    <RootPropertyPathName Name="ScannCommand" />
     <RootPropertyPathName Name="ShowAddFolderPage" />
     <RootPropertyPathName Name="AddFoldersText" />
-    <RootPropertyPathName Name="FileOpenFolderButton" />
+    <RootPropertyPathName Name="OpenCommand" />
     <RootPropertyPathName Name="ForegroundBrush" />
     <RootPropertyPathName Name="LetsPutThingsInOrderText" />
     <RootPropertyPathName Name="HelloText" />
@@ -224,6 +229,7 @@
       <RootProperty Name="Opacity" />
       <RootProperty Name="UseLayoutRounding" />
     </RootType>
+    <RootType FullName="PCCleaner.Helpers.Converters.BooleanToVisibilityConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationViewItem">
       <RootProperty Name="Icon" />
@@ -248,6 +254,8 @@
       <RootProperty Name="Source" />
       <RootProperty Name="Mode" />
       <RootProperty Name="UpdateSourceTrigger" />
+      <RootProperty Name="Converter" />
+      <RootProperty Name="ConverterParameter" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
@@ -266,6 +274,7 @@
       <RootProperty Name="EvenListBoxItemBackground" />
       <RootProperty Name="OddListBoxItemBackground" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
@@ -278,6 +287,11 @@
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="PCCleaner.Views.CacheView" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="IsActive" />
+    </RootType>
     <RootType FullName="PCCleaner.Views.DuplicateView" />
     <RootType FullName="PCCleaner.Views.FileList" />
     <RootType FullName="PCCleaner.Views.LargeFileView" />

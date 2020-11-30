@@ -135,6 +135,7 @@
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="DuplicateViewModel.cs" />
     <Compile Include="LargeFileViewModel.cs" />
+    <Compile Include="Messaging\BusyCountChangeMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\PCCleaner.ViewModels.rd.xml" />
   </ItemGroup>
@@ -144,6 +145,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PCCleaner.Core\PCCleaner.Core.csproj">
+      <Project>{00f3e1f7-29cc-49de-a336-5f96fdcdc3fe}</Project>
+      <Name>PCCleaner.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PCCleaner.Model\PCCleaner.Models.csproj">
       <Project>{42fabb80-0efd-44c5-9a1e-63c7c462d59f}</Project>
       <Name>PCCleaner.Models</Name>

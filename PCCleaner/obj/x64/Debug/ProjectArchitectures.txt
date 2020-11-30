@@ -1,3 +1,4 @@
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Core\PCCleaner.Core.csproj;x64
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\PCCleaner.Helpers.csproj;x64
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Model\PCCleaner.Models.csproj;x64
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Resources\PCCleaner.Resources.csproj;x64

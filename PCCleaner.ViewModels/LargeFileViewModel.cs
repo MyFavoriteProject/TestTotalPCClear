@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PCCleaner.Core;
 using PCCleaner.Model;
+using PCCleaner.Model.Collections;
 using PCCleaner.ViewModels.Command;
+using Windows.Storage;
 
 namespace PCCleaner.ViewModels
 {
@@ -13,7 +17,10 @@ namespace PCCleaner.ViewModels
     {
         #region Fields
 
-        private LargeFileModel largeFileModel;
+        private LargeFileProvider largeFileProvider;
+
+        ObservableCollection<StorageFileType<StorageFile>> fileCollection;
+        ObservableCollection<StorageFolderType<StorageFolder>> folderCollection;
 
         private bool showAddFolderPage = true;
         private bool showFolderPage = false;
@@ -26,12 +33,12 @@ namespace PCCleaner.ViewModels
 
         public LargeFileViewModel()
         {
-            this.largeFileModel = new LargeFileModel();
+            this.largeFileProvider = new LargeFileProvider();
 
-            this.LargeFileScannFolderButton = new DelegateCommand(LargeFileScannFolderButton_Click);
-            this.LargeFileDeleteFolderButton = new DelegateCommand(LargeFileDeleteFolderButtonButton_Click);
-            this.CleanLargeFileButton = new DelegateCommand(CleanLargeFileButton_Click);
-            this.FileOpenFolderButton = new DelegateCommand(FileOpenFolderButton_Click);
+            this.ScannCommand = new DelegateCommand(ScannExecute);
+            this.FolderDeleteCommand = new DelegateCommand(FolderDeleteExecute);
+            this.CleanCommand = new DelegateCommand(CleanExecute);
+            this.OpenCommand = new DelegateCommand(OpenExecute);
 
             this.MoreButtonCommand = new DelegateCommand(MoreButtonExecute);
             this.SelectedAllCommand = new DelegateCommand(SelectedAllExecute);
@@ -42,15 +49,15 @@ namespace PCCleaner.ViewModels
 
         #region public Propertys
 
-        public LargeFileModel LargeFileModel 
+        public LargeFileProvider LargeFileProvider 
         { 
-            get=>this.largeFileModel;
+            get=>this.largeFileProvider;
             set
             {
-                if (value != this.largeFileModel)
+                if (value != this.largeFileProvider)
                 {
-                    this.largeFileModel = value;
-                    OnPropertyChanged(nameof(LargeFileModel));
+                    this.largeFileProvider = value;
+                    OnPropertyChanged(nameof(LargeFileProvider));
                 }
             } 
         }
@@ -67,7 +74,6 @@ namespace PCCleaner.ViewModels
                 }
             }
         }
-
         public bool ShowAddFolderPage
         {
             get => this.showAddFolderPage;
@@ -92,7 +98,6 @@ namespace PCCleaner.ViewModels
                 }
             }
         }
-
         public bool ShowFilesPage
         {
             get => this.showFilesPage;
@@ -106,10 +111,37 @@ namespace PCCleaner.ViewModels
             }
         }
 
-        public ICommand FileOpenFolderButton { get; set; }
-        public ICommand LargeFileScannFolderButton { get; set; }
-        public ICommand LargeFileDeleteFolderButton { get; set; }
-        public ICommand CleanLargeFileButton { get; set; }
+
+        public ObservableCollection<StorageFileType<StorageFile>> FileCollection
+        {
+            get => this.fileCollection;
+            set
+            {
+                if (this.fileCollection == null || !this.fileCollection.Equals(value))
+                {
+                    this.fileCollection = value;
+                    OnPropertyChanged(nameof(FileCollection));
+                }
+            }
+        }
+        public ObservableCollection<StorageFolderType<StorageFolder>> FolderCollection
+        {
+            get => this.folderCollection;
+            set
+            {
+                if (this.folderCollection == null || !this.folderCollection.Equals(value))
+                {
+                    this.folderCollection = value;
+                    OnPropertyChanged(nameof(FolderCollection));
+                }
+            }
+        }
+
+
+        public ICommand OpenCommand { get; set; }
+        public ICommand ScannCommand { get; set; }
+        public ICommand FolderDeleteCommand { get; set; }
+        public ICommand CleanCommand { get; set; }
 
         public ICommand MoreButtonCommand { get; set; }
         public ICommand SelectedAllCommand { get; set; }
@@ -119,30 +151,60 @@ namespace PCCleaner.ViewModels
 
         #region private Methods
 
-        private async void FileOpenFolderButton_Click(object obj)
+        private async void OpenExecute(object obj)
         {
-            await this.largeFileModel.OpenLargeFolderAsync().ConfigureAwait(true);
-        }
+            base.BusyCount++;
 
-        private async void LargeFileScannFolderButton_Click(object obj)
-        {
-            await this.largeFileModel.ScanningLargeFolderAsync().ConfigureAwait(true);
-        }
+            var result = await this.largeFileProvider.OpenFolderAsync().ConfigureAwait(true);
 
-        private void LargeFileDeleteFolderButtonButton_Click(object obj)
-        {
-            bool isSelected = this.largeFileModel.IsSelectedLargeFileDeleteFolder();
-
-            if (isSelected == true)
+            if (result.Any())
             {
-                this.largeFileModel.LargeFileDeleteFolder();
+                this.FolderCollection = result;
+                ShowAddFolderPage = false;
+                ShowFolderPage = true;
+            }
+
+            base.BusyCount--;
+        }
+
+        private async void ScannExecute(object obj)
+        {
+            base.BusyCount++;
+
+            var result = await this.largeFileProvider.ScannFoldersAsync(folderCollection).ConfigureAwait(true);
+
+            if(result.Any())
+            {
+                this.FileCollection = result;
+                this.ShowFolderPage = false;
+                this.ShowFilesPage = true;
+            }
+
+            base.BusyCount--;
+        }
+
+        private void FolderDeleteExecute(object obj)
+        {
+            base.BusyCount++;
+
+            var result = this.largeFileProvider.IsSelectedDeleteFolder(folderCollection);
+
+            if (result != null&&result.Any())
+            {
+                FolderCollection = this.largeFileProvider.DeleteFolder(result);
                 //await this.deleteDialog.ShowAsync();
             }
+
+            base.BusyCount--;
         }
 
-        private void CleanLargeFileButton_Click(object obj)
+        private void CleanExecute(object obj)
         {
-            this.largeFileModel.CleanLargeFiles();
+            base.BusyCount++;
+
+            this.largeFileProvider.CleanFilesAsync(fileCollection);
+
+            base.BusyCount--;
         }
 
         private void MoreButtonExecute(object obj)
@@ -159,22 +221,48 @@ namespace PCCleaner.ViewModels
 
         private void SelectedAllExecute(object obj)
         {
-            if (largeFileModel.FolderCollection != null && largeFileModel.FolderCollection.Any())
+            if (ShowFolderPage)
             {
-                foreach (var folder in largeFileModel.FolderCollection)
+                if (this.FolderCollection != null && this.FolderCollection.Any())
                 {
-                    folder.IsChecked = true;
+                    foreach (var folder in this.FolderCollection)
+                    {
+                        folder.IsChecked = true;
+                    }
+                }
+            }
+            if (ShowFilesPage)
+            {
+                if (this.FileCollection != null && this.FileCollection.Any())
+                {
+                    foreach (var folder in this.FileCollection)
+                    {
+                        folder.IsChecked = true;
+                    }
                 }
             }
         }
 
         private void DeselectedAllExecute(object obj)
         {
-            if (largeFileModel.FolderCollection != null && largeFileModel.FolderCollection.Any())
+            if (ShowFolderPage)
             {
-                foreach (var folder in largeFileModel.FolderCollection)
+                if (this.FolderCollection != null && this.FolderCollection.Any())
                 {
-                    folder.IsChecked = false;
+                    foreach (var folder in this.FolderCollection)
+                    {
+                        folder.IsChecked = false;
+                    }
+                }
+            }
+            if (ShowFilesPage)
+            {
+                if (this.FileCollection != null && this.FileCollection.Any())
+                {
+                    foreach (var folder in this.FileCollection)
+                    {
+                        folder.IsChecked = false;
+                    }
                 }
             }
         }

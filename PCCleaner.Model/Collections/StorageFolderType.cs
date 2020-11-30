@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Windows.Storage;
 
 namespace PCCleaner.Model.Collections
@@ -15,10 +17,29 @@ namespace PCCleaner.Model.Collections
 
         public StorageFolderType() { }
 
+        public StorageFolderType(string folderName, string icone, List<string> pathes)
+        {
+            this.FolderName = folderName;
+            base.Icone = icone;
+
+            if (pathes.Any())
+            {
+                FileCollection = new ObservableCollection<StorageFileType<StorageFile>>();
+
+                foreach(var path in pathes)
+                {
+                    FileCollection.Add(new StorageFileType<StorageFile>(path));
+                }
+            }
+        }
+
         public StorageFolderType(T folder, bool isChecked = false)
         {
             this.folder = folder;
             base.isChecked = isChecked;
+
+            this.Path = folder.Path;
+            this.FolderName = folder.Name;
         }
 
         public string FolderName 
@@ -26,11 +47,8 @@ namespace PCCleaner.Model.Collections
             get=>this.folderName;
             set
             {
-                if (value != this.folderName)
-                {
-                    folderName = value;
-                    OnPropertyChanged(nameof(FolderName));
-                }
+                folderName = value;
+                OnPropertyChanged(nameof(FolderName));
             } 
         }
 
@@ -39,14 +57,11 @@ namespace PCCleaner.Model.Collections
             get=>this.folder;
             set
             {
-                if (this.folder == null || !this.folder.Equals(value))
-                {
-                    this.folder = value;
+                this.folder = value;
 
-                    this.path = this.folder.Path;
+                this.path = this.folder.Path;
 
-                    OnPropertyChanged(nameof(Folder));
-                }
+                OnPropertyChanged(nameof(Folder));
             } 
         }
 
@@ -55,11 +70,8 @@ namespace PCCleaner.Model.Collections
             get => this.fileCollection;
             set
             {
-                if (this.fileCollection == null || !this.fileCollection.Equals(value))
-                {
-                    this.fileCollection = value;
-                    OnPropertyChanged(nameof(FileCollection));
-                }
+                this.fileCollection = value;
+                OnPropertyChanged(nameof(FileCollection));
             }
         }
 
@@ -68,11 +80,8 @@ namespace PCCleaner.Model.Collections
             get => this.path;
             set
             {
-                if (!value.Equals(this.path) /*&& Folder == null*/)
-                {
-                    this.path = value;
-                    OnPropertyChanged(nameof(Path));
-                }
+                this.path = value;
+                OnPropertyChanged(nameof(Path));
             }
         }
 

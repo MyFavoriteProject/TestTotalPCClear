@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PCCleaner.Core;
 using PCCleaner.Model;
-using PCCleaner.Model.Collections;
+using PCCleaner.Model;
 using PCCleaner.ViewModels.Command;
 using Windows.Storage;
 

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.Storage;
 
-namespace PCCleaner.Model.Collections
+namespace PCCleaner.Model
 {
     public class StorageFolderType<T> : BaseStorageType where T : IStorageFolder
     {

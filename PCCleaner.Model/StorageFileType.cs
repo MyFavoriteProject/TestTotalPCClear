@@ -1,7 +1,7 @@
 ﻿using Windows.Storage;
 using Windows.Storage.FileProperties;
 
-namespace PCCleaner.Model.Collections
+namespace PCCleaner.Model
 {
     public class StorageFileType<T> : BaseStorageType where T : IStorageFile
     {

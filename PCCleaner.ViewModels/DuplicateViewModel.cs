@@ -1,7 +1,7 @@
 ﻿using Microsoft.Toolkit.Extensions;
 using PCCleaner.Core;
 using PCCleaner.Model;
-using PCCleaner.Model.Collections;
+using PCCleaner.Model;
 using PCCleaner.ViewModels.Command;
 using System;
 using System.Collections.Generic;

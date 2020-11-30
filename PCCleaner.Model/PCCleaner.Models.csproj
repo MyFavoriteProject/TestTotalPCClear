@@ -120,15 +120,11 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseModel.cs" />
-    <Compile Include="CacheModel.cs" />
-    <Compile Include="Collections\BaseStorageType.cs" />
-    <Compile Include="Collections\DuplicatType.cs" />
-    <Compile Include="Collections\StorageFileType.cs" />
-    <Compile Include="Collections\StorageFolderType.cs" />
+    <Compile Include="BaseStorageType.cs" />
+    <Compile Include="DuplicatType.cs" />
+    <Compile Include="StorageFileType.cs" />
+    <Compile Include="StorageFolderType.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DuplicateModel.cs" />
-    <Compile Include="LargeFileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\PCCleaner.Model.rd.xml" />
   </ItemGroup>

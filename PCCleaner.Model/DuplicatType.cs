@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace PCCleaner.Model.Collections
+namespace PCCleaner.Model
 {
     public class DuplicatType: BaseStorageType
     {

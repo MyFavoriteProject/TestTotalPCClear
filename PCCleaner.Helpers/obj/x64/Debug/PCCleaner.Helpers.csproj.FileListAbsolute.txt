@@ -21,3 +21,4 @@ C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\obj\
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\obj\x64\Debug\qualifiers.txt
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\dmitr\OneDrive\Documents\GitHub\TestTotalPCClear\PCCleaner.Helpers\obj\x64\Debug\PCCleaner.Helpers.csprojAssemblyReference.cache
